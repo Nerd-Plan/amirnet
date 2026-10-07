@@ -151,6 +151,71 @@ details summary{cursor:pointer;color:var(--blue)}
 .spk.mini{width:30px;height:30px;font-size:14px}
 .btn.mini{padding:4px 10px;font-size:13px;border-radius:8px}
 .card .en.phr{font-size:clamp(24px,6vw,34px)}
+
+.center{text-align:center}
+.bigemo{font-size:56px;line-height:1;margin:4px 0 8px}
+.bigemo.wob{animation:wob 1.8s ease-in-out infinite}
+.btn.big{padding:14px 26px;font-size:18px;border-radius:12px}
+.gbar{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:14px 0 0}
+.grow{display:flex;gap:12px;align-items:center}
+.gnum{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:var(--blue-ink);font-family:"Secular One",Assistant,sans-serif;font-size:22px;box-shadow:0 0 0 3px var(--soft)}
+.gmid{flex:1;min-width:0}
+.gxp{margin-top:6px;height:8px}
+.gxp i{background:linear-gradient(90deg,var(--blue),#8B5CF6);transition:width .6s ease-out}
+.gstats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;text-align:center}
+.gs{display:flex;flex-direction:column;align-items:center;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums;line-height:1.3}
+.gs small{font-weight:400;font-size:11px;color:var(--muted)}
+.gs.done{color:var(--good)}
+.ring{width:16px;height:16px;border-radius:50%;background:conic-gradient(var(--good) calc(var(--p)*1%),var(--soft) 0);display:inline-block;margin-bottom:2px}
+.chal{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 0}
+.gbar.mini{display:flex;align-items:center;gap:10px;padding:8px 12px;margin:12px 0 0}
+.gbar.mini .gnum{width:32px;height:32px;font-size:17px;box-shadow:none}
+.gbar.mini .gxp{flex:1;margin:0}
+.gbar.mini .gs{flex-direction:row;gap:3px;font-size:14px;white-space:nowrap}
+.chb{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;padding:9px 8px;border-radius:12px;border:1px solid var(--line);background:var(--sheet);color:var(--ink);cursor:pointer;font:inherit}
+.chb span{font-size:22px;line-height:1}
+.chb small{color:var(--muted);font-size:13px;background:var(--soft);border-radius:999px;padding:0 8px}
+.chb[aria-pressed="true"]{border:2px solid var(--blue)}
+.chb.boss{background:linear-gradient(135deg,var(--sheet),var(--soft))}
+#toasts{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);z-index:50;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:min(92vw,420px)}
+.toast{background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.25);display:flex;flex-direction:column;align-items:center;text-align:center;animation:tin .3s ease-out;transition:opacity .4s,transform .4s}
+.toast span{font-size:13px;opacity:.85}
+.toast.big{background:var(--mark);color:var(--mark-ink);font-size:18px}
+.toast.out{opacity:0;transform:translateY(-8px)}
+.xpfloat{position:fixed;left:50%;top:36%;z-index:45;font-family:"Secular One",Assistant,sans-serif;font-size:26px;color:var(--good);text-shadow:0 2px 10px rgba(0,0,0,.18);pointer-events:none;animation:xpup 1.2s ease-out forwards;white-space:nowrap}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.confetti i{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;animation-name:fall;animation-timing-function:ease-in;animation-fill-mode:forwards}
+.card.shake{animation:shake .4s}
+.card .he.show{animation:reveal .35s ease-out}
+.hint{text-align:center;font-size:22px;letter-spacing:.05em;margin:6px 0 0;color:var(--blue);font-weight:700}
+.sprhead{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:18px}
+.sprclock{font-family:"Secular One",Assistant,sans-serif;font-size:34px;min-width:56px;text-align:center;font-variant-numeric:tabular-nums}
+.sprclock.low{color:var(--bad);animation:pulse .6s infinite}
+.sprcombo.hot{color:#E8590C}
+.sprbar{margin:6px 0 10px}
+.sprbar i{transition:width .2s linear;background:var(--good)}
+.bosshead{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+.monster{font-size:46px;line-height:1;display:inline-block}
+.monster.hitme{animation:hitme .5s}
+.hpbar{height:10px;margin-top:4px}
+.hpbar i{background:var(--bad);transition:width .5s}
+.achgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:8px}
+.ach{border:1px solid var(--line);border-radius:12px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:.5;line-height:1.3}
+.ach.on{opacity:1;border-color:var(--mark);background:linear-gradient(180deg,var(--sheet),var(--soft))}
+.ach .ai{font-size:28px;margin-bottom:2px}
+.ach small{color:var(--muted);font-size:11px}
+.misslist{text-align:right;margin-top:10px}
+.tag.hard{border-color:var(--bad);color:var(--bad)}
+.tag.good{border-color:var(--good);color:var(--good)}
+@keyframes wob{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg) scale(1.06)}}
+@keyframes tin{from{opacity:0;transform:translateY(-10px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes xpup{0%{opacity:0;transform:translate(-50%,10px) scale(.8)}15%{opacity:1;transform:translate(-50%,0) scale(1.1)}100%{opacity:0;transform:translate(-50%,-70px) scale(1)}}
+@keyframes fall{to{top:105%;transform:rotate(720deg)}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+@keyframes reveal{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@keyframes hitme{0%{transform:none}30%{transform:scale(.8) rotate(-12deg);filter:brightness(2)}60%{transform:scale(1.1) rotate(8deg)}100%{transform:none}}
+@media (prefers-reduced-motion:reduce){.toast,.xpfloat,.card.shake,.monster.hitme,.bigemo.wob,.sprclock.low,.card .he.show{animation:none}}
 .opt.heopt{font-family:Assistant,sans-serif;text-align:right;font-size:18px}
 .spkrow{display:flex;gap:8px;justify-content:center;margin-top:10px}
 .spk{font-size:20px;line-height:1;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--sheet);cursor:pointer}
@@ -768,7 +833,7 @@ function rulerHTML(){
 
 function viewToday(){
   const t=today(), p=planFor(t), d=dayRead(t), left=diff(t,S.examDate), due=dueList().length;
-  let h='<section class="sheet">'+rulerHTML();
+  let h=gameBarHTML()+'<section class="sheet">'+rulerHTML();
   h+='<p class="small muted" style="margin:8px 0 0">'+(estimate()?'הסימון הכחול הוא אומדן לפי כל התשובות שלך ורמת הקושי שלהן, לא ציון רשמי.':'אחרי 15 תשובות יופיע כאן אומדן של המיקום שלך.')+'</p></section>';
 
   h+='<section class="sheet"><h2>';
@@ -814,6 +879,8 @@ function viewToday(){
   h+='<label class="field">תאריך המבחן<input type="date" data-set="examDate" value="'+esc(S.examDate)+'"></label>';
   h+='<label class="field">יעד<select data-set="target"><option value="100"'+(S.target===100?' selected':'')+'>100, מתקדמים א׳</option><option value="120"'+(S.target===120?' selected':'')+'>120, מתקדמים ב׳</option><option value="134"'+(S.target===134?' selected':'')+'>134, פטור</option></select></label>';
   h+='<label class="field">ציון נוכחי<input type="number" min="50" max="150" data-set="base" value="'+S.base+'"></label>';
+  h+='<label class="field">יעד XP יומי<select data-set="xpGoal">'+[150,250,400,600].map(n=>'<option value="'+n+'"'+(DAILY_GOAL()===n?' selected':'')+'>'+n+'</option>').join('')+'</select></label>';
+  h+='<label class="field">צלילים<select data-set="sound"><option value="1"'+(S.sound!==false?' selected':'')+'>פעילים</option><option value="0"'+(S.sound===false?' selected':'')+'>כבויים</option></select></label>';
   h+='<label class="field">מילים חדשות ביום<select data-set="nwDaily">'+[25,40,60,100].map(n=>'<option value="'+n+'"'+((S.nwDaily||25)===n?' selected':'')+'>'+n+'</option>').join('')+'</select></label>';
   h+='</div><p class="small muted">אחרי שתירשם במאל״ו, עדכן כאן את התאריך האמיתי והתוכנית תתאים את עצמה.</p>';
   h+='<h3 style="margin-top:18px">גיבוי</h3><div class="row"><button class="btn ghost" data-act="bexp">ייצוא</button><button class="btn ghost" data-act="bimp">ייבוא</button></div>';
@@ -827,8 +894,8 @@ function buildVocab(){
   const t=today(), p=planFor(t)||{nw:10}, d=dayRead(t);
   const due=shuffle(dueList()).slice(0,40).map(en=>({en,he:heOf(en),isNew:false}));
   const newLeft=Math.max(0,p.nw-d.nw);
-  const fresh=allWords().filter(w=>!S.cards[w.en]).slice(0,newLeft).map(w=>({en:w.en,he:w.he,isNew:true}));
-  return {queue:due.concat(fresh),i:0,revealed:false,known:0,miss:0,requeued:new Set()};
+  const fresh=freshRandom(newLeft).map(w=>({en:w.en,he:w.he,isNew:true}));
+  return {queue:due.concat(fresh),i:0,revealed:false,known:0,miss:0,requeued:new Set(),extra:0,xp0:S.xp||0};
 }
 let vmode="cards", vq=null;
 const toks=he=>he.split(/[,(]\s*/).map(x=>x.replace(/[)\s]/g,"")).filter(Boolean);
@@ -846,20 +913,19 @@ function buildVQ(){
   const all=allWords().filter(w=>w.he);
   const due=shuffle(dueList()).filter(en=>heOf(en));
   const weak=shuffle(Object.keys(S.cards).filter(k=>S.cards[k].box<=2&&heOf(k)&&!due.includes(k)));
-  const est=estimate()||S.base, maxLv=est<100?1:est<118?2:3;
-  const fresh=all.filter(w=>!S.cards[w.en]&&(LEVEL[w.en]||2)<=maxLv).slice(0,60);
-  const pool=[...new Set([...due.slice(0,7),...weak.slice(0,4),...shuffle(fresh).map(w=>w.en)])].slice(0,15);
+  const fresh=freshRandom(40);
+  const hard=shuffle(hardList()).filter(en=>!due.includes(en));
+  const pool=[...new Set([...due.slice(0,5),...hard.slice(0,4),...weak.slice(0,2),...fresh.map(w=>w.en)])].slice(0,15);
   return {qs:pool.map(en=>mkVQ(en,all)),i:0,chosen:null,ok:0};
 }
 function vqAnswer(i){
   const q=vq.qs[vq.i]; if(vq.chosen!==null) return;
   vq.chosen=i; const ok=i===q.answer, t=today(), d=day(t);
   if(q.rev && autoSpeak()) speak(q.en);
-  const c=S.cards[q.en];
-  if(c){ c.box=ok?Math.min(c.box+1,5):0; c.due=ok?addDays(t,INT[c.box]):t; d.rv++; }
-  else { S.cards[q.en]={box:ok?1:0,due:ok?addDays(t,1):t}; d.nw++; }
+  hit(ok); if(ok) gainXP(10,{combo:true,lv:LEVEL[q.en]});
+  cardResult(q.en,ok);
   S.vq=S.vq||{n:0,ok:0}; S.vq.n++; if(ok){ S.vq.ok++; vq.ok++; }
-  persist(); render();
+  checkAch(); persist(); render();
 }
 function viewVQ(){
   if(!vq) vq=buildVQ();
@@ -876,15 +942,19 @@ function viewVQ(){
   if(vq.chosen!==null) h+='<div class="row" style="margin-top:14px;justify-content:space-between"><span class="small" dir="ltr">'+esc(q.en)+' = <span dir="rtl">'+esc(q.he)+'</span></span><button class="btn" data-act="vqnext">הבאה</button></div>';
   return h+'</section>';
 }
-function vocabTabs(){ const b=(m,t)=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'">'+t+'</button>'; return '<div class="seg">'+b("cards","כרטיסיות")+b("quiz","מבחן מילים")+b("phr","ביטויים")+b("conn","מילות קישור")+b("dict","מילון")+'</div>'; }
+function vocabTabs(){ const b=(m,t)=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'">'+t+'</button>'; const playing=(vmode==="sprint"&&spr&&!spr.done)||(vmode==="boss"&&boss&&!boss.ended);
+  if(playing) return gameMiniHTML()+'<div class="row" style="justify-content:flex-end;margin-top:8px"><button class="btn ghost mini" data-act="vmode" data-arg="cards">✕ יציאה</button></div>';
+  return gameMiniHTML()+'<div class="seg">'+b("cards","כרטיסיות")+b("quiz","מבחן מילים")+b("phr","ביטויים")+b("conn","מילות קישור")+b("dict","מילון")+'</div>'+challengesHTML(); }
 function viewVocab(){
   if(vmode==="quiz") return vocabTabs()+viewVQ();
   if(vmode==="phr") return vocabTabs()+viewPQ();
   if(vmode==="conn") return vocabTabs()+viewCQ();
   if(vmode==="dict") return vocabTabs()+viewDict();
+  if(vmode==="sprint") return vocabTabs()+viewSprint();
+  if(vmode==="boss") return vocabTabs()+viewBoss();
   return vocabTabs()+viewVocabCards();
 }
-const APP_VERSION="2.0";
+const APP_VERSION="2.1";
 /* ---------- speech & guessing ---------- */
 const TTS = ("speechSynthesis" in window) && typeof SpeechSynthesisUtterance!=="undefined";
 let enVoice=null, lastSpoken="";
@@ -932,19 +1002,20 @@ function viewVocabCards(){
   const total=vs.queue.length;
   if(!total || vs.i>=total){
     const mastered=Object.values(S.cards).filter(c=>c.box>=3).length;
-    let h='<section class="sheet"><h2>'+(total?'סיימת את המילים להיום':'אין מילים ממתינות כרגע')+'</h2>';
-    if(total) h+='<p>ידעת '+vs.known+', פספסת '+vs.miss+'. המילים שפספסת יחזרו שוב בקרוב.</p>';
+    let h='<section class="sheet center"><div class="bigemo">'+(total?'🎉':'😴')+'</div><h2>'+(total?'סיימת את הסבב!':'אין מילים ממתינות כרגע')+'</h2>';
+    if(total) h+='<p>ידעת '+vs.known+', פספסת '+vs.miss+(vs.extra?', ו-'+vs.extra+' מילים שכבר הכרת הוחלפו בחדשות':'')+'.</p><p class="hl" style="display:inline-block">+'+Math.max(0,(S.xp||0)-(vs.xp0||0))+' XP בסבב הזה</p><p class="small">'+esc(cheer())+'</p>';
+    if(hardList().length) h+='<p><button class="btn" data-act="vmode" data-arg="boss">👾 '+hardList().length+' מילים קשות מחכות לקרב</button></p>';
     h+='<p class="muted">'+mastered+' מילים שולטות מתוך '+allWords().length+' במאגר. '+(S.custom.length?S.custom.length+' מהן נוספו מטעויות בתרגול.':'')+'</p>';
     h+='<div class="row"><button class="btn" data-act="vmode" data-arg="quiz">מבחן מילים</button><button class="btn ghost" data-act="vmore">עוד 10 מילים חדשות</button><button class="btn ghost" data-act="go" data-arg="practice">לתרגול</button></div></section>';
     return h;
   }
   const c=vs.queue[vs.i];
-  let h='<section class="sheet"><div class="row" style="justify-content:space-between"><span class="small muted">'+(vs.i+1)+' / '+total+'</span><span class="tag">'+(c.isNew?'חדשה':'חזרה')+'</span></div>';
+  let h='<section class="sheet"><div class="row" style="justify-content:space-between"><span class="small muted">'+(vs.i+1)+' / '+total+'</span><span class="row" style="gap:6px">'+(vs.skipNote?'<span class="tag good">👍 ידעת את '+esc(vs.skipNote)+', הנה חדשה</span>':'')+(isHard(S.cards[c.en])?'<span class="tag hard">👾 מילה קשה</span>':'')+'<span class="tag">'+(c.isNew?'חדשה':'חזרה')+'</span></span></div>';
   h+='<div class="bar" style="margin-top:8px"><i style="width:'+(vs.i/total*100)+'%"></i></div>';
-  h+='<div class="card"><div class="en" lang="en">'+esc(c.en)+'</div><div class="spkrow">'+spkBtn(c.en)+'</div><div class="he">'+(vs.revealed?esc(c.he||'—'):'')+'</div></div>';
+  h+='<div class="card"><div class="en" lang="en">'+esc(c.en)+'</div><div class="spkrow">'+spkBtn(c.en)+'</div><div class="he'+(vs.revealed?' show':'')+'">'+(vs.revealed?esc(c.he||'—'):'')+'</div>'+(!vs.revealed&&vs.hint?'<div class="hint" dir="rtl">💡 '+esc(hintText(c.he))+'</div>':'')+'</div>';
   if(!vs.revealed){
     h+='<div class="guess"><label class="field" for="gIn">מה הפירוש? נחש לפני שאתה חושף</label><div class="row" style="flex-wrap:nowrap"><input id="gIn" type="text" dir="rtl" autocomplete="off" autocapitalize="off" placeholder="כתוב בעברית"><button class="btn" data-act="vguess">בדוק</button></div></div>';
-    h+='<div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost" data-act="vreveal">אין לי מושג, הצג תרגום</button></div>';
+    h+='<div class="row" style="justify-content:center;margin-top:10px">'+(vs.hint?'':'<button class="btn ghost" data-act="vhint">💡 רמז</button>')+'<button class="btn ghost" data-act="vreveal">אין לי מושג, הצג תרגום</button></div>';
   } else {
     if(vs.guess!=null){
       h+='<div class="gres '+(vs.guessOk?'ok':'no')+'">'+(vs.guessOk?'נראה שצדקת':'לא בדיוק')+': ניחשת <b>'+esc(vs.guess)+'</b></div>';
@@ -958,13 +1029,25 @@ function viewVocabCards(){
 function grade(ok){
   const c=vs.queue[vs.i], t=today(), d=day(t);
   const card=S.cards[c.en]||{box:0,due:t};
-  const firstTime=!S.cards[c.en];
-  if(ok){ card.box=Math.min(card.box+1,5); card.due=addDays(t,INT[card.box]); vs.known++; }
-  else { card.box=0; card.due=t; vs.miss++; if(!vs.requeued.has(c.en)){ vs.requeued.add(c.en); vs.queue.push({en:c.en,he:c.he,isNew:false}); } }
+  const firstTime=!S.cards[c.en], wasHard=isHard(S.cards[c.en]), lv=LEVEL[c.en];
+  hit(ok);
+  if(ok && firstTime && c.isNew){
+    card.box=vs.guessOk?3:2; card.due=addDays(t,INT[card.box]); vs.known++; d.kn=(d.kn||0)+1;
+    gainXP(vs.guessOk?12:6,{lv,half:vs.hint});
+    if((vs.extra||0)<40){ const nx=freshRandom(1,new Set(vs.queue.map(x=>x.en))); if(nx.length){ vs.queue.push({en:nx[0].en,he:nx[0].he,isNew:true}); vs.extra=(vs.extra||0)+1; vs.skipNote=c.en; } }
+  } else if(ok){
+    card.box=Math.min(card.box+1,5); card.due=addDays(t,INT[card.box]); vs.known++;
+    gainXP(vs.guessOk?15:10,{combo:true,lv,half:vs.hint});
+  } else {
+    card.box=0; card.due=t; card.m=(card.m||0)+1; vs.miss++; gainXP(3);
+    if(!vs.requeued.has(c.en)){ vs.requeued.add(c.en); vs.queue.push({en:c.en,he:c.he,isNew:false}); }
+  }
   S.cards[c.en]=card;
-  if(firstTime && c.isNew) d.nw++; else d.rv++;
-  vs.i++; vs.revealed=false; vs.guess=null; vs.guessOk=null;
-  persist(); render();
+  if(firstTime && c.isNew){ if(!ok) d.nw++; } else d.rv++;
+  if(ok) slayCheck(c.en,wasHard);
+  if(!(ok && firstTime && c.isNew)) vs.skipNote=null;
+  vs.i++; vs.revealed=false; vs.guess=null; vs.guessOk=null; vs.hint=false;
+  checkAch(); persist(); render();
 }
 
 /* ---------- v2.0: phrases, connectors, dictionary ---------- */
@@ -974,8 +1057,10 @@ const FN_ALT={"since":["time"],"while":["time"],"as":["time","example"],"yet":["
 const PHRASE_POOL=(()=>{ const seen=new Set(), out=[]; for(const [en,he,cat] of PHRASES){ if(!seen.has(en)){ seen.add(en); out.push({en,he,cat}); } } for(const [en,he] of CONN){ if(!seen.has(en)){ seen.add(en); out.push({en,he,cat:"conn"}); } } return out; })();
 function cardResult(en,ok){
   const t=today(), d=day(t), c=S.cards[en];
-  if(c){ c.box=ok?Math.min(c.box+1,5):0; c.due=ok?addDays(t,INT[c.box]):t; d.rv++; }
-  else { S.cards[en]={box:ok?1:0,due:ok?addDays(t,1):t}; d.nw++; }
+  const wasHard=isHard(c);
+  if(c){ c.box=ok?Math.min(c.box+1,5):0; c.due=ok?addDays(t,INT[c.box]):t; d.rv++; if(!ok) c.m=(c.m||0)+1; }
+  else { S.cards[en]={box:ok?1:0,due:ok?addDays(t,1):t}; if(!ok) S.cards[en].m=1; d.nw++; }
+  if(ok) slayCheck(en,wasHard);
 }
 let pq=null, cq=null, dictQ="";
 const heKey=he=>normHe(he).split(" ").map(w=>w.replace(/^(ו|ה|ל|ב|כ|ש)(?=...)/,"")).filter(w=>w.length>=3);
@@ -1011,10 +1096,11 @@ function pqAnswer(i){
   const q=pq.qs[pq.i]; if(pq.chosen!==null) return;
   pq.chosen=i; const ok=i===q.answer;
   if(ok) pq.ok++;
+  hit(ok); if(ok) gainXP(10,{combo:true});
   if(autoSpeak()) speak(q.en);
   cardResult(q.en,ok);
   S.pqs=S.pqs||{n:0,ok:0}; S.pqs.n++; if(ok) S.pqs.ok++;
-  persist(); render();
+  checkAch(); persist(); render();
 }
 function viewPQ(){
   if(!pq) pq=buildPQ();
@@ -1044,9 +1130,10 @@ function buildCQ(){
 function cqAnswer(i){
   const q=cq.qs[cq.i]; if(cq.chosen!==null) return;
   cq.chosen=i; const ok=i===q.answer; if(ok) cq.ok++;
+  hit(ok); if(ok) gainXP(8,{combo:true});
   S.cqs=S.cqs||{n:0,ok:0}; S.cqs.n++; if(ok) S.cqs.ok++;
   if(!ok && HE[q.en]) cardResult(q.en,false);
-  persist(); render();
+  checkAch(); persist(); render();
 }
 function viewCQ(){
   if(!cq) cq=buildCQ();
@@ -1086,6 +1173,251 @@ function viewDict(){
   return '<section class="sheet"><h2>מילון</h2><label class="field" for="dIn">חפש מילה</label><input id="dIn" class="dsearch" type="search" dir="auto" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="למשל: undermine או לערער" value="'+esc(dictQ)+'"><div id="dRes">'+dictResults(dictQ)+'</div></section>';
 }
 
+/* ---------- v2.1: game layer ---------- */
+const RANKS=[[1,"מתחיל"],[3,"צייד מילים"],[5,"אספן מילים"],[7,"חוקר שפה"],[10,"מומחה"],[13,"אלוף אמירנט"],[17,"אגדה"]];
+const lvlXP=n=>50*n*(n-1);
+function lvlOf(xp){ let n=1; while(xp>=lvlXP(n+1)) n++; return n; }
+function rankOf(n){ let r=RANKS[0][1]; for(const [m,t] of RANKS) if(n>=m) r=t; return r; }
+const DAILY_GOAL=()=>S.xpGoal||250;
+let combo=0, fxQ=[];
+function xpToday(){ return (S.xpDay&&S.xpDay[today()])||0; }
+function gainXP(base,opt){
+  opt=opt||{};
+  let mult=1; if(opt.lv===3) mult*=1.5; else if(opt.lv===2) mult*=1.2;
+  if(opt.combo){ if(combo>=10) mult*=2; else if(combo>=5) mult*=1.5; }
+  if(opt.half) mult*=0.5;
+  const g=Math.round(base*mult); if(g<=0) return 0;
+  const before=lvlOf(S.xp||0), goalBefore=xpToday()>=DAILY_GOAL(), t=today();
+  S.xp=(S.xp||0)+g; S.xpDay=S.xpDay||{}; S.xpDay[t]=(S.xpDay[t]||0)+g;
+  const ks=Object.keys(S.xpDay).sort(); if(ks.length>60) for(const k of ks.slice(0,ks.length-60)) delete S.xpDay[k];
+  fxQ.push({t:"xp",v:g,label:opt.label});
+  const after=lvlOf(S.xp);
+  if(after>before) fxQ.push({t:"level",v:after});
+  if(!goalBefore && xpToday()>=DAILY_GOAL()) fxQ.push({t:"goal"});
+  return g;
+}
+function hit(ok){
+  if(ok){ combo++; S.bestCombo=Math.max(S.bestCombo||0,combo); if([5,10,25,50,100].includes(combo)) fxQ.push({t:"combo",v:combo}); }
+  else { if(combo>=5) fxQ.push({t:"break",v:combo}); combo=0; }
+  fxQ.push({t:ok?"ok":"no"});
+}
+const isHard=c=>!!c && (c.m||0)>=1 && c.box<=2;
+function hardList(){ return Object.keys(S.cards).filter(k=>isHard(S.cards[k])&&heOf(k)); }
+function slayCheck(en,wasHard){ const c=S.cards[en]; if(wasHard && c && c.box>=3){ S.bossWins=(S.bossWins||0)+1; gainXP(25,{label:"מילה קשה הובסה"}); fxQ.push({t:"slay",w:en}); } }
+const cardsN=()=>Object.keys(S.cards).length;
+const masteredN=()=>Object.values(S.cards).filter(c=>c.box>=3).length;
+const ACH=[
+ ["first","🌱","מילה ראשונה","למדת את המילה הראשונה שלך",()=>cardsN()>=1],
+ ["w50","📚","50 מילים","50 מילים בחפיסה",()=>cardsN()>=50],
+ ["w200","🧠","200 מילים","200 מילים בחפיסה",()=>cardsN()>=200],
+ ["w500","🏛️","500 מילים","500 מילים בחפיסה",()=>cardsN()>=500],
+ ["w1000","👑","1,000 מילים","אלף מילים בחפיסה",()=>cardsN()>=1000],
+ ["m100","⭐","100 בשליטה","100 מילים בשליטה מלאה",()=>masteredN()>=100],
+ ["c10","🔥","קומבו 10","10 תשובות נכונות ברצף",()=>(S.bestCombo||0)>=10],
+ ["c25","☄️","קומבו 25","25 תשובות נכונות ברצף",()=>(S.bestCombo||0)>=25],
+ ["s3","📅","3 ימים ברצף","תרגלת 3 ימים ברצף",()=>streak()>=3],
+ ["s7","🗓️","שבוע ברצף","תרגלת 7 ימים ברצף",()=>streak()>=7],
+ ["b10","🎯","צייד מפלצות","הבסת 10 מילים קשות",()=>(S.bossWins||0)>=10],
+ ["b50","⚔️","מכסח מילים","הבסת 50 מילים קשות",()=>(S.bossWins||0)>=50],
+ ["sp15","⚡","ספרינטר","15 תשובות נכונות בספרינט אחד",()=>(S.sprintBest||0)>=15],
+ ["sp25","🚀","טיל","25 תשובות נכונות בספרינט אחד",()=>(S.sprintBest||0)>=25],
+ ["goal","✅","יעד יומי","השלמת את יעד ה-XP היומי",()=>xpToday()>=DAILY_GOAL()],
+ ["hard20","💎","יהלומים","20 מילים ברמה גבוהה בשליטה",()=>Object.keys(S.cards).filter(k=>LEVEL[k]===3&&S.cards[k].box>=3).length>=20],
+ ["sim","🏁","סימולציה ראשונה","סיימת סימולציה",()=>(S.sims||[]).length>=1],
+ ["lv5","🏅","רמה 5","הגעת לרמה 5",()=>lvlOf(S.xp||0)>=5],
+ ["lv10","🏆","רמה 10","הגעת לרמה 10",()=>lvlOf(S.xp||0)>=10]
+];
+function checkAch(){ S.ach=S.ach||{}; let ch=false; for(const a of ACH){ if(!S.ach[a[0]] && a[4]()){ S.ach[a[0]]=today(); fxQ.push({t:"ach",ic:a[1],ti:a[2]}); ch=true; } } return ch; }
+/* sound */
+let actx=null;
+function tone(seq){
+  if(S.sound===false) return;
+  try{
+    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==="suspended") actx.resume();
+    const t0=actx.currentTime;
+    for(const [f,d,st] of seq){ const o=actx.createOscillator(), g=actx.createGain(); o.type="triangle"; o.frequency.value=f; g.gain.setValueAtTime(0.0001,t0+st); g.gain.exponentialRampToValueAtTime(0.16,t0+st+0.012); g.gain.exponentialRampToValueAtTime(0.0001,t0+st+d); o.connect(g); g.connect(actx.destination); o.start(t0+st); o.stop(t0+st+d+0.03); }
+  }catch(e){}
+}
+const SND={ok:[[660,.11,0],[990,.15,.07]],no:[[196,.16,0],[165,.2,.09]],level:[[523,.12,0],[659,.12,.1],[784,.12,.2],[1047,.3,.3]],combo:[[784,.08,0],[988,.08,.06],[1175,.16,.12]],ach:[[880,.1,0],[1175,.1,.1],[1568,.32,.2]]};
+/* visual fx */
+function toast(title,sub,big){
+  let box=document.getElementById("toasts"); if(!box){ box=document.createElement("div"); box.id="toasts"; box.setAttribute("aria-live","polite"); document.body.appendChild(box); }
+  const el=document.createElement("div"); el.className="toast"+(big?" big":""); el.innerHTML='<b>'+esc(title)+'</b>'+(sub?'<span>'+esc(sub)+'</span>':'');
+  box.appendChild(el);
+  while(box.children.length>2) box.firstChild.remove();
+  const life=big?2300:1400;
+  setTimeout(()=>el.classList.add("out"),life); setTimeout(()=>el.remove(),life+450);
+}
+function floatXP(text){
+  const el=document.createElement("div"); el.className="xpfloat"; el.dir="ltr"; el.textContent=text; document.body.appendChild(el); setTimeout(()=>el.remove(),1300);
+}
+function confetti(){
+  const cols=["#FFE14D","#2442B8","#1F8A5B","#C2352B","#93A6FF","#F59E0B"], box=document.createElement("div"); box.className="confetti";
+  for(let i=0;i<42;i++){ const s=document.createElement("i"); s.style.left=Math.random()*100+"%"; s.style.background=cols[i%cols.length]; s.style.animationDelay=(Math.random()*0.35)+"s"; s.style.animationDuration=(1.1+Math.random()*0.8)+"s"; s.style.transform="rotate("+Math.round(Math.random()*360)+"deg)"; box.appendChild(s); }
+  document.body.appendChild(box); setTimeout(()=>box.remove(),2300);
+}
+function runFx(){
+  if(!fxQ.length) return; if(checkAch()) persist(); const q=fxQ; fxQ=[];
+  const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let xpSum=0, label="";
+  const bigs=q.filter(f=>["level","goal","ach","bosswin"].includes(f.t));
+  if(bigs.length) for(const f of q) if(["combo","break","slay"].includes(f.t)) f.t="_";
+  for(const f of q){
+    if(f.t==="xp"){ xpSum+=f.v; if(f.label) label=f.label; }
+    else if(f.t==="ok") tone(SND.ok);
+    else if(f.t==="no"){ tone(SND.no); try{ navigator.vibrate&&navigator.vibrate(35); }catch(e){} const c=document.querySelector(".card"); if(c&&!reduce){ c.classList.remove("shake"); void c.offsetWidth; c.classList.add("shake"); } }
+    else if(f.t==="combo"){ tone(SND.combo); toast("🔥 קומבו "+f.v+"!", f.v>=10?"פי 2 נקודות":"פי 1.5 נקודות"); }
+    else if(f.t==="break") toast("💥 הקומבו נעצר ב-"+f.v,"עוד אחת נכונה ומתחילים מחדש");
+    else if(f.t==="level"){ tone(SND.level); toast("🎉 עלית לרמה "+f.v,rankOf(f.v),true); if(!reduce) confetti(); }
+    else if(f.t==="goal"){ tone(SND.ach); toast("✅ השלמת את היעד היומי!",DAILY_GOAL()+" XP היום",true); if(!reduce) confetti(); }
+    else if(f.t==="ach"){ tone(SND.ach); toast(f.ic+" "+f.ti,"הישג חדש",true); if(!reduce) confetti(); }
+    else if(f.t==="slay") toast("⚔️ ניצחת מילה קשה",f.w);
+    else if(f.t==="bosswin"){ tone(SND.level); toast("🏆 ניצחת את המפלצת!","+40 XP בונוס",true); if(!reduce) confetti(); }
+    else if(f.t==="skip"){}
+  }
+  if(xpSum && !reduce) floatXP("+"+xpSum+" XP");
+  updateGameBar();
+}
+function gameMiniHTML(){
+  const xp=S.xp||0, n=lvlOf(xp), a=lvlXP(n), b=lvlXP(n+1), p=Math.round((xp-a)/(b-a)*100), td=xpToday(), g=DAILY_GOAL();
+  return '<section class="gbar mini" id="gbar" data-mini="1"><span class="gnum">'+n+'</span><div class="bar gxp"><i style="width:'+p+'%"></i></div><span class="gs'+(td>=g?' done':'')+'">🎯 <bdi>'+td+'/'+g+'</bdi></span><span class="gs">🔥 '+streak()+'</span><span class="gs">⚡ '+combo+'</span></section>';
+}
+function gameBarHTML(){
+  const xp=S.xp||0, n=lvlOf(xp), a=lvlXP(n), b=lvlXP(n+1), p=Math.round((xp-a)/(b-a)*100), td=xpToday(), g=DAILY_GOAL(), gp=Math.min(100,Math.round(td/g*100));
+  return '<section class="gbar" id="gbar"><div class="grow"><span class="gnum" aria-label="רמה">'+n+'</span><div class="gmid"><div class="row" style="justify-content:space-between;gap:6px"><b>'+rankOf(n)+'</b><span class="small muted">עוד <bdi>'+(b-xp)+' XP</bdi> לרמה '+(n+1)+'</span></div><div class="bar gxp"><i style="width:'+p+'%"></i></div></div></div>'
+   +'<div class="gstats"><span class="gs'+(gp>=100?' done':'')+'"><span class="ring" style="--p:'+gp+'"></span>'+td+'/'+g+'<small>היום</small></span><span class="gs">🔥 '+streak()+'<small>ימים</small></span><span class="gs">⚡ '+combo+'<small>קומבו</small></span><span class="gs">🏆 '+Object.keys(S.ach||{}).length+'<small>הישגים</small></span></div></section>';
+}
+function updateGameBar(){ const el=document.getElementById("gbar"); if(el) el.outerHTML=el.dataset.mini?gameMiniHTML():gameBarHTML(); }
+function challengesHTML(){
+  const hl=hardList().length;
+  return '<div class="chal"><button class="chb" data-act="vmode" data-arg="sprint" aria-pressed="'+(vmode==="sprint")+'"><span>⚡</span><b>ספרינט</b><small>שיא '+(S.sprintBest||0)+'</small></button><button class="chb boss" data-act="vmode" data-arg="boss" aria-pressed="'+(vmode==="boss")+'"><span>👾</span><b>מילים קשות</b><small>'+hl+'</small></button></div>';
+}
+const CHEERS=["כל מילה שלא ידעת ועכשיו אתה יודע היא נקודה במבחן.","המילים הקשות הן אלה ששוות הכי הרבה. מחר הן יחזרו, ואתה תנצח אותן.","מוח שמתאמן כל יום מנצח מוח שדוחס ביום אחד.","עוד סבב קצר ואתה ברמה הבאה?","הטעויות של היום הן הנקודות של המבחן."];
+const cheer=()=>CHEERS[Math.floor(Math.random()*CHEERS.length)];
+/* sprint */
+let spr=null, sprTick=null, sprNextT=null;
+function sprNext(){
+  const hard=hardList(); let en;
+  if(Math.random()<0.3&&hard.length) en=hard[Math.floor(Math.random()*hard.length)];
+  else { do { en=spr.all[Math.floor(Math.random()*spr.all.length)].en; } while(en===spr.last && spr.all.length>1); }
+  spr.last=en; spr.q=mkVQ(en,spr.all); spr.chosen=null;
+}
+function stopSprint(){ clearInterval(sprTick); clearTimeout(sprNextT); if(spr&&!spr.done) spr=null; }
+function startSprint(){
+  stopSprint();
+  spr={all:allWords().filter(w=>w.he),score:0,miss:[],n:0,end:Date.now()+60000,done:false,xp0:S.xp||0};
+  combo=0; sprNext();
+  sprTick=setInterval(()=>{
+    if(!spr||spr.done){ clearInterval(sprTick); return; }
+    const left=spr.end-Date.now(), el=document.getElementById("sprClock"), bar=document.getElementById("sprBar");
+    if(el){ el.textContent=Math.max(0,Math.ceil(left/1000)); el.classList.toggle("low",left<10000); }
+    if(bar) bar.style.width=Math.max(0,left/600)+"%";
+    if(left<=0) endSprint();
+  },200);
+  render();
+}
+function sprAnswer(i){
+  if(!spr||spr.done||spr.chosen!==null) return;
+  const q=spr.q, ok=i===q.answer; spr.chosen=i; spr.n++;
+  hit(ok);
+  if(ok){ spr.score++; gainXP(6,{combo:true,lv:LEVEL[q.en]}); }
+  else { if(!spr.miss.includes(q.en)) spr.miss.push(q.en); const c=S.cards[q.en]; if(c){ c.box=0; c.due=today(); c.m=(c.m||0)+1; } else S.cards[q.en]={box:0,due:today(),m:1}; }
+  checkAch(); persist(); render();
+  clearTimeout(sprNextT);
+  sprNextT=setTimeout(()=>{ if(spr&&!spr.done&&spr.chosen!==null){ sprNext(); render(); } }, ok?380:1100);
+}
+function endSprint(){
+  if(!spr||spr.done) return;
+  spr.done=true; clearInterval(sprTick); clearTimeout(sprNextT);
+  const best=S.sprintBest||0; spr.newBest=spr.score>best&&spr.score>0; if(spr.newBest) S.sprintBest=spr.score;
+  gainXP(spr.score*2,{label:"בונוס ספרינט"});
+  if(spr.newBest) fxQ.push({t:"ach",ic:"🏅",ti:"שיא אישי חדש: "+spr.score});
+  spr.xp=(S.xp||0)-spr.xp0;
+  checkAch(); persist(); render();
+}
+function viewSprint(){
+  if(!spr){
+    return '<section class="sheet center"><div class="bigemo">⚡</div><h2>ספרינט 60 שניות</h2><p class="muted">כמה מילים תספיק לתרגם בדקה? מילים אקראיות מכל המאגר, ושליש מהן מהמילים הקשות שלך. כל טעות נכנסת אוטומטית לקרב המילים הקשות.</p><p>השיא שלך: <span class="hl">'+(S.sprintBest||0)+'</span></p><button class="btn big" data-act="sprgo">יאללה, מתחילים</button></section>';
+  }
+  if(spr.done){
+    let h='<section class="sheet center"><div class="chapno">הזמן נגמר</div><div class="bigscore">'+spr.score+'</div><p class="muted" style="margin-top:0">תשובות נכונות מתוך '+spr.n+'</p>';
+    h+=spr.newBest?'<p class="hl" style="display:inline-block">🏅 שיא אישי חדש!</p>':'<p class="small muted">השיא שלך: '+(S.sprintBest||0)+'</p>';
+    h+='<p>+'+spr.xp+' XP</p>';
+    if(spr.miss.length){ h+='<div class="misslist"><h3>המילים שברחו לך ('+spr.miss.length+')</h3>'; for(const en of spr.miss) h+='<div class="drow"><span class="en" lang="en" dir="ltr">'+esc(en)+'</span><span class="dhe">'+esc(heOf(en))+'</span></div>'; h+='<p class="small muted">הן נכנסו לקרב המילים הקשות ולחזרה של היום.</p></div>'; }
+    h+='<div class="row" style="justify-content:center;margin-top:12px"><button class="btn" data-act="sprgo">עוד ספרינט</button>'+(spr.miss.length?'<button class="btn ghost" data-act="vmode" data-arg="boss">👾 לקרב במילים הקשות</button>':'')+'</div></section>';
+    return h;
+  }
+  const q=spr.q, L="ABCD", left=Math.max(0,spr.end-Date.now());
+  let h='<section class="sheet"><div class="sprhead"><span class="sprclock'+(left<10000?' low':'')+'" id="sprClock">'+Math.ceil(left/1000)+'</span><span class="sprscore">✓ '+spr.score+'</span><span class="sprcombo'+(combo>=5?' hot':'')+'">⚡ '+combo+'</span></div>';
+  h+='<div class="bar sprbar"><i id="sprBar" style="width:'+(left/600)+'%"></i></div>';
+  h+='<div class="card" style="padding:22px 10px 16px">'+(q.rev?'<div class="he" style="font-size:26px;font-weight:700">'+esc(q.he)+'</div>':'<div class="en" lang="en">'+esc(q.en)+'</div>')+'</div>';
+  h+='<div class="opts"'+(q.rev?' lang="en"':' dir="rtl" style="direction:rtl"')+'>';
+  q.options.forEach((o,i)=>{ let cls='opt'+(q.rev?'':' heopt'); if(spr.chosen!==null){ if(i===q.answer) cls+=' right'; else if(i===spr.chosen) cls+=' wrong'; } h+='<button class="'+cls+'" data-act="spra" data-arg="'+i+'"'+(spr.chosen!==null?' disabled':'')+'><span class="l">'+(q.rev?L[i]:'')+'</span><span>'+esc(o)+'</span></button>'; });
+  h+='</div>';
+  if(spr.chosen!==null&&spr.chosen!==q.answer) h+='<p class="small" style="text-align:center;margin:10px 0 0" dir="ltr">'+esc(q.en)+' = <span dir="rtl">'+esc(q.he)+'</span></p>';
+  return h+'</section>';
+}
+/* boss battle on hard words */
+let boss=null;
+function startBoss(){
+  const hl=shuffle(hardList()).slice(0,10), all=allWords().filter(w=>w.he);
+  boss={qs:hl.map(en=>mkVQ(en,all)),i:0,chosen:null,hp:hl.length,max:hl.length,wins:0,again:new Set(),xp0:S.xp||0,beaten:new Set()};
+  combo=0; render();
+}
+function bossAnswer(i){
+  const q=boss.qs[boss.i]; if(boss.chosen!==null) return;
+  boss.chosen=i; const ok=i===q.answer; hit(ok);
+  const t=today(), c=S.cards[q.en]||(S.cards[q.en]={box:0,due:t,m:1}), wasHard=isHard(c);
+  if(ok){
+    if(!boss.beaten.has(q.en)){ boss.beaten.add(q.en); boss.hp=Math.max(0,boss.hp-1); }
+    c.box=Math.min(c.box+1,5); c.due=addDays(t,INT[c.box]); day(t).rv++;
+    gainXP(15,{combo:true,lv:LEVEL[q.en]}); slayCheck(q.en,wasHard);
+  } else {
+    c.box=0; c.due=t; c.m=(c.m||0)+1;
+    if(!boss.again.has(q.en)){ boss.again.add(q.en); boss.qs.push(mkVQ(q.en,allWords().filter(w=>w.he))); }
+  }
+  if(autoSpeak()) speak(q.en);
+  checkAch(); persist(); render();
+}
+function bossNext(){
+  boss.i++; boss.chosen=null;
+  if(boss.i>=boss.qs.length && !boss.ended){ boss.ended=true; if(boss.hp===0&&boss.max>0){ gainXP(40,{label:"המפלצת הובסה"}); fxQ.push({t:"bosswin"}); } checkAch(); persist(); }
+  render(); window.scrollTo({top:0});
+}
+function viewBoss(){
+  if(!boss){
+    const hl=hardList();
+    if(hl.length<1) return '<section class="sheet center"><div class="bigemo">👾</div><h2>קרב מילים קשות</h2><p class="muted">כאן נאספות המילים שלא ידעת: כל "לא ידעתי" בכרטיסיות וכל טעות במבחן או בספרינט. עוד אין לך מילים כאלה. רוצה לגלות אותן?</p><div class="row" style="justify-content:center"><button class="btn" data-act="vmode" data-arg="sprint">⚡ ספרינט</button><button class="btn ghost" data-act="vmode" data-arg="cards">כרטיסיות</button></div></section>';
+    return '<section class="sheet center"><div class="bigemo wob">👾</div><h2>קרב מילים קשות</h2><p class="muted">'+hl.length+' מילים שלא ידעת מחכות לך. בכל קרב מפלצת עם עד 10 מהן. כל תשובה נכונה מורידה לה חיים, וכל מילה שתענה עליה נכון 3 פעמים (בימים שונים) מובסת לתמיד ושווה בונוס.</p><p>מילים שהבסת עד היום: <span class="hl">'+(S.bossWins||0)+'</span></p><button class="btn big" data-act="bossgo">⚔️ להילחם</button></section>';
+  }
+  if(boss.i>=boss.qs.length){
+    const won=boss.hp===0;
+    return '<section class="sheet center"><div class="bigemo">'+(won?'🏆':'💨')+'</div><h2>'+(won?'ניצחת את המפלצת!':'המפלצת ברחה')+'</h2><p class="muted">'+(won?'ענית נכון על כל המילים. הן יחזרו בעוד כמה ימים כדי לוודא שהן נשארו אצלך.':'נשארו לה '+boss.hp+' חיים. המילים האלה יחזרו אליך היום בכרטיסיות, ובקרב הבא תנצח.')+'</p><p>+'+((S.xp||0)-boss.xp0)+' XP</p><p class="small">'+esc(cheer())+'</p><div class="row" style="justify-content:center"><button class="btn" data-act="bossgo">קרב נוסף</button><button class="btn ghost" data-act="vmode" data-arg="cards">לכרטיסיות</button></div></section>';
+  }
+  const q=boss.qs[boss.i], L="ABCD", hp=boss.max?boss.hp/boss.max*100:0;
+  let h='<section class="sheet"><div class="bosshead"><span class="monster'+(boss.chosen!==null&&boss.chosen===q.answer?' hitme':'')+'">👾</span><div style="flex:1"><div class="row" style="justify-content:space-between"><b>מפלצת המילים</b><span class="small muted">'+boss.hp+'/'+boss.max+' ❤️</span></div><div class="bar hpbar"><i style="width:'+hp+'%"></i></div></div></div>';
+  h+='<div class="card" style="padding:22px 10px 16px">'+(q.rev?'<div class="he" style="font-size:26px;font-weight:700">'+esc(q.he)+'</div>':'<div class="en" lang="en">'+esc(q.en)+'</div><div class="spkrow">'+spkBtn(q.en)+'</div>')+'</div>';
+  h+='<div class="opts"'+(q.rev?' lang="en"':' dir="rtl" style="direction:rtl"')+'>';
+  q.options.forEach((o,i)=>{ let cls='opt'+(q.rev?'':' heopt'); if(boss.chosen!==null){ if(i===q.answer) cls+=' right'; else if(i===boss.chosen) cls+=' wrong'; } h+='<button class="'+cls+'" data-act="bossa" data-arg="'+i+'"'+(boss.chosen!==null?' disabled':'')+'><span class="l">'+(q.rev?L[i]:'')+'</span><span>'+esc(o)+'</span></button>'; });
+  h+='</div>';
+  if(boss.chosen!==null) h+='<div class="row" style="margin-top:14px;justify-content:space-between"><span class="small" dir="ltr">'+esc(q.en)+' = <span dir="rtl">'+esc(q.he)+'</span></span><button class="btn" data-act="bossnext">'+(boss.chosen===q.answer?'⚔️ עוד מכה':'הבאה')+'</button></div>';
+  return h+'</section>';
+}
+function hintText(he){ const w=String(he||"").split(/[,(]/)[0].trim(); if(!w) return ""; return w.split(" ").map(p=>p[0]+" "+"_ ".repeat(Math.max(0,p.length-1)).trim()).join("   "); }
+function achHTML(){
+  S.ach=S.ach||{};
+  let h='<section class="sheet"><h2>הישגים</h2><p class="small muted" style="margin-top:0">רמה '+lvlOf(S.xp||0)+' ('+rankOf(lvlOf(S.xp||0))+'), <bdi>'+(S.xp||0).toLocaleString()+' XP</bdi>. קומבו שיא: '+(S.bestCombo||0)+'. שיא ספרינט: '+(S.sprintBest||0)+'. מילים קשות שהובסו: '+(S.bossWins||0)+'.</p><div class="achgrid">';
+  for(const [id,ic,ti,de] of ACH){ const on=!!S.ach[id]; h+='<div class="ach'+(on?' on':'')+'" title="'+esc(de)+'"><span class="ai">'+(on?ic:'🔒')+'</span><b>'+esc(ti)+'</b><small>'+esc(de)+'</small></div>'; }
+  return h+'</div></section>';
+}
+
+function freshRandom(n,skip){
+  skip=skip||new Set();
+  const pool=allWords().filter(w=>!S.cards[w.en]&&!skip.has(w.en)&&w.he);
+  const cust=new Set(S.custom.map(c=>c.en));
+  return pool.filter(w=>cust.has(w.en)).concat(shuffle(pool.filter(w=>!cust.has(w.en)))).slice(0,n);
+}
 /* ---------- practice ---------- */
 /* ---------- adaptive engine ---------- */
 function initTheta(){
@@ -1237,6 +1569,7 @@ function choose(i){
   const ok=i===q.answer;
   const added=record(q,ok,Date.now()-ps.t0,false);
   ps.res.push({type:q.type,ok,added});
+  hit(ok); gainXP(ok?15:2,{combo:ok,lv:q.d}); checkAch();
   vs=null; persist(); render();
 }
 
@@ -1304,6 +1637,7 @@ function finishSim(){
   const total=sim.chapters.reduce((s,c)=>s+c.qs.length,0);
   sim.raw=raw; sim.total=total; sim.est=estimate()||Math.round(50+raw/total*100); sim.by=by; sim.added=added;
   S.sims=(S.sims||[]).concat([{date:t,raw,total,est:sim.est,by,short:sim.short}]).slice(-30);
+  gainXP(raw*8+(sim.short?20:50),{label:"סימולציה"}); checkAch();
   vs=null; persist();
 }
 function viewSim(){
@@ -1398,7 +1732,7 @@ function viewStats(){
     for(const k of sks){ const o=S.skills[k], a=Math.round(o.ok/o.n*100), cls=a<60?'low':a<80?'mid':'hi'; h+='<div class="typebar"><span class="small">'+SKILLS[k][0]+'</span><div class="bar"><i class="'+cls+'" style="width:'+a+'%"></i></div><span class="small" style="font-variant-numeric:tabular-nums">'+a+'%</span></div>'; }
     h+='</section>';
   }
-  return h;
+  return h+achHTML();
 }
 
 /* ---------- render & events ---------- */
@@ -1417,13 +1751,21 @@ function render(){
     if(key && key!==lastSpoken){ lastSpoken=key; speak(word); }
   }
   const gi=document.getElementById("gIn"); if(gi && window.matchMedia("(pointer:fine)").matches) gi.focus();
+  runFx();
 }
 document.addEventListener("click",e=>{
   const b=e.target.closest("[data-act]"); if(!b) return;
   const a=b.dataset.act, arg=b.dataset.arg;
+  if((a==="tab"||a==="go"||a==="vmode") && spr && !spr.done && !(a==="vmode"&&arg==="sprint")) stopSprint();
   if(a==="tab"||a==="go"){ tab=arg; if(arg==="vocab"&&vs&&vs.i>=vs.queue.length) vs=null; render(); window.scrollTo({top:0}); }
-  else if(a==="vmode"){ vmode=arg; if(arg==="quiz"&&vq&&vq.i>=vq.qs.length) vq=null; if(arg==="phr"&&pq&&pq.i>=pq.qs.length) pq=null; if(arg==="conn"&&cq&&cq.i>=cq.qs.length) cq=null; render(); if(arg==="dict"){ const d=document.getElementById("dIn"); if(d&&window.matchMedia("(pointer:fine)").matches) d.focus(); } }
+  else if(a==="vmode"){ if(arg==="boss"&&boss&&boss.ended) boss=null; if(arg==="sprint"&&spr&&spr.done) spr=null; vmode=arg; if(arg==="quiz"&&vq&&vq.i>=vq.qs.length) vq=null; if(arg==="phr"&&pq&&pq.i>=pq.qs.length) pq=null; if(arg==="conn"&&cq&&cq.i>=cq.qs.length) cq=null; render(); if(arg==="dict"){ const d=document.getElementById("dIn"); if(d&&window.matchMedia("(pointer:fine)").matches) d.focus(); } }
   else if(a==="pqa") pqAnswer(+arg);
+  else if(a==="vhint"){ if(vs){ vs.hint=true; render(); } }
+  else if(a==="sprgo"){ vmode="sprint"; startSprint(); }
+  else if(a==="spra") sprAnswer(+arg);
+  else if(a==="bossgo"){ vmode="boss"; if(hardList().length) startBoss(); else { boss=null; render(); } }
+  else if(a==="bossa") bossAnswer(+arg);
+  else if(a==="bossnext") bossNext();
   else if(a==="pqnext"){ pq.i++; pq.chosen=null; render(); }
   else if(a==="pqnew"){ pq=null; render(); }
   else if(a==="cqa") cqAnswer(+arg);
@@ -1443,8 +1785,8 @@ document.addEventListener("click",e=>{
   else if(a==="sayslow") speak(arg,true);
   else if(a==="vgrade"){ grade(arg==="1"); }
   else if(a==="vmore"){
-    const fresh=allWords().filter(w=>!S.cards[w.en]).slice(0,10).map(w=>({en:w.en,he:w.he,isNew:true}));
-    vs={queue:fresh,i:0,revealed:false,known:0,miss:0,requeued:new Set()}; render();
+    const fresh=freshRandom(10).map(w=>({en:w.en,he:w.he,isNew:true}));
+    vs={queue:fresh,i:0,revealed:false,known:0,miss:0,requeued:new Set(),extra:0,xp0:S.xp||0}; render();
   }
   else if(a==="psmart") startSet(smartSet(),"smart");
   else if(a==="pdrill") startSet(drillSet(arg),"drill");
@@ -1488,6 +1830,8 @@ document.addEventListener("change",e=>{
   if(k==="examDate"&&/^\d{4}-\d{2}-\d{2}$/.test(el.value)) S.examDate=el.value;
   if(k==="target") S.target=+el.value;
   if(k==="nwDaily"&&[25,40,60,100].includes(+el.value)) S.nwDaily=+el.value;
+  if(k==="xpGoal"&&[150,250,400,600].includes(+el.value)) S.xpGoal=+el.value;
+  if(k==="sound"){ S.sound=el.value==="1"; if(S.sound) tone(SND.ok); }
   if(k==="base"){ const v=+el.value; if(v>=50&&v<=150){ S.base=v; if(!S.attempts.length) S.theta=null; } }
   vs=null; persist(); render();
 });
