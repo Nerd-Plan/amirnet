@@ -144,6 +144,15 @@ details summary{cursor:pointer;color:var(--blue)}
 .seg button{flex:1;font:inherit;font-weight:600;padding:9px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--mark);color:var(--mark-ink);border-color:var(--mark)}
 .opt.heopt{font-family:Assistant,sans-serif;text-align:right;font-size:18px}
+.spkrow{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.spk{font-size:20px;line-height:1;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--sheet);cursor:pointer}
+.spk.slow{font-size:18px}
+.guess{margin-top:4px}
+.guess input{flex:1;min-width:0;font:inherit;font-size:18px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.gres{text-align:center;margin:0 0 12px;padding:8px 12px;border-radius:10px}
+.gres.ok{background:var(--mark);color:var(--mark-ink)}
+.gres.no{border:1px solid var(--bad);color:var(--bad)}
+label.sw{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
 .coachlist{margin:0;padding-inline-start:20px}
 .coachlist li{margin:8px 0}
 .foot{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
@@ -188,7 +197,7 @@ details summary{cursor:pointer;color:var(--blue)}
     <button data-act="tab" data-arg="stats">ניתוח</button>
   </nav>
   <main id="main"></main>
-  <div class="foot" id="sync">שמירה מקומית</div>
+  <div class="foot"><span id="sync">שמירה מקומית</span> · <span id="ver"></span></div>
 </div>
 
 <script>
@@ -645,6 +654,7 @@ function buildVQ(){
 function vqAnswer(i){
   const q=vq.qs[vq.i]; if(vq.chosen!==null) return;
   vq.chosen=i; const ok=i===q.answer, t=today(), d=day(t);
+  if(q.rev && autoSpeak()) speak(q.en);
   const c=S.cards[q.en];
   if(c){ c.box=ok?Math.min(c.box+1,5):0; c.due=ok?addDays(t,INT[c.box]):t; d.rv++; }
   else { S.cards[q.en]={box:ok?1:0,due:ok?addDays(t,1):t}; d.nw++; }
@@ -659,7 +669,7 @@ function viewVQ(){
   const q=vq.qs[vq.i], L="ABCD";
   let h='<section class="sheet"><div class="row" style="justify-content:space-between"><span class="tag">'+(q.rev?'עברית ← אנגלית':'אנגלית ← עברית')+'</span><span class="small muted">'+(vq.i+1)+' / '+vq.qs.length+'</span></div>';
   h+='<div class="bar" style="margin:8px 0 6px"><i style="width:'+(vq.i/vq.qs.length*100)+'%"></i></div>';
-  h+='<div class="card" style="padding:26px 10px 18px">'+(q.rev?'<div class="he" style="font-size:28px;font-weight:700">'+esc(q.he)+'</div>':'<div class="en" lang="en">'+esc(q.en)+'</div>')+'</div>';
+  h+='<div class="card" style="padding:26px 10px 18px">'+(q.rev?'<div class="he" style="font-size:28px;font-weight:700">'+esc(q.he)+'</div>'+(vq.chosen!==null?'<div class="spkrow">'+spkBtn(q.en)+'</div>':''):'<div class="en" lang="en">'+esc(q.en)+'</div><div class="spkrow">'+spkBtn(q.en)+'</div>')+'</div>';
   h+='<div class="opts"'+(q.rev?' lang="en"':' dir="rtl" style="direction:rtl"')+'>';
   q.options.forEach((o,i)=>{ let cls='opt'+(q.rev?'':' heopt'); if(vq.chosen!==null){ if(i===q.answer) cls+=' right'; else if(i===vq.chosen) cls+=' wrong'; } h+='<button class="'+cls+'" data-act="vqa" data-arg="'+i+'"'+(vq.chosen!==null?' disabled':'')+'><span class="l">'+(q.rev?L[i]:'')+'</span><span>'+esc(o)+'</span></button>'; });
   h+='</div>';
@@ -670,6 +680,49 @@ function vocabTabs(){ return '<div class="seg"><button data-act="vmode" data-arg
 function viewVocab(){
   if(vmode==="quiz") return vocabTabs()+viewVQ();
   return vocabTabs()+viewVocabCards();
+}
+const APP_VERSION="1.3";
+/* ---------- speech & guessing ---------- */
+const TTS = ("speechSynthesis" in window) && typeof SpeechSynthesisUtterance!=="undefined";
+let enVoice=null, lastSpoken="";
+function pickVoice(){
+  if(!TTS) return;
+  const vs=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang));
+  enVoice=vs.find(v=>/en[-_]US/i.test(v.lang)&&/google|natural|samantha/i.test(v.name))||vs.find(v=>/en[-_]US/i.test(v.lang))||vs[0]||null;
+}
+if(TTS){ pickVoice(); try{ speechSynthesis.onvoiceschanged=pickVoice; }catch(e){} }
+function speak(text,slow){
+  if(!TTS||!text) return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang="en-US"; if(enVoice) u.voice=enVoice; u.rate=slow?0.6:0.9;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+const autoSpeak=()=>S.autoSpeak!==false;
+function spkBtn(text){ return TTS?'<button class="spk" data-act="say" data-arg="'+esc(text)+'" aria-label="השמע הגייה">🔊</button><button class="spk slow" data-act="sayslow" data-arg="'+esc(text)+'" aria-label="השמע לאט">🐢</button>':''; }
+const normHe=x=>String(x||"").replace(/[\u0591-\u05C7]/g,"").replace(/\([^)]*\)/g," ").replace(/[^\u05D0-\u05EAa-z\s-]/gi," ").replace(/\s+/g," ").trim();
+function lev(a,b){
+  const m=a.length,n=b.length; if(!m) return n; if(!n) return m;
+  let prev=Array.from({length:n+1},(_,j)=>j);
+  for(let i=1;i<=m;i++){ const cur=[i]; for(let j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1)); prev=cur; }
+  return prev[n];
+}
+function guessMatch(guess,he){
+  const g=normHe(guess); if(!g) return false;
+  const strip=w=>w.replace(/^(ל|ה|ו|ב)(?=..)/,"");
+  const targets=String(he).split(/[,;]/).map(normHe).filter(Boolean);
+  const gWords=g.split(" ").filter(w=>w.length>1);
+  for(const t of targets){
+    if(t===g||t.includes(g)&&g.length>=3||g.includes(t)) return true;
+    const tWords=t.split(" ").filter(w=>w.length>1);
+    for(const a of gWords) for(const b of tWords){
+      const A=strip(a),B=strip(b), L=Math.max(A.length,B.length);
+      if(L>=3 && 1-lev(A,B)/L>=0.7) return true;
+    }
+  }
+  return false;
 }
 function viewVocabCards(){
   if(!vs) vs=buildVocab();
@@ -685,10 +738,18 @@ function viewVocabCards(){
   const c=vs.queue[vs.i];
   let h='<section class="sheet"><div class="row" style="justify-content:space-between"><span class="small muted">'+(vs.i+1)+' / '+total+'</span><span class="tag">'+(c.isNew?'חדשה':'חזרה')+'</span></div>';
   h+='<div class="bar" style="margin-top:8px"><i style="width:'+(vs.i/total*100)+'%"></i></div>';
-  h+='<div class="card"><div class="en" lang="en">'+esc(c.en)+'</div><div class="he">'+(vs.revealed?esc(c.he||'—'):'')+'</div></div>';
-  if(!vs.revealed) h+='<div class="row" style="justify-content:center"><button class="btn" data-act="vreveal">הצג תרגום</button></div>';
-  else h+='<div class="row" style="justify-content:center"><button class="btn ghost" data-act="vgrade" data-arg="0">לא ידעתי</button><button class="btn" data-act="vgrade" data-arg="1">ידעתי</button></div>';
-  h+='<p class="small muted" style="text-align:center;margin-bottom:0">נסה להיזכר לפני שאתה חושף. ענה בכנות, זה מה שמכוון את החזרות.</p></section>';
+  h+='<div class="card"><div class="en" lang="en">'+esc(c.en)+'</div><div class="spkrow">'+spkBtn(c.en)+'</div><div class="he">'+(vs.revealed?esc(c.he||'—'):'')+'</div></div>';
+  if(!vs.revealed){
+    h+='<div class="guess"><label class="field" for="gIn">מה הפירוש? נחש לפני שאתה חושף</label><div class="row" style="flex-wrap:nowrap"><input id="gIn" type="text" dir="rtl" autocomplete="off" autocapitalize="off" placeholder="כתוב בעברית"><button class="btn" data-act="vguess">בדוק</button></div></div>';
+    h+='<div class="row" style="justify-content:center;margin-top:10px"><button class="btn ghost" data-act="vreveal">אין לי מושג, הצג תרגום</button></div>';
+  } else {
+    if(vs.guess!=null){
+      h+='<div class="gres '+(vs.guessOk?'ok':'no')+'">'+(vs.guessOk?'נראה שצדקת':'לא בדיוק')+': ניחשת <b>'+esc(vs.guess)+'</b></div>';
+    }
+    h+='<div class="row" style="justify-content:center"><button class="btn'+(vs.guessOk===true?' ghost':'')+'" data-act="vgrade" data-arg="0">לא ידעתי</button><button class="btn'+(vs.guessOk===false?' ghost':'')+'" data-act="vgrade" data-arg="1">ידעתי</button></div>';
+    if(vs.guess!=null) h+='<p class="small muted" style="text-align:center">הבדיקה האוטומטית משוערת. אם ניחשת מילה נרדפת, סמן "ידעתי".</p>';
+  }
+  h+='<p class="small muted" style="text-align:center;margin-bottom:0">'+(TTS?'<label class="sw"><input type="checkbox" data-act-change="autospeak"'+(autoSpeak()?' checked':'')+'> הקראה אוטומטית</label>':'ההקראה לא זמינה בדפדפן הזה.')+'</p></section>';
   return h;
 }
 function grade(ok){
@@ -699,7 +760,7 @@ function grade(ok){
   else { card.box=0; card.due=t; vs.miss++; if(!vs.requeued.has(c.en)){ vs.requeued.add(c.en); vs.queue.push({en:c.en,he:c.he,isNew:false}); } }
   S.cards[c.en]=card;
   if(firstTime && c.isNew) d.nw++; else d.rv++;
-  vs.i++; vs.revealed=false;
+  vs.i++; vs.revealed=false; vs.guess=null; vs.guessOk=null;
   persist(); render();
 }
 
@@ -1016,6 +1077,13 @@ function render(){
   const m=document.getElementById("main");
   document.body.classList.toggle("insim", !!(sim&&sim.phase==="run"&&tab==="practice"));
   m.innerHTML = tab==="today"?viewToday():tab==="vocab"?viewVocab():tab==="practice"?(sim?viewSim():viewPractice()):viewStats();
+  if(tab==="vocab" && autoSpeak()){
+    let key="", word="";
+    if(vmode==="cards" && vs && vs.i<vs.queue.length && !vs.revealed){ word=vs.queue[vs.i].en; key="c"+vs.i+word; }
+    else if(vmode==="quiz" && vq && vq.i<vq.qs.length && !vq.qs[vq.i].rev && vq.chosen===null){ word=vq.qs[vq.i].en; key="q"+vq.i+word; }
+    if(key && key!==lastSpoken){ lastSpoken=key; speak(word); }
+  }
+  const gi=document.getElementById("gIn"); if(gi && window.matchMedia("(pointer:fine)").matches) gi.focus();
 }
 document.addEventListener("click",e=>{
   const b=e.target.closest("[data-act]"); if(!b) return;
@@ -1025,7 +1093,14 @@ document.addEventListener("click",e=>{
   else if(a==="vqa") vqAnswer(+arg);
   else if(a==="vqnext"){ vq.i++; vq.chosen=null; render(); }
   else if(a==="vqnew"){ vq=null; render(); }
-  else if(a==="vreveal"){ vs.revealed=true; render(); }
+  else if(a==="vreveal"){ vs.revealed=true; vs.guess=null; vs.guessOk=null; render(); }
+  else if(a==="vguess"){
+    const el=document.getElementById("gIn"), g=(el&&el.value||"").trim();
+    if(!g){ if(el) el.focus(); return; }
+    const c=vs.queue[vs.i]; vs.guess=g; vs.guessOk=guessMatch(g,c.he); vs.revealed=true; render();
+  }
+  else if(a==="say") speak(arg);
+  else if(a==="sayslow") speak(arg,true);
   else if(a==="vgrade"){ grade(arg==="1"); }
   else if(a==="vmore"){
     const fresh=allWords().filter(w=>!S.cards[w.en]).slice(0,10).map(w=>({en:w.en,he:w.he,isNew:true}));
@@ -1056,12 +1131,14 @@ document.addEventListener("click",e=>{
   }
 });
 document.addEventListener("keydown",e=>{
+  if(e.target&&e.target.id==="gIn"){ if(e.key==="Enter"){ e.preventDefault(); const b=document.querySelector('[data-act="vguess"]'); if(b) b.click(); } return; }
   if(tab==="vocab"&&vmode==="cards"&&vs&&vs.i<vs.queue.length){
     if(e.key===" "&&!vs.revealed){ e.preventDefault(); vs.revealed=true; render(); }
     else if(vs.revealed&&(e.key==="1"||e.key==="2")){ grade(e.key==="2"); }
   }
 });
 document.addEventListener("change",e=>{
+  if(e.target.matches('[data-act-change="autospeak"]')){ S.autoSpeak=e.target.checked; persist(); return; }
   const el=e.target.closest("[data-set]"); if(!el) return;
   const k=el.dataset.set;
   if(k==="examDate"&&/^\d{4}-\d{2}-\d{2}$/.test(el.value)) S.examDate=el.value;
@@ -1069,6 +1146,7 @@ document.addEventListener("change",e=>{
   if(k==="base"){ const v=+el.value; if(v>=50&&v<=150){ S.base=v; if(!S.attempts.length) S.theta=null; } }
   vs=null; persist(); render();
 });
+document.getElementById("ver").textContent="גרסה "+APP_VERSION;
 render();
 connect();
 if(!IN_CLAUDE){
