@@ -1,0 +1,1083 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>המאמן לאמירנט</title>
+<meta name="theme-color" content="#EEF1F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11161F" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="אמירנט">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Secular+One&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F5;--sheet:#FFFFFF;--ink:#1D2430;--muted:#5D6778;--line:#CDD4DF;--soft:#E4E9F1;
+  --blue:#2442B8;--blue-ink:#FFFFFF;--mark:#FFE14D;--mark-ink:#1D2430;--good:#1F8A5B;--bad:#C2352B;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#11161F;--sheet:#1A2130;--ink:#E7EBF3;--muted:#9AA4B6;--line:#2E384A;--soft:#232C3D;
+    --blue:#93A6FF;--blue-ink:#10151F;--mark:#E9CB2E;--mark-ink:#151A22;--good:#4CC38A;--bad:#F07167;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#11161F;--sheet:#1A2130;--ink:#E7EBF3;--muted:#9AA4B6;--line:#2E384A;--soft:#232C3D;
+  --blue:#93A6FF;--blue-ink:#10151F;--mark:#E9CB2E;--mark-ink:#151A22;--good:#4CC38A;--bad:#F07167;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Assistant,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:20px 18px 64px}
+header h1{font-family:"Secular One",Assistant,sans-serif;font-weight:400;font-size:clamp(30px,7vw,44px);line-height:1.1;margin:6px 0 4px;letter-spacing:-.01em}
+header p{margin:0;color:var(--muted)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);display:flex;gap:6px;padding:14px 0 12px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+nav button{flex:1;font:inherit;font-weight:600;font-size:16px;padding:9px 6px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+nav button[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
+h2{font-family:"Secular One",Assistant,sans-serif;font-weight:400;font-size:24px;margin:0 0 10px;line-height:1.2}
+h3{font-size:18px;margin:0 0 6px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 18px;border-radius:10px;border:1px solid var(--blue);background:var(--blue);color:var(--blue-ink);font-weight:700;cursor:pointer;font-size:16px}
+.btn.ghost{background:transparent;color:var(--blue)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.hl{background:linear-gradient(transparent 12%,var(--mark) 12%,var(--mark) 88%,transparent 88%);color:var(--mark-ink);padding:0 .25em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* the ruler */
+.ruler{position:relative;height:96px;margin:18px 4px 6px}
+.track{position:absolute;left:0;right:0;top:46px;height:2px;background:var(--ink)}
+.tick{position:absolute;top:40px;width:1px;height:14px;background:var(--ink)}
+.tick.minor{top:43px;height:8px;background:var(--muted)}
+.tlab{position:absolute;top:58px;transform:translateX(-50%);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.path{position:absolute;top:38px;height:18px;background:var(--mark);border-radius:2px;transform:skewX(-8deg);opacity:.95}
+.mk{position:absolute;transform:translateX(-50%);text-align:center;font-size:13px;line-height:1.2;white-space:nowrap}
+.mk b{display:block;font-size:17px;font-variant-numeric:tabular-nums}
+.mk.top{top:0}
+.mk.bottom{top:74px}
+.pin{position:absolute;top:32px;width:2px;height:30px;transform:translateX(-50%);background:var(--ink)}
+.pin.dash{background:repeating-linear-gradient(var(--ink) 0 4px,transparent 4px 7px)}
+.pin.est{background:var(--blue);width:3px}
+
+.tasks{list-style:none;margin:0;padding:0}
+.tasks li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+.tasks li:first-child{border-top:0}
+.chk{flex:none;width:24px;height:24px;border-radius:6px;border:2px solid var(--line);display:grid;place-items:center;margin-top:2px;font-weight:700;font-size:14px}
+.chk.on{background:var(--good);border-color:var(--good);color:#fff}
+.tasks .go{margin-inline-start:auto;flex:none}
+
+.days{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+.day{flex:none;min-width:62px;border:1px solid var(--line);border-radius:10px;padding:8px 6px;text-align:center;font-size:13px;line-height:1.3}
+.day b{display:block;font-size:16px}
+.day.today{border-color:var(--ink);border-width:2px}
+.day.exam{background:var(--mark);color:var(--mark-ink);border-color:var(--mark)}
+.day.done{background:var(--soft)}
+.day .k{color:var(--muted)}
+.day.exam .k{color:var(--mark-ink)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.stat b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* flashcards */
+.card{text-align:center;padding:34px 16px 24px}
+.en{font-family:"Source Serif 4",Georgia,serif;direction:ltr;unicode-bidi:isolate}
+.card .en{font-size:clamp(30px,8vw,44px);font-weight:600}
+.card .he{font-size:22px;margin-top:10px;min-height:34px}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 9px;color:var(--muted)}
+.bar{height:6px;background:var(--soft);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ink)}
+
+/* questions */
+.passage{font-family:"Source Serif 4",Georgia,serif;direction:ltr;text-align:left;font-size:17px;line-height:1.7;background:var(--soft);border-radius:10px;padding:14px 16px;max-height:280px;overflow:auto;margin-bottom:14px}
+.stem{font-family:"Source Serif 4",Georgia,serif;direction:ltr;text-align:left;font-size:19px;line-height:1.6;margin:6px 0 14px}
+.opts{display:grid;gap:8px;direction:ltr}
+.opt{display:flex;gap:10px;text-align:left;align-items:flex-start;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--ink);cursor:pointer;font-family:"Source Serif 4",Georgia,serif;font-size:17px;line-height:1.45}
+.opt .l{flex:none;font-family:Assistant,sans-serif;font-weight:700;color:var(--muted);width:18px}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--mark);border-color:var(--mark);color:var(--mark-ink)}
+.opt.right .l{color:var(--mark-ink)}
+.opt.wrong{border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.explain{margin-top:14px;padding:12px 14px;border-inline-start:4px solid var(--ink);background:var(--soft);border-radius:4px}
+.typebar{display:grid;grid-template-columns:120px 1fr 54px;gap:10px;align-items:center;margin:10px 0}
+.typebar .bar{height:10px}
+.typebar .bar i.low{background:var(--bad)}
+.typebar .bar i.mid{background:var(--mark)}
+.typebar .bar i.hi{background:var(--good)}
+.miss{border-top:1px solid var(--line);padding:10px 0}
+.miss .en{display:block;font-size:15px;text-align:left}
+.coach{white-space:pre-wrap}
+label.field{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted)}
+label.field input,label.field select{font:inherit;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.settings{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.insim nav{display:none}
+.exambar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--ink);color:var(--paper);border-radius:10px;padding:10px 14px;margin:12px 0 10px;font-weight:600}
+.clock{font-variant-numeric:tabular-nums;font-size:20px;font-weight:700;min-width:58px;text-align:center;padding:2px 8px;border-radius:6px}
+.clock.low{background:var(--bad);color:#fff}
+.qnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.qdot{width:42px;height:42px;border-radius:50%;border:2px solid var(--line);background:var(--sheet);color:var(--ink);font-weight:700;cursor:pointer}
+.qdot.done{background:var(--soft);border-color:var(--muted)}
+.qdot.cur{border-color:var(--blue);color:var(--blue)}
+.opt.sel{border:2px solid var(--blue);background:var(--soft)}
+.simnav{justify-content:space-between;margin-top:16px}
+.chap{text-align:start}
+.chapno{color:var(--muted);font-weight:600}
+.chap h2{font-size:30px;margin-top:4px}
+.chapmeta{font-size:20px;font-weight:700;margin:0 0 8px}
+.bigscore{font-size:52px;margin:4px 0 8px}
+.bigscore small{font-size:22px;color:var(--muted)}
+.rev{border-top:1px solid var(--line);padding:12px 0}
+.small-stem{font-size:16px;margin:0 0 4px}
+textarea.bk{width:100%;min-height:110px;font:13px/1.4 ui-monospace,Menlo,monospace;direction:ltr;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:8px;margin-top:6px}
+details summary{cursor:pointer;color:var(--blue)}
+.seg{display:flex;gap:6px;margin:14px 0 0}
+.seg button{flex:1;font:inherit;font-weight:600;padding:9px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--mark);color:var(--mark-ink);border-color:var(--mark)}
+.opt.heopt{font-family:Assistant,sans-serif;text-align:right;font-size:18px}
+.coachlist{margin:0;padding-inline-start:20px}
+.coachlist li{margin:8px 0}
+.foot{margin-top:28px;font-size:13px;color:var(--muted);text-align:center}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--ink);border-radius:50%;animation:sp 1s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+@media (max-width:640px){
+  nav{position:fixed;top:auto;bottom:0;left:0;right:0;margin:0;gap:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));background:var(--sheet);border-top:1px solid var(--line);border-bottom:0;box-shadow:0 -6px 20px rgba(0,0,0,.06)}
+  nav button{border:0;border-radius:10px;padding:10px 4px;min-height:48px;font-size:15px}
+  nav button[aria-current="page"]{background:var(--soft);color:var(--ink)}
+  nav button::before{display:block;font-size:20px;line-height:1.1;margin-bottom:2px}
+  nav button[data-arg="today"]::before{content:"◎"}
+  nav button[data-arg="vocab"]::before{content:"Aa"}
+  nav button[data-arg="practice"]::before{content:"✎"}
+  nav button[data-arg="stats"]::before{content:"▤"}
+  .wrap{padding:14px 14px 120px}
+  header h1{font-size:30px}
+  .opt{min-height:52px;padding:13px 14px}
+  .btn{min-height:48px}
+  .card .en{font-size:40px}
+  .card{padding:44px 12px 30px}
+}
+@media (max-width:520px){
+  .stats{grid-template-columns:1fr 1fr}
+  .settings{grid-template-columns:1fr}
+  .typebar{grid-template-columns:96px 1fr 46px}
+  .sheet{padding:16px}
+  nav button{font-size:15px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>המאמן לאמירנט</h1>
+    <p id="sub"></p>
+  </header>
+  <nav id="nav">
+    <button data-act="tab" data-arg="today">היום</button>
+    <button data-act="tab" data-arg="vocab">מילים</button>
+    <button data-act="tab" data-arg="practice">תרגול</button>
+    <button data-act="tab" data-arg="stats">ניתוח</button>
+  </nav>
+  <main id="main"></main>
+  <div class="foot" id="sync">שמירה מקומית</div>
+</div>
+
+<script>
+/* ---------- content ---------- */
+const BANK = [
+["abundant","שופע, בשפע"],["accurate","מדויק"],["acquire","לרכוש"],["adequate","מספיק, הולם"],["advocate","לתמוך ב-, לדגול ב-"],
+["alter","לשנות"],["ambiguous","דו-משמעי"],["anticipate","לצפות מראש"],["apparent","נראה לעין, לכאורה"],["approach","גישה"],
+["arbitrary","שרירותי"],["assess","להעריך"],["assume","להניח"],["attribute","לייחס"],["bias","הטיה"],
+["capable","מסוגל"],["cease","לחדול"],["coherent","עקבי, קוהרנטי"],["coincide","להתרחש בו-זמנית"],["compensate","לפצות"],
+["comprehensive","מקיף"],["conceal","להסתיר"],["consequence","תוצאה, השלכה"],["considerable","ניכר"],["constrain","להגביל"],
+["contradict","לסתור"],["contradictory","סותר"],["controversial","שנוי במחלוקת"],["crucial","מכריע"],["decline","לרדת, ירידה"],
+["deliberate","מכוון, מתוכנן"],["demonstrate","להדגים, להוכיח"],["deny","להכחיש"],["derive","לנבוע, להפיק"],["deteriorate","להידרדר"],
+["diminish","להפחית, לפחות"],["distinct","נבדל, מובחן"],["diverse","מגוון"],["dominant","שולט"],["emerge","לצוץ"],
+["emphasize","להדגיש"],["enhance","לשפר, להגביר"],["essential","חיוני"],["evident","ברור, גלוי"],["evolve","להתפתח"],
+["exceed","לעלות על"],["exclude","להוציא מכלל"],["explicit","מפורש"],["exploit","לנצל"],["extensive","נרחב"],
+["feasible","בר-ביצוע"],["fluctuate","לנוע בתנודות"],["fundamental","יסודי"],["hence","לכן"],["hypothesis","השערה"],
+["imply","לרמוז"],["inconclusive","לא חד-משמעי"],["inevitable","בלתי נמנע"],["infer","להסיק"],["inherent","טבוע, מובנה"],
+["initial","ראשוני"],["insight","תובנה"],["integrate","לשלב"],["intense","עז"],["interpret","לפרש"],
+["justify","להצדיק"],["lucid","בהיר"],["maintain","לשמר, לטעון"],["minimize","למזער"],["neglect","להזניח"],
+["nevertheless","למרות זאת"],["notion","רעיון, תפיסה"],["obscure","מעורפל"],["obtain","להשיג"],["occur","להתרחש"],
+["persist","להימשך, להתמיד"],["pivotal","מכריע, מרכזי"],["precede","לקדום ל-"],["predominantly","בעיקר"],["preliminary","מקדים"],
+["presume","להניח"],["prevalent","נפוץ"],["prior","קודם"],["prohibit","לאסור"],["prominent","בולט"],
+["pursue","לשאוף ל-, לרדוף אחר"],["rational","רציונלי"],["reluctant","לא ששׂ, מסויג"],["resemble","לדמות ל-"],["resent","להתרעם על"],
+["resolve","לפתור"],["restrict","להגביל"],["reveal","לחשוף"],["scarce","מועט, נדיר"],["significant","משמעותי"],
+["subsequent","שלאחר מכן"],["substantial","ניכר"],["sufficient","מספיק"],["sustain","לקיים, להחזיק"],["tendency","נטייה"],
+["thus","לפיכך"],["undermine","לערער, להחליש"],["unprecedented","חסר תקדים"],["valid","תקף"],["vary","להשתנות"],
+["whereas","בעוד ש-"],["yield","להניב"]
+];
+
+
+const Q=(d,skill,stem,options,explain,word,he)=>({d,skill,stem,options,answer:0,explain,word:word||"",wordHe:he||""});
+const SCQ=[
+Q(1,"logic","Despite the team's ______ efforts, the project was not completed on time.",["considerable","reluctant","absent","careless"],"Despite מסמן ניגוד: למרות מאמצים גדולים הפרויקט לא הסתיים. careless לא יוצר ניגוד.","considerable","ניכר"),
+Q(2,"vocab","The new policy was ______ by most employees, who felt it ignored their needs.",["resented","welcomed","invented","measured"],"העובדים הרגישו שמתעלמים מהם, ולכן התרעמו. welcomed הוא ההפך.","resent","להתרעם"),
+Q(2,"logic","Because the evidence was ______, the judge decided to postpone the ruling.",["inconclusive","obvious","abundant","precise"],"דחיית פסק הדין מרמזת שהראיות לא חד-משמעיות. obvious היה מוביל להכרעה.","inconclusive","לא חד-משמעי"),
+Q(2,"vocab","Scientists ______ that the drought will continue for at least another decade.",["anticipate","deny","forbid","neglect"],"מדענים צופים שהבצורת תימשך. deny לא מתאים כי אין במשפט הכחשה.","anticipate","לצפות מראש"),
+Q(1,"logic","The museum's collection is so ______ that visitors rarely see everything in a single day.",["extensive","modest","fragile","recent"],"so... that: האוסף כה נרחב שאי אפשר לראות הכול ביום אחד.","extensive","נרחב"),
+Q(2,"logic","Her explanation was so ______ that even beginners understood it immediately.",["lucid","vague","lengthy","hostile"],"אפילו מתחילים הבינו מיד, כלומר ההסבר היה בהיר. vague הוא ההפך.","lucid","בהיר"),
+Q(1,"vocab","The company's profits ______ sharply after it lost its largest client.",["declined","flourished","stabilized","doubled"],"אובדן הלקוח הגדול גורם לירידה.","decline","לרדת"),
+Q(2,"vocab","Many historians regard the invention of the printing press as a ______ moment in European culture.",["pivotal","trivial","temporary","accidental"],"הדפוס נחשב לרגע מכונן ומכריע. trivial הוא ההפך.","pivotal","מכריע"),
+Q(2,"logic","The two studies reached ______ conclusions, so researchers are still debating the issue.",["contradictory","identical","obvious","final"],"החוקרים עדיין מתווכחים, ולכן המסקנות סותרות.","contradictory","סותר"),
+Q(1,"vocab","To ______ the risk of infection, nurses wash their hands before every procedure.",["minimize","increase","ignore","measure"],"שטיפת ידיים נועדה להקטין סיכון.","minimize","למזער"),
+Q(2,"vocab","The scholarship is available only to students whose grades ______ a certain minimum.",["exceed","resemble","conceal","precede"],"מלגה ניתנת למי שציוניו עולים על סף.","exceed","לעלות על"),
+Q(2,"logic","Although the theory was ______ at first, it later became widely accepted.",["controversial","prevalent","explicit","sufficient"],"Although מסמן ניגוד ל\"התקבלה באופן רחב\", אז בהתחלה היא הייתה שנויה במחלוקת.","controversial","שנוי במחלוקת"),
+Q(1,"vocab","The doctor advised him to ______ sugar from his diet completely.",["eliminate","increase","borrow","admire"],"completely ו-from his diet מצביעים על הוצאה מוחלטת.","eliminate","להסיר, לבטל"),
+Q(1,"logic","The library is usually quiet, ______ during exam periods it becomes crowded and noisy.",["but","because","so","unless"],"שקט מול רועש: צריך מילת ניגוד.",""),
+Q(1,"logic","The instructions were so ______ that nobody knew what to do next.",["confusing","helpful","simple","accurate"],"so... that nobody knew: ההוראות היו מבלבלות.","confusing","מבלבל"),
+Q(1,"vocab","After months of training, the athlete was finally ______ to run the full marathon.",["able","unable","afraid","forbidden"],"finally אחרי אימונים מסמן הצלחה.",""),
+Q(1,"logic","Many tourists visit the city ______ its beautiful old buildings.",["because of","in spite of","instead of","unless"],"הבניינים היפים הם הסיבה לביקור. unless לא יכול לבוא לפני שם עצם.",""),
+Q(1,"vocab","The price of fresh vegetables tends to ______ from season to season.",["vary","remain","disappear","freeze"],"from season to season מרמז על שינוי.","vary","להשתנות"),
+Q(1,"vocab","He was too ______ to admit that he had made a mistake.",["proud","humble","honest","eager"],"too X to admit: תכונה שמונעת להודות. humble ו-honest היו דווקא עוזרים להודות.","proud","גאה"),
+Q(1,"logic","The museum is closed on Mondays; ______, it is open late on Thursdays.",["however","therefore","because","for example"],"שני פרטים מנוגדים על שעות הפתיחה: however.",""),
+Q(1,"vocab","Online courses have become increasingly ______, especially among working adults.",["popular","rare","expensive","illegal"],"especially among working adults מרמז על תפוצה ההולכת וגדלה.",""),
+Q(2,"vocab","The committee's report was ______: it covered every aspect of the problem in great detail.",["comprehensive","superficial","brief","biased"],"הנקודתיים מסבירים: כיסה כל היבט, כלומר מקיף.","comprehensive","מקיף"),
+Q(2,"vocab","Although the medicine relieves the symptoms, it does not ______ the underlying cause of the disease.",["address","reveal","resemble","exceed"],"address a problem = לטפל בבעיה. ניגוד בין הקלה על תסמינים לטיפול בשורש.","address","לטפל ב-"),
+Q(2,"vocab","The scientist's claims were ______ by later experiments, which produced exactly the same results.",["confirmed","contradicted","concealed","prohibited"],"ניסויים שהניבו אותן תוצאות מאששים. contradicted הוא ההפך.","confirm","לאשש"),
+Q(2,"logic","Economic growth slowed considerably; ______, unemployment rose for the first time in a decade.",["consequently","nevertheless","whereas","otherwise"],"העלייה באבטלה היא תוצאה של ההאטה: consequently.","consequently","כתוצאה מכך"),
+Q(2,"vocab","Her success was not the result of luck but of years of ______ effort.",["persistent","occasional","careless","reluctant"],"not luck but years of: מאמץ מתמשך.","persistent","מתמיד"),
+Q(2,"vocab","The new law is intended to ______ companies from selling customers' personal data without permission.",["prevent","encourage","permit","require"],"המבנה X from doing מתאים ל-prevent. החוק נועד למנוע.","prevent","למנוע"),
+Q(2,"logic","Despite repeated warnings, many residents ______ to leave the flooded area.",["refused","decided","managed","rushed"],"Despite warnings: התושבים לא עשו מה שהוזהרו, כלומר סירבו.",""),
+Q(2,"vocab","The ______ of the experiment was to test whether the drug improved memory in older adults.",["aim","result","cost","failure"],"to test whether מתאר מטרה.",""),
+Q(2,"logic","Unlike his talkative brother, Daniel is rather ______ and rarely speaks in public.",["reserved","outgoing","famous","aggressive"],"Unlike talkative ו-rarely speaks: שמור, מופנם.","reserved","מופנם, שמור"),
+Q(2,"vocab","The two languages ______ each other so closely that speakers of one can often understand the other.",["resemble","oppose","replace","ignore"],"אם דוברי שפה אחת מבינים את השנייה, השפות דומות.","resemble","לדמות ל-"),
+Q(2,"logic","The data were ______, so the researchers had to repeat the entire survey.",["unreliable","accurate","sufficient","valid"],"so they had to repeat: הנתונים לא היו אמינים.","unreliable","לא אמין"),
+Q(2,"vocab","The village's population has ______ steadily as young people move to the cities.",["declined","expanded","flourished","recovered"],"צעירים עוזבים, ולכן האוכלוסייה יורדת.","decline","לרדת"),
+Q(2,"vocab","The startup's ______ growth surprised investors, who had expected it to take years to become profitable.",["rapid","gradual","modest","predictable"],"המשקיעים ציפו לשנים והופתעו, כלומר הצמיחה הייתה מהירה.","rapid","מהיר"),
+Q(3,"logic","Rather than ______ the problem, the manager chose to pretend it did not exist.",["confront","ignore","avoid","hide"],"Rather than X, chose to pretend: X חייב להיות ההפך מהעמדת פנים, כלומר להתמודד. ignore ו-avoid הם בדיוק מה שעשה.","confront","להתמודד עם"),
+Q(3,"vocab","The evidence against the suspect was largely ______, based on assumptions rather than on facts.",["speculative","conclusive","explicit","empirical"],"assumptions rather than facts: ראיות השערתיות.","speculative","השערתי"),
+Q(3,"logic","Far from being ______, the professor's remarks caused a heated debate among the students.",["uncontroversial","provocative","offensive","lengthy"],"Far from being X = רחוק מלהיות X. הדברים עוררו ויכוח, אז הם רחוקים מלהיות לא שנויים במחלוקת. provocative הוא המלכודת.","uncontroversial","לא שנוי במחלוקת"),
+Q(3,"vocab","The author's style is deliberately ______, leaving readers to interpret the ending for themselves.",["ambiguous","explicit","lucid","conventional"],"הקוראים צריכים לפרש בעצמם: הסגנון דו-משמעי בכוונה.","ambiguous","דו-משמעי"),
+Q(3,"logic","Even the most ______ critics had to admit that the film was technically impressive.",["skeptical","enthusiastic","generous","loyal"],"Even the most X had to admit: X הם מי שהכי פחות היו רוצים להודות, כלומר ספקנים.","skeptical","ספקן"),
+Q(3,"vocab","The government's response to the crisis was criticized as ______: too little and too late.",["inadequate","excessive","immediate","generous"],"too little and too late: לא מספק.","inadequate","לא מספק"),
+Q(3,"vocab","The theory remains ______ until it can be tested under controlled conditions.",["tentative","proven","obsolete","universal"],"עד שתיבדק התאוריה היא זמנית ולא סופית.","tentative","זמני, לא סופי"),
+Q(3,"vocab","Having ______ all other possibilities, the detectives concluded that the fire had been set deliberately.",["ruled out","looked up","carried out","made up"],"rule out = לשלול. אחרי ששללו את כל השאר, נשארה הצתה.","rule out","לשלול"),
+Q(3,"logic","Critics argue that standardized tests ______ the abilities of students who are not native speakers.",["underestimate","enhance","reflect","exaggerate"],"ביקורת על מבחנים לדוברים לא ילידיים: המבחן מעריך אותם בחסר.","underestimate","להמעיט בערך"),
+Q(3,"vocab","The negotiations reached a ______, with neither side willing to make further concessions.",["deadlock","breakthrough","compromise","conclusion"],"אף צד לא מוכן לוותר: מבוי סתום.","deadlock","מבוי סתום"),
+Q(3,"logic","Her argument was so ______ that even her opponents found it difficult to dispute.",["compelling","flawed","irrelevant","vague"],"אפילו המתנגדים התקשו להתווכח: הטיעון משכנע.","compelling","משכנע"),
+Q(3,"logic","Scientists are ______ about the long-term effects of the drug, since it has been tested for only two years.",["cautious","certain","enthusiastic","indifferent"],"since only two years: מעט נתונים, ולכן זהירות.","cautious","זהיר"),
+Q(3,"vocab","In ______, the decision to close the factory proved wise, although it was unpopular at the time.",["retrospect","advance","contrast","particular"],"in retrospect = בדיעבד, בהסתכלות לאחור.","in retrospect","בדיעבד"),
+Q(3,"vocab","The professor's lectures were notoriously ______, often wandering far from the topic of the course.",["digressive","concise","focused","rigorous"],"wandering far from the topic: סוטה מהנושא.","digressive","סוטה מהנושא")
+];
+const RSQ=[
+Q(2,"quant","Few people expected the small startup to outperform its established rivals.",["It surprised many that the startup did better than the larger companies.","Most people assumed the startup would do better than its rivals.","The established rivals expected to beat the startup easily, and they did.","Few people knew that the startup had any rivals."],"Few expected = רובם לא ציפו, ולכן ההצלחה הפתיעה. B הופכת את המשמעות."),
+Q(1,"cond","Unless the bridge is repaired soon, it will have to be closed to traffic.",["If the bridge is not repaired soon, traffic will not be allowed on it.","The bridge was closed because it was not repaired.","The bridge will be repaired only after it is closed.","Heavy traffic caused the bridge to need repairs."],"Unless = if not. B מתארת עבר שלא קרה."),
+Q(1,"comp","The author's second novel received far less attention than her first.",["Her first novel was noticed much more than her second.","Both of her novels were equally ignored.","Her second novel was longer than her first.","Critics preferred her second novel."],"less attention לשני = יותר לראשון. אותו יחס מהצד השני."),
+Q(2,"contrast","Although the treatment is expensive, it is considered the most effective option available.",["Despite its high cost, the treatment is thought to work better than any other.","The treatment is effective because it is expensive.","Cheaper treatments are just as effective.","The treatment is too expensive to be widely used."],"Although = despite. B מוסיפה קשר סיבתי שאין במקור."),
+Q(3,"time","It was not until the 19th century that scientists understood how diseases spread.",["Before the 19th century, scientists did not understand how diseases spread.","Scientists in the 19th century did not understand how diseases spread.","Diseases spread more quickly in the 19th century.","Scientists stopped studying disease in the 19th century."],"not until X = רק ב-X, ולפני כן לא. B הופכת."),
+Q(1,"cause","The city council postponed its decision in order to gather more public opinion.",["The council delayed deciding so that it could hear more from the public.","The public asked the council to make a quick decision.","The council ignored public opinion when deciding.","The decision was cancelled because the public opposed it."],"postponed = דחה, in order to = כדי. D מחליפה דחייה בביטול."),
+Q(3,"quant","Hardly anyone noticed the error until the report had already been published.",["The error was noticed by almost no one before the report came out.","Many people noticed the error before publication.","The report was published because no one found an error.","The error appeared only after the report was published."],"Hardly anyone = כמעט אף אחד. C מוסיפה סיבתיות."),
+Q(1,"neg","The museum is open every day except Monday.",["You can visit the museum on any day but Monday.","The museum is open only on Mondays.","The museum is closed most days of the week.","On Mondays, the museum opens later than usual."],"except Monday = כל יום חוץ משני. but כאן פירושו \"חוץ מ\"."),
+Q(1,"time","Tom arrived at the station after the train had already left.",["When Tom got to the station, the train was gone.","Tom left before the train arrived.","Tom and the train arrived at the same time.","The train waited for Tom at the station."],"had already left: הרכבת יצאה לפני שטום הגיע."),
+Q(1,"comp","The second test was much easier than the first.",["The first test was considerably harder than the second.","Both tests were equally difficult.","The second test was harder than expected.","The first test was easier than the second."],"היפוך צדדים: השני קל יותר = הראשון קשה יותר. D הופכת גם את הכיוון."),
+Q(1,"cond","If it rains tomorrow, the game will be postponed.",["The game will be delayed in case of rain tomorrow.","The game was postponed because it rained.","The game will take place even if it rains.","It will rain because the game is postponed."],"תנאי עתידי. B הופכת לעבר שכבר קרה."),
+Q(1,"quant","Only a few students passed the final exam.",["Most students failed the final exam.","Most students passed the final exam.","The final exam was taken by only a few students.","Nobody passed the final exam."],"only a few passed = רובם נכשלו. C מעבירה את \"מעטים\" מהעוברים לניגשים."),
+Q(2,"cause","The bridge was built so that villagers would no longer have to travel two hours to reach the market.",["The purpose of the bridge was to shorten the villagers' journey to the market.","The villagers built the bridge in two hours.","Because of the bridge, the market moved closer to the village.","The villagers stopped going to the market after the bridge was built."],"so that = כדי ש-. המטרה היא לקצר את הדרך, לא להזיז את השוק."),
+Q(2,"neg","Not only did the new policy fail to reduce costs, but it also lowered employee morale.",["The policy did not cut costs, and it made workers less motivated as well.","The policy cut costs but hurt morale.","The policy improved morale but did not lower costs.","Employees opposed the policy because it raised costs."],"Not only... but also: שני כשלונות. fail to reduce = לא הפחית."),
+Q(2,"comp","The more you practice a language, the more confident you become in speaking it.",["Confidence in speaking a language grows with practice.","Confident speakers rarely need to practice.","Practicing a language makes speaking it more difficult.","You must be confident before you start practicing."],"The more... the more: שני דברים עולים יחד."),
+Q(2,"contrast","The project was completed on time, despite a serious shortage of workers.",["Although there were too few workers, the project was finished on schedule.","The project was delayed because of a lack of workers.","The shortage of workers was solved, so the project finished on time.","More workers were hired to finish the project on time."],"despite משמר ניגוד: חסרו עובדים ובכל זאת הסתיים בזמן. C ו-D ממציאות פתרון."),
+Q(3,"cond","Had the warning been issued earlier, many lives might have been saved.",["Because the warning came late, lives that might have been saved were lost.","The early warning saved many lives.","Many lives were saved, although the warning came late.","The warning was not necessary, since no lives were lost."],"Had X been = אילו X היה (וזה לא קרה). כלומר האזהרה איחרה."),
+Q(3,"time","Scarcely had the meeting begun when the fire alarm went off.",["The fire alarm sounded almost as soon as the meeting started.","The meeting began after the fire alarm stopped.","The fire alarm rarely goes off during meetings.","The meeting was cancelled because of a false alarm."],"Scarcely... when = ברגע ש-. C מפרשת scarcely כ\"לעיתים רחוקות\"."),
+Q(2,"comp","The film was not nearly as entertaining as the critics had promised.",["The film was much less enjoyable than the critics had said it would be.","The critics were right that the film was entertaining.","The film was more entertaining than the critics expected.","The critics did not review the film."],"not nearly as X as = הרבה פחות X מ-."),
+Q(3,"quant","Few, if any, of the original buildings survived the earthquake.",["Almost none of the original buildings remained after the earthquake.","Some of the original buildings survived the earthquake.","The earthquake damaged only a few buildings.","All the original buildings were rebuilt after the earthquake."],"Few, if any = מעט מאוד, אם בכלל. C הופכת: מעט נפגעו."),
+Q(2,"time","The company will not hire new staff until its profits improve.",["The company will start hiring only after its profits get better.","The company's profits improved after it hired new staff.","The company is hiring staff to improve its profits.","Profits will not improve unless new staff are hired."],"not until = רק אחרי. D הופכת את התנאי."),
+Q(2,"contrast","It is widely believed, though rarely proven, that eating late at night causes weight gain.",["Many people think late-night eating leads to weight gain, but there is little evidence for it.","It has been proven that eating late at night causes weight gain.","Few people believe that eating late causes weight gain.","Eating late at night rarely causes weight gain."],"widely believed = רבים מאמינים; rarely proven = כמעט לא הוכח. D הופכת \"לא הוכח\" ל\"לא קורה\"."),
+Q(2,"neg","Instead of raising taxes, the government chose to cut public spending.",["The government reduced spending rather than increasing taxes.","The government raised taxes and cut spending.","The government cut taxes to increase public spending.","Taxes were raised because spending was cut."],"Instead of = במקום. רק דבר אחד נעשה."),
+Q(2,"contrast","The researcher's findings, while interesting, are too limited to support any general conclusions.",["The findings are interesting, but they are not broad enough to justify general conclusions.","The findings are uninteresting and limited.","The findings support several general conclusions.","Because the findings are interesting, general conclusions can be drawn."],"while interesting = אף שהם מעניינים. too limited to = מוגבלים מכדי."),
+Q(3,"time","No sooner had the price dropped than demand for the product doubled.",["Demand for the product doubled immediately after its price went down.","The price dropped because demand doubled.","Demand doubled before the price dropped.","The price dropped, but demand did not change."],"No sooner... than = מיד אחרי. הסדר: קודם ירד המחיר."),
+Q(2,"cause","The town owes its prosperity largely to the tourism industry.",["Tourism is the main reason the town is wealthy.","The town owes money to the tourism industry.","The tourism industry became wealthy because of the town.","The town is prosperous despite its tourism industry."],"owe X to Y = X בזכות Y. B היא המלכודת המילולית של \"חוב\"."),
+Q(3,"neg","Under no circumstances should passengers open the emergency door while the train is moving.",["Passengers must never open the emergency door when the train is in motion.","Passengers may open the emergency door in some circumstances.","The emergency door opens automatically when the train stops.","Passengers should open the emergency door only when the train is moving."],"Under no circumstances = בשום מקרה. איסור מוחלט."),
+Q(2,"neg","Contrary to popular belief, bats are not blind.",["Many people think bats cannot see, but this is incorrect.","Most people know that bats can see.","Bats are blind, as is commonly believed.","Bats can see better than most animals."],"Contrary to popular belief = בניגוד למה שרבים חושבים. D מוסיפה השוואה שאין במקור."),
+Q(2,"comp","The older the wine, the higher the price it usually commands.",["Wine generally becomes more expensive as it ages.","Older wine is usually cheaper.","Expensive wine is always old.","The price of wine does not depend on its age."],"The older... the higher. usually לא הופך ל-always כמו ב-C."),
+Q(3,"cond","She would have accepted the job offer had the salary been higher.",["She turned down the job because the salary was too low.","She accepted the job although the salary was low.","She accepted the job because the salary was high.","The salary was raised after she accepted the job."],"would have... had = אילו. בפועל המשכורת לא הייתה גבוהה והיא לא קיבלה את ההצעה.")
+];
+const PASSAGES=[
+{d:2,topic:"sleep and memory",text:"For decades, sleep was viewed as a passive state in which the brain simply rested. Research over the past thirty years, however, has shown that the sleeping brain is remarkably active. During deep sleep, the brain appears to replay experiences from the previous day, strengthening the connections that form long-term memories. In one well-known type of experiment, participants learn a list of words in the evening and are tested the next morning. Those allowed a full night's sleep typically recall significantly more words than those kept awake for the same period. Interestingly, the benefit is not limited to facts. Skills such as playing a melody or solving a certain kind of puzzle also tend to improve after sleep, even without additional practice. These findings have led some educators to argue that students who stay up all night before an exam may be undermining the very learning they are trying to achieve.",qs:[
+Q(2,"main","The main purpose of the passage is to",["show that sleep plays an active role in forming memories","argue that sleep is a passive state","recommend studying at night","explain how puzzles improve memory"],"הקטע מראה שהמוח פעיל בשינה. B היא הדעה הישנה שהקטע מפריך."),
+Q(1,"detail","According to the passage, the word-list experiment showed that",["participants who slept remembered more words","words are learned better in the morning","staying awake improves skills","all participants remembered the same number of words"],"נאמר במפורש שמי שישן זכר יותר. B מבלבלת בין זמן הלמידה לזמן המבחן."),
+Q(2,"vctx","The word \"undermining\" in the last sentence is closest in meaning to",["weakening","supporting","measuring","delaying"],"undermine = לערער, להחליש.","undermine","לערער"),
+Q(2,"detail","According to the passage, which of the following tends to improve after sleep even without more practice?",["skills such as playing a melody","only the memory of facts","the ability to stay awake longer","the speed of reading"],"the benefit is not limited to facts: גם מיומנויות משתפרות."),
+Q(2,"infer","It can be inferred that the author would advise students, before an exam, to",["get a full night's sleep","study through the night","avoid practicing skills","focus only on facts"],"אם לילה לבן פוגע בלמידה, ההמלצה המשתמעת היא לישון.")]},
+{d:2,topic:"urban trees",text:"Cities around the world are planting millions of trees, and the reasons go well beyond appearance. Trees cool the streets beneath them by providing shade and by releasing water vapor through their leaves, a process that can lower local temperatures by several degrees on hot summer days. They also absorb rainwater, reducing the risk of flooding in areas covered by concrete and asphalt. Some studies have even linked green neighborhoods to lower levels of stress among residents. Nevertheless, urban trees face serious challenges. Their roots often have little room to grow, polluted air can damage their leaves, and many young trees die within a few years because no one waters them during dry periods. For this reason, experts argue that planting is only half the job. Without long-term maintenance budgets, they warn, ambitious planting programs may produce impressive numbers but few mature trees. Several cities have responded by inviting residents to \"adopt\" a tree near their homes and take responsibility for its care.",qs:[
+Q(2,"main","The passage mainly discusses",["the benefits of urban trees and the difficulty of keeping them alive","why cities should stop planting trees","how trees reduce stress","the history of tree planting in cities"],"הקטע עוסק גם ביתרונות וגם באתגרים. C נכונה אבל צרה מדי."),
+Q(1,"detail","According to the passage, trees help prevent flooding by",["absorbing rainwater","providing shade","releasing water vapor","replacing asphalt"],"צל ואדי מים מוזכרים לגבי קירור, לא הצפות."),
+Q(2,"detail","Which of the following is NOT mentioned as a challenge facing urban trees?",["insects that attack their leaves","limited room for roots","polluted air","lack of water during dry periods"],"בשאלות NOT בודקים כל אפשרות מול הקטע. חרקים לא מוזכרים."),
+Q(2,"vctx","In the passage, \"ambitious\" planting programs are programs that",["aim to achieve a great deal","are poorly planned","cost very little","are kept secret"],"ambitious = שאפתני, מכוון גבוה.","ambitious","שאפתני"),
+Q(2,"infer","Cities that ask residents to \"adopt\" trees are most likely trying to",["make sure young trees receive care over time","reduce the number of trees planted","sell trees to residents","move trees out of the city"],"הבעיה שהוצגה היא חוסר תחזוקה, והאימוץ נועד לפתור אותה.")]},
+{d:3,topic:"choice",text:"It seems obvious that more choice is better: a shop with fifty kinds of jam should satisfy more customers than one with six. Yet a well-known study conducted in a supermarket challenged this assumption. When shoppers were offered a large display of jams, more of them stopped to look, but far fewer actually bought anything than when the display was small. Psychologists have proposed several explanations. Comparing many options demands time and mental effort, and the fear of choosing wrongly can lead people to postpone the decision altogether. Moreover, those who do choose from a large selection are sometimes less satisfied afterwards, because they can easily imagine that one of the rejected options would have been better. Later research, however, has complicated the picture. Attempts to repeat the original results have produced mixed findings, and the effect appears to depend on circumstances, such as how familiar people are with the product and whether the options are clearly organized. Choice, it seems, is neither simply good nor simply bad; its value depends on how it is presented.",qs:[
+Q(3,"main","The main idea of the passage is that",["the effect of having many options is more complex than it first appears","people always prefer fewer options","supermarkets should sell fewer kinds of jam","psychologists agree that choice reduces satisfaction"],"הסוף מסכם: הבחירה לא פשוט טובה ולא פשוט רעה. B קיצונית."),
+Q(2,"detail","In the supermarket study, the large display",["attracted more shoppers but led to fewer purchases","led to more purchases than the small one","was ignored by most shoppers","contained only six kinds of jam"],"more stopped to look, but far fewer bought."),
+Q(3,"detail","According to the passage, people may feel less satisfied after choosing from many options because they",["can imagine that another option would have been better","paid more for their purchase","did not have enough time to look","were not familiar with the product"],"נאמר במפורש: they can easily imagine that one of the rejected options would have been better."),
+Q(3,"vctx","The phrase \"complicated the picture\" most nearly means",["made the situation less clear-cut","proved the original study wrong","made the study more famous","repeated the original results exactly"],"המחקרים המאוחרים לא הפריכו, אלא הראו שהתמונה מורכבת. B קיצונית מדי."),
+Q(3,"infer","The author would most likely agree that",["the way options are organized can influence whether choice is helpful","shops should always offer as many options as possible","the original jam study has been completely disproved","familiarity with a product has no effect on decisions"],"הקטע מזכיר שהאפקט תלוי בארגון האפשרויות. C ו-D סותרות את הקטע.")]},
+{d:1,topic:"honeybees",text:"Honeybees live in large, highly organized colonies. A single colony can contain tens of thousands of bees, but only one of them, the queen, lays eggs. Most of the others are female worker bees, which perform different jobs at different stages of their lives. Young workers stay inside the hive, where they clean cells, feed young bees and build wax. Older workers leave the hive to collect nectar and pollen from flowers. When a worker finds a good source of food, she returns to the hive and performs a special \"dance\". The direction and length of the dance tell other bees where the flowers are and how far away they are. Bees are also important to people. Many fruits and vegetables depend on bees to carry pollen from one flower to another. In recent years, however, bee populations in many countries have dropped, and scientists are studying possible causes, including disease, pesticides and the loss of wild flowers.",qs:[
+Q(1,"detail","According to the passage, the queen bee",["is the only bee in the colony that lays eggs","collects nectar from flowers","performs a dance to show where food is","cleans the cells of the hive"],"only one of them, the queen, lays eggs."),
+Q(1,"detail","Young worker bees",["work inside the hive","leave the hive to find flowers","lay eggs","perform dances"],"Young workers stay inside the hive. B מתארת את המבוגרות."),
+Q(1,"detail","The bee's \"dance\" gives information about",["the location and distance of food","the age of the worker","the size of the colony","the health of the queen"],"where the flowers are and how far away."),
+Q(1,"vctx","The word \"dropped\" in the passage is closest in meaning to",["decreased","fell to the ground","remained the same","moved away"],"בהקשר של אוכלוסייה dropped = ירדה. B היא הפירוש המילולי, וזו המלכודת."),
+Q(2,"infer","The last sentences suggest that a decline in bees could",["harm the production of some foods","increase the number of wild flowers","make honey cheaper","help scientists study disease"],"פירות וירקות תלויים בדבורים, אז פחות דבורים יפגעו בהם.")]},
+{d:3,topic:"language and thought",text:"Does the language we speak shape the way we think? The idea, often associated with the linguist Benjamin Lee Whorf, enjoyed great popularity in the mid-twentieth century before falling out of favor. Critics pointed out that its strongest version, which claims that people cannot think about concepts for which their language has no words, is easily refuted: speakers routinely invent or borrow words for new ideas. In recent decades, however, a more modest version of the hypothesis has gained empirical support. Speakers of languages that describe locations using compass directions, rather than words like \"left\" and \"right\", have been found to keep track of their orientation remarkably well, even indoors. Similarly, languages differ in how they divide the color spectrum, and some experiments suggest that these divisions slightly affect how quickly speakers distinguish between shades. Researchers now generally agree that language does not imprison thought, but that it may direct attention toward certain features of experience and make some distinctions easier to notice than others.",qs:[
+Q(3,"main","The passage is mainly concerned with",["how a once-rejected idea about language and thought has been revised","proving that language determines thought completely","the life of Benjamin Lee Whorf","teaching compass directions to children"],"הרעיון נדחה ואז חזר בגרסה מתונה. B היא הגרסה החזקה שנדחתה."),
+Q(2,"detail","Critics rejected the strongest version of the hypothesis because",["people often create or adopt words for new concepts","it was proposed in the mid-twentieth century","Whorf did not speak many languages","experiments on color were not available"],"speakers routinely invent or borrow words."),
+Q(3,"detail","Speakers who describe locations with compass directions",["are unusually good at knowing which way they are facing","cannot use words like \"left\" and \"right\" at all","see colors differently from other speakers","have trouble finding their way indoors"],"keep track of their orientation remarkably well. B קיצונית ולא נאמרה."),
+Q(3,"vctx","The word \"refuted\" in the passage is closest in meaning to",["shown to be false","widely accepted","carefully explained","repeated"],"refute = להפריך.","refute","להפריך"),
+Q(3,"infer","Which statement best reflects the current view described in the passage?",["Language influences what we tend to notice, but it does not limit what we can think.","Language has no effect on thought.","People cannot think about ideas their language lacks words for.","Color perception is identical in all languages."],"המשפט האחרון: language does not imprison thought, but may direct attention.")]}
+];
+SCQ.push(
+Q(1,"logic","The weather was so ______ that the flight was cancelled.",["stormy","pleasant","warm","dry"],"so... that the flight was cancelled: מזג אוויר סוער.","stormy","סוער"),
+Q(1,"vocab","She saved money for years in order to ______ a small apartment.",["afford","borrow","destroy","ignore"],"חסכה כסף כדי שתוכל להרשות לעצמה דירה.","afford","להרשות לעצמו"),
+Q(1,"vocab","Smoking is one of the main ______ of lung disease.",["causes","cures","benefits","results"],"עישון הוא גורם למחלה, לא תוצאה שלה. results היא המלכודת.","cause","סיבה"),
+Q(1,"vocab","The teacher asked the students to ______ the two poems and find the differences.",["compare","repeat","ignore","destroy"],"find the differences = להשוות.","compare","להשוות"),
+Q(1,"logic","Because the road was ______, the drivers had to take a longer route.",["blocked","wide","new","empty"],"Because מסמן סיבה: הכביש היה חסום, ולכן נסעו מסביב.","blocked","חסום"),
+Q(1,"vocab","Many animal ______ are in danger because their natural habitats are disappearing.",["species","machines","cities","languages"],"animal species = מיני בעלי חיים.","species","מין (ביולוגי)"),
+Q(1,"vocab","He felt ______ after the long journey and went straight to bed.",["exhausted","energetic","curious","cheerful"],"אחרי מסע ארוך והלך ישר לישון: מותש.","exhausted","מותש"),
+Q(1,"vocab","The company plans to ______ its business to three new countries next year.",["expand","reduce","cancel","borrow"],"שלוש מדינות חדשות = התרחבות.","expand","להתרחב"),
+Q(2,"logic","The professor's theory was ______ by the results of the experiment, which showed the exact opposite.",["undermined","supported","predicted","inspired"],"התוצאות הראו את ההפך, ולכן ערערו את התאוריה.","undermine","לערער"),
+Q(2,"vocab","Researchers found a strong ______ between regular exercise and better sleep.",["correlation","contradiction","distance","confusion"],"a correlation between X and Y = קשר סטטיסטי.","correlation","מתאם"),
+Q(2,"vocab","The museum was forced to ______ several of its programs because of budget cuts.",["suspend","expand","celebrate","publish"],"קיצוצים מובילים להשעיית תוכניות.","suspend","להשעות"),
+Q(2,"vocab","The witness gave a ______ account of the accident, describing every detail clearly.",["precise","vague","brief","false"],"every detail clearly = מדויק. vague הוא ההפך.","precise","מדויק"),
+Q(2,"logic","Although the two products look ______, they are made from completely different materials.",["identical","distinct","expensive","broken"],"Although יוצר ניגוד לחומרים שונים לגמרי: הם נראים זהים.","identical","זהה"),
+Q(2,"vocab","The local council agreed to ______ more money to public transportation.",["allocate","withdraw","conceal","deny"],"allocate money to = להקצות כסף ל-.","allocate","להקצות"),
+Q(2,"vocab","Her ______ to the project was so significant that the team named the new system after her.",["contribution","objection","absence","reaction"],"קראו מערכת על שמה בזכות תרומתה.","contribution","תרומה"),
+Q(2,"logic","The disease spread ______ through the population, infecting thousands within days.",["rapidly","gradually","rarely","partially"],"thousands within days = מהר מאוד.","rapid","מהיר"),
+Q(2,"logic","Most experts consider the plan ______, but some doubt whether there is enough money to carry it out.",["feasible","impossible","absurd","illegal"],"but some doubt: הרוב חושבים שהתוכנית ברת ביצוע.","feasible","בר-ביצוע"),
+Q(3,"vocab","The minister's ______ remarks offended many listeners, who expected a more careful response.",["tactless","diplomatic","cautious","sincere"],"offended ו-expected more careful: הדברים היו חסרי טאקט.","tactless","חסר טאקט"),
+Q(3,"logic","Initial results were ______, but the researchers warned that a larger study was needed.",["promising","discouraging","final","irrelevant"],"but warned: התוצאות היו מעודדות, ובכל זאת צריך מחקר גדול יותר.","promising","מבטיח"),
+Q(3,"vocab","The ancient manuscript was so ______ that it had to be handled with special gloves.",["fragile","durable","modern","common"],"כפפות מיוחדות כי הוא שביר.","fragile","שביר"),
+Q(3,"logic","The policy proved ______: instead of reducing traffic, it actually increased it.",["counterproductive","effective","popular","temporary"],"השיגה את ההפך מהמטרה.","counterproductive","פוגע במטרה"),
+Q(3,"vocab","The novel's plot is so ______ that readers often need to reread chapters to follow it.",["intricate","simple","predictable","brief"],"צריך לקרוא שוב כדי לעקוב: עלילה מסובכת.","intricate","מסובך"),
+Q(3,"logic","The company's ______ decline was not sudden; it took place over two decades.",["steady","abrupt","sudden","unexpected"],"not sudden, two decades: ירידה הדרגתית. abrupt ו-sudden הם ההפך.","steady","יציב, הדרגתי"),
+Q(3,"vocab","The security footage ______ the defendant's claim that he had been at home, showing him entering his building at 8 p.m.",["corroborated","contradicted","ignored","invented"],"הצילום הראה אותו נכנס הביתה, ולכן אישש את הטענה.","corroborate","לאשש"),
+Q(3,"vocab","Her ______ attention to detail made her an excellent editor.",["meticulous","careless","occasional","superficial"],"עורכת מצוינת בזכות קפדנות.","meticulous","קפדני"),
+Q(3,"vocab","The effects of the medicine were ______: patients reported almost no change.",["negligible","dramatic","immediate","harmful"],"almost no change = זניח.","negligible","זניח"),
+Q(2,"logic","The hotel was cheap; ______, the rooms were clean and comfortable.",["moreover","however","otherwise","instead"],"שני יתרונות ברצף: moreover. however היה דורש ניגוד.","moreover","יתר על כן"),
+Q(3,"logic","The ______ of evidence makes it impossible to reach a firm conclusion at this stage.",["scarcity","abundance","clarity","accuracy"],"impossible to conclude: אין מספיק ראיות.","scarce","מועט")
+);
+RSQ.push(
+Q(1,"cause","The concert was cancelled because of the heavy rain.",["Heavy rain caused the concert to be called off.","The concert took place in heavy rain.","It rained after the concert ended.","The concert was moved because of the noise."],"because of = הגשם הוא הסיבה לביטול."),
+Q(1,"comp","Mark is taller than his brother but shorter than his father.",["Mark's father is the tallest of the three.","Mark is the tallest in his family.","Mark's brother is taller than Mark.","Mark and his father are the same height."],"סדר: אח < מרק < אבא."),
+Q(1,"cond","You cannot enter the building without an ID card.",["An ID card is needed to get into the building.","Anyone can enter the building freely.","ID cards are sold inside the building.","You must leave your ID card outside the building."],"cannot without = חייבים."),
+Q(1,"contrast","Although she studied hard, she did not pass the exam.",["She failed the exam despite studying a lot.","She passed because she studied hard.","She did not study, so she failed.","She studied hard after failing the exam."],"Although = despite. ניגוד בין מאמץ לתוצאה."),
+Q(2,"neg","The store has never been so crowded.",["The store is more crowded now than it has ever been.","The store is never crowded.","The store used to be more crowded.","The store is usually this crowded."],"never been so = מעולם לא היה כך, כלומר עכשיו הכי עמוס."),
+Q(2,"time","The factory was closed as soon as the safety problems were discovered.",["The factory was shut down immediately after the safety issues came to light.","The safety problems were discovered after the factory closed.","The factory stayed open despite the safety problems.","The factory closed for reasons other than safety."],"as soon as = מיד כש-."),
+Q(2,"neg","It is not the cost but the time required that makes the project difficult.",["The main difficulty of the project is how long it takes, not how much it costs.","The project is difficult because it is expensive.","The project is cheap and quick.","Both cost and time make the project easy."],"not X but Y: הקושי הוא Y (הזמן)."),
+Q(2,"quant","Few cities can match Paris in the number of its museums.",["Paris has more museums than almost any other city.","Many cities have more museums than Paris.","Paris has only a few museums.","Most cities have the same number of museums as Paris."],"Few can match = כמעט אף עיר לא משתווה."),
+Q(3,"cond","Had it not been for her coach's support, she would have quit the team.",["Her coach's support is what kept her on the team.","She quit the team despite her coach's support.","Her coach asked her to quit the team.","She stayed on the team, although her coach did not support her."],"Had it not been for X = אלמלא X. בזכות המאמן היא נשארה."),
+Q(2,"comp","The longer the meeting lasted, the less attention people paid.",["As the meeting went on, people became less focused.","People paid more attention during long meetings.","The meeting was short because people were not paying attention.","People's attention had no connection to the length of the meeting."],"The longer... the less: יחס הפוך."),
+Q(2,"time","The report was published only after it had been checked by three experts.",["Three experts reviewed the report before it was published.","The report was checked by experts after publication.","Three experts wrote the report.","The report was published without being checked."],"only after = רק אחרי: קודם בדיקה ואז פרסום."),
+Q(3,"quant","Rarely does the committee approve a proposal on its first submission.",["The committee seldom accepts a proposal the first time it is submitted.","The committee usually approves proposals immediately.","The committee never reviews first submissions.","Proposals are rarely submitted to the committee."],"Rarely = לעיתים רחוקות, לא never."),
+Q(2,"cond","The drug is effective, provided that it is taken with food.",["The drug works as long as it is taken with a meal.","The drug is effective only without food.","Food makes the drug unnecessary.","The drug works whether or not it is taken with food."],"provided that = בתנאי ש-."),
+Q(3,"time","Not until the final chapter does the reader learn the narrator's true identity.",["The narrator's real identity is revealed only in the last chapter.","The reader knows the narrator's identity from the beginning.","The final chapter is narrated by a different person.","The narrator's identity is never revealed."],"Not until = רק ב-."),
+Q(3,"cause","So complex was the problem that even the experts could not agree on a solution.",["The problem was so complicated that the experts disagreed about how to solve it.","The experts quickly agreed on a solution to the simple problem.","The problem was solved because the experts agreed.","Only non-experts could not solve the problem."],"So X was... that = כה X עד ש-. סדר מילים הפוך לא משנה משמעות."),
+Q(2,"contrast","While some critics praised the book, others found it dull.",["The book received both positive and negative reactions from critics.","All the critics found the book dull.","The critics praised the book because it was dull.","Most critics did not read the book."],"While כאן = בעוד ש-, ניגוד בין שתי קבוצות."),
+Q(3,"neg","Little did the investors know that the company was about to collapse.",["The investors had no idea the company was close to failing.","The investors knew a little about the coming collapse.","The investors caused the company to collapse.","The company collapsed because the investors knew too little."],"Little did they know = הם כלל לא ידעו. B מפרשת little כ\"קצת\".")
+);
+PASSAGES.push(
+{d:2,topic:"microplastics",text:"Microplastics are tiny pieces of plastic, less than five millimeters long, that come from larger plastic items as they break down, as well as from products such as synthetic clothing and car tires. Because they are so small, they travel easily through water and air, and they have now been found almost everywhere scientists have looked, from deep ocean trenches to mountain snow. Fish and other sea creatures often mistake them for food, and researchers have detected microplastics in seafood, drinking water and even human blood. What remains unclear is how harmful they are. Laboratory studies suggest that high doses can damage cells, but the amounts used in these experiments are often far larger than what people are actually exposed to. Measuring microplastics is also difficult, since different laboratories use different methods, making their results hard to compare. Many scientists therefore argue that while there is no reason for panic, there is good reason to reduce plastic waste now rather than wait for definitive answers.",qs:[
+Q(2,"main","The passage is mainly about",["what is known and still unknown about microplastics","how plastic is manufactured","why fish prefer plastic to food","a new method for removing plastic from the ocean"],"הקטע מציג ממצאים ושאלות פתוחות. אין בו שיטת ניקוי."),
+Q(1,"detail","According to the passage, microplastics come from",["larger plastic items breaking down and certain everyday products","mountain snow","fish and other sea creatures","human blood"],"שלג ודם הם מקומות שבהם נמצאו, לא המקור."),
+Q(2,"detail","Why is it difficult to rely on the laboratory studies mentioned in the passage?",["the doses used are often much higher than real exposure","the studies were done on fish only","no damage to cells was found","the studies were never published"],"far larger than what people are actually exposed to."),
+Q(2,"vctx","The word \"definitive\" in the last sentence is closest in meaning to",["final and certain","early","expensive","partial"],"definitive answers = תשובות סופיות.","definitive","סופי, מוחלט"),
+Q(2,"infer","The scientists mentioned at the end of the passage would most likely support",["reducing plastic use even before all the facts are known","waiting for more research before taking any action","removing fish from people's diets","ignoring the problem because there is no proof of harm"],"reduce plastic waste now rather than wait. B היא ההפך.")]},
+{d:3,topic:"remote work",text:"When offices emptied during the pandemic, many managers expected productivity to collapse. Instead, numerous companies reported that employees working from home completed as much work as before, and sometimes more. Workers saved hours of commuting, and many said they could concentrate better without the constant interruptions of an open-plan office. Yet the picture is less straightforward than these early reports suggested. Productivity is notoriously hard to measure, especially in jobs that involve creative or collaborative work, and self-reported data tend to be optimistic. Some later studies found that fully remote teams struggled with innovation: spontaneous conversations, which often spark new ideas, became rarer, and junior employees, who learn by observing experienced colleagues, received less informal guidance. As a result, many organizations have settled on hybrid arrangements, in which employees spend part of the week in the office. Whether this compromise captures the advantages of both models or merely combines their drawbacks is a question researchers are still trying to answer.",qs:[
+Q(3,"main","The main purpose of the passage is to",["show that the effects of remote work are more mixed than first believed","prove that remote work always increases productivity","argue that offices should be closed permanently","describe the history of open-plan offices"],"Yet the picture is less straightforward: זה לב הקטע."),
+Q(2,"detail","According to the passage, early reports about working from home",["indicated that productivity stayed the same or improved","showed that productivity collapsed","were based on objective measurements only","focused mainly on junior employees"],"as much work as before, and sometimes more. B היא מה שהמנהלים ציפו, לא מה שדווח."),
+Q(2,"detail","Junior employees were affected by remote work because they",["had fewer chances to learn informally from experienced colleagues","spent more time commuting","were interrupted more often","were not allowed to work from home"],"who learn by observing experienced colleagues, received less informal guidance."),
+Q(2,"vctx","The word \"spark\" in the passage is closest in meaning to",["start","end","hide","measure"],"spark new ideas = להצית, לעורר רעיונות.","spark","לעורר"),
+Q(3,"infer","The final sentence suggests that the hybrid model",["has not yet been proven to be the best solution","is clearly better than both other models","has been rejected by most organizations","combines only the disadvantages of both models"],"השאלה עדיין פתוחה. D היא רק אחת האפשרויות שהקטע מעלה.")]}
+);
+
+const L1W=`achieve|להשיג;admit|להודות;advantage|יתרון;afford|להרשות לעצמו;agree|להסכים;allow|לאפשר;amount|כמות;ancient|עתיק;announce|להכריז;annual|שנתי;appear|להופיע;apply|להגיש מועמדות, להחיל;argue|לטעון, להתווכח;arrange|לסדר;attempt|ניסיון;avoid|להימנע;aware|מודע;behavior|התנהגות;belief|אמונה;borrow|לשאול (חפץ);cause|לגרום, סיבה;challenge|אתגר;claim|טענה;climate|אקלים;common|נפוץ;compare|להשוות;complain|להתלונן;condition|מצב, תנאי;consider|לשקול;contain|להכיל;continue|להמשיך;create|ליצור;damage|נזק;decrease|להפחית;defend|להגן על;delay|עיכוב;describe|לתאר;destroy|להרוס;develop|לפתח;disease|מחלה;effect|השפעה, תוצאה;effort|מאמץ;encourage|לעודד;environment|סביבה;equal|שווה;estimate|להעריך (כמות);event|אירוע;evidence|ראיה;exist|להתקיים;expand|להתרחב;expect|לצפות ל-;experience|חוויה, ניסיון;explain|להסביר;exhausted|מותש;failure|כישלון;feature|מאפיין;force|לאלץ;former|לשעבר;frequent|תכוף;gain|להרוויח;goal|יעד;growth|צמיחה;harm|להזיק;ignore|להתעלם;improve|לשפר;include|לכלול;increase|להגדיל;influence|להשפיע;involve|לערב;issue|סוגיה;likely|סביר;local|מקומי;major|עיקרי;method|שיטה;modern|מודרני;native|יליד;necessary|הכרחי;observe|לצפות ב-;opinion|דעה;oppose|להתנגד;particular|מסוים;period|תקופה;permit|להתיר;population|אוכלוסייה;prefer|להעדיף;prepare|להכין;prevent|למנוע;previous|קודם;produce|לייצר;protect|לשמור על;prove|להוכיח;provide|לספק;purpose|תכלית;quality|איכות;rapid|מהיר;rare|נדיר;reduce|להקטין;refuse|לסרב;region|אזור;reject|לדחות;rely|לסמוך על;remain|להישאר;remove|להסיר;replace|להחליף;require|לדרוש;research|מחקר;respond|להגיב;result|תוצאה;risk|סיכון;similar|דומה;solve|לפתור (בעיה);source|מקור;species|מין (ביולוגי);spread|להתפשט;strength|חוזק;suffer|לסבול;suggest|להציע;supply|אספקה;support|לתמוך;survive|לשרוד;task|משימה;threat|איום;treat|לטפל ב-;trend|מגמה;typical|טיפוסי;unique|ייחודי;various|שונים, מגוונים;wealth|עושר;worth|שווה (ערך)`;
+const L2W=`abandon|לנטוש;abstract|מופשט;accelerate|להאיץ;accommodate|לארח, להכיל;accumulate|לצבור;acknowledge|להכיר ב-;adapt|להסתגל;adjacent|סמוך;adopt|לאמץ;allocate|להקצות;alternative|חלופה;analogy|השוואה, אנלוגיה;anxiety|חרדה;appropriate|מתאים;approximate|משוער;aspect|היבט;assert|לטעון בתוקף;asset|נכס;attain|להגיע ל-;authority|סמכות;available|זמין;barrier|מחסום;boundary|גבול;capacity|קיבולת;category|קטגוריה;circumstance|נסיבה;cite|לצטט;clarify|להבהיר;commence|להתחיל;commodity|סחורה;compatible|תואם;compile|לקבץ;complement|להשלים;component|רכיב;concentrate|להתרכז;conclude|להסיק;conduct|לערוך (מחקר);confine|לכלוא;conflict|סכסוך;consent|הסכמה;consist|להיות מורכב מ-;constant|קבוע;consume|לצרוך;contemporary|בן זמננו;context|הקשר;contrary|הפוך;contribute|לתרום;contribution|תרומה;convert|להמיר;convince|לשכנע;cooperate|לשתף פעולה;correlation|מתאם;criteria|קריטריונים;decade|עשור;define|להגדיר;depict|לתאר (בתמונה);deprive|לשלול מ-;detect|לזהות;device|מכשיר;devote|להקדיש;dimension|ממד;discard|להשליך;disclose|לגלות (סוד);discrimination|אפליה;displace|לעקור;dispute|מחלוקת;distort|לעוות;domestic|ביתי, פנים-ארצי;duration|משך;enable|לאפשר ל-;encounter|להיתקל ב-;enormous|עצום;ensure|לוודא;equivalent|שווה ערך;erode|לשחוק;establish|לייסד;ethical|מוסרי;expose|לחשוף ל-;external|חיצוני;facilitate|להקל על;factor|גורם;flexible|גמיש;foundation|יסוד;framework|מסגרת;generate|לחולל;guarantee|להבטיח;highlight|להבליט;identical|זהה;illustrate|להמחיש;impact|השפעה ניכרת;impose|לכפות;incentive|תמריץ;incorporate|לשלב בתוך;indicate|להצביע על;inhibit|לבלום;initiate|ליזום;innovation|חדשנות;inspect|לבדוק;instance|מקרה, דוגמה;intervene|להתערב;intrinsic|מהותי;investigate|לחקור;isolate|לבודד;mature|בוגר;mechanism|מנגנון;migrate|להגר;modify|לשנות מעט;monitor|לפקח;mutual|הדדי;negotiate|לנהל משא ומתן;objective|אובייקטיבי;obstacle|מכשול;ongoing|מתמשך;outcome|תוצאה סופית;overlap|חפיפה;participate|להשתתף;perceive|לתפוס (בחושים);perspective|נקודת מבט;phenomenon|תופעה;portion|מנה, חלק;potential|פוטנציאל;precise|מדויק מאוד;predict|לחזות;principle|עיקרון;priority|עדיפות;proceed|להמשיך הלאה;promote|לקדם;proportion|יחס;prospect|סיכוי;publish|לפרסם;recover|להחלים;regulate|להסדיר;reinforce|לחזק;relevant|רלוונטי;remedy|תרופה;retain|לשמור על;reverse|להפוך;revise|לתקן, לעדכן;rigid|נוקשה;scope|היקף;sequence|רצף;shift|שינוי;simulate|לדמות;sole|יחיד;stable|יציב;strategy|אסטרטגיה;structure|מבנה;submit|להגיש;survey|סקר;suspend|להשעות;temporary|זמני;tension|מתח;terminate|לסיים;transform|לשנות צורה;transmit|לשדר, להעביר;trigger|לעורר;ultimate|סופי;uniform|אחיד;utilize|לנצל;violate|להפר;visible|נראה;voluntary|התנדבותי;widespread|נפוץ מאוד`;
+const L3W=`aberration|סטייה;abolish|לבטל (חוק);abrupt|פתאומי;absurd|אבסורדי;adverse|שלילי;advent|הופעה, הגעה;aesthetic|אסתטי;affluent|אמיד;aggravate|להחמיר;alleviate|להקל;allude|לרמוז על;amend|לתקן (חוק);ample|רב, די והותר;anomaly|חריגה;apathy|אדישות;arduous|מפרך;articulate|לבטא בבהירות;ascertain|לוודא;augment|להגדיל;austere|מחמיר, צנוע;autonomy|עצמאות;benevolent|טוב לב;candid|גלוי לב;catastrophic|קטסטרופלי;cohesive|מלוכד;commend|לשבח;complacent|שאנן;comply|לציית;concede|להודות (בהפסד);concise|תמציתי;condemn|לגנות;conform|להתיישר עם;consensus|הסכמה כללית;conspicuous|בולט לעין;contend|לטעון;corroborate|לאשש;credible|אמין;curtail|לקצץ;cynical|ציני;debilitating|מתיש;decisive|החלטי;defer|לדחות (למועד אחר);deficient|לוקה בחסר;demise|קץ;deplete|לדלדל;deter|להרתיע;detrimental|מזיק;devastating|הרסני;dilemma|דילמה;diligent|חרוץ;discern|להבחין;discrepancy|אי-התאמה;disparity|פער;dissent|התנגדות;dubious|מפוקפק;elaborate|מפורט;elicit|לעורר (תגובה);elusive|חמקמק;eminent|דגול;empirical|אמפירי;encompass|להקיף;endorse|לתמוך רשמית;endure|להחזיק מעמד;enigmatic|מסתורי;ephemeral|חולף;eradicate|למגר;erratic|הפכפך;exacerbate|להחריף;exemplify|להוות דוגמה;exorbitant|מופקע;expedite|לזרז;fallacy|כשל לוגי;fragile|שביר;futile|חסר תועלת;hamper|להפריע;hinder|לעכב;hostile|עוין;hypothetical|היפותטי;impartial|לא משוחד;impede|לחסום;imperative|חיוני ביותר;implement|ליישם;inadvertent|בשוגג;incessant|בלתי פוסק;incompatible|לא תואם;indifferent|אדיש;indispensable|שאין לוותר עליו;inept|חסר כישרון;ingenious|גאוני;innate|מולד;intricate|מסובך;meticulous|קפדני;mitigate|למתן;negligible|זניח;novel|חדשני;obsolete|מיושן;ominous|מבשר רעות;paradox|פרדוקס;paramount|עליון;perpetuate|להנציח;pervasive|חודר לכל מקום;plausible|סביר, מתקבל על הדעת;pragmatic|מעשי;precarious|רעוע;predecessor|קודם בתפקיד;proficient|מיומן;profound|עמוק;proliferate|להתרבות במהירות;prudent|נבון;reconcile|ליישב;redundant|מיותר;refute|להפריך;relentless|עיקש;rigorous|יסודי;robust|חסון;scrutiny|בחינה מדוקדקת;sporadic|ספורדי;stagnant|עומד, קפוא;stringent|נוקשה (כלל);subtle|עדין, דק;superficial|שטחי;susceptible|רגיש ל-;tangible|מוחשי;tedious|מייגע;thrive|לשגשג;transient|ארעי;trivial|שולי;ubiquitous|נמצא בכל מקום;unanimous|פה אחד;vague|מעורפל;viable|בר-קיימא;vigilant|ערני;vulnerable|פגיע;warrant|להצדיק;zealous|נלהב;tactless|חסר טאקט;counterproductive|פוגע במטרה;speculative|השערתי;deadlock|מבוי סתום;compelling|משכנע;skeptical|ספקן;inadequate|לא מספק;digressive|סוטה מהנושא;definitive|סופי, מוחלט;spark|לעורר, להצית`;
+const parseW=s=>s.split(";").map(x=>x.split("|")).filter(x=>x[0]&&x[1]).map(([en,he])=>[en.trim(),he.trim()]);
+const LEVEL={};
+const W1=parseW(L1W), W2=parseW(L2W), W3=parseW(L3W);
+W1.forEach(([e])=>LEVEL[e]=1); BANK.forEach(([e])=>{ if(!LEVEL[e]) LEVEL[e]=2; }); W2.forEach(([e])=>{ if(!LEVEL[e]) LEVEL[e]=2; }); W3.forEach(([e])=>{ if(!LEVEL[e]) LEVEL[e]=3; });
+const WORDS=(()=>{ const seen=new Set(), out=[]; for(const [en,he] of [...W1,...BANK,...W2,...W3]){ if(!seen.has(en)){ seen.add(en); out.push([en,he]); } } return out; })();
+
+const HE = Object.fromEntries(WORDS.slice().reverse());
+const ITEMS=[];
+SCQ.forEach((q,i)=>ITEMS.push(Object.assign({id:"sc"+i,type:"sc"},q)));
+RSQ.forEach((q,i)=>ITEMS.push(Object.assign({id:"rs"+i,type:"rs"},q)));
+PASSAGES.forEach((p,pi)=>p.qs.forEach((q,qi)=>ITEMS.push(Object.assign({id:"rc"+pi+"-"+qi,type:"rc",pid:pi},q))));
+const TYPES = {sc:"השלמת משפטים",rs:"ניסוח מחדש",rc:"הבנת הנקרא"};
+const LEVELS = {1:"בסיסית",2:"בינונית",3:"גבוהה"};
+const SKILLS = {
+vocab:["אוצר מילים","רוב הטעויות כאן הן מילים שלא הכרת. אל תדלג על מנת המילים היומית, ועשה סבב חזרה קצר גם בערב."],
+logic:["מילות קישור והיגיון","לפני שאתה מסתכל על האפשרויות, סמן את מילת הקישור (although, despite, so... that, rather than) והחלט אם המשפט צריך ניגוד, סיבה או המשך."],
+neg:["שלילה והחרגה","בכל משפט עם not, except, instead of, under no circumstances, נסח לעצמך בעברית מה קרה ומה לא, ורק אז השווה לאפשרויות."],
+cond:["משפטי תנאי","unless = if not. had X been = אילו היה, וזה לא קרה. שאל את עצמך: זה קרה בפועל או לא?"],
+time:["רצף זמנים","צייר ציר זמן קטן: מה קרה קודם ומה אחר כך. not until, no sooner, scarcely מסמנים סדר ולא תדירות."],
+comp:["השוואות","בדוק את כיוון ההשוואה: מי יותר ומי פחות. אפשרות שמחליפה צדדים היא המלכודת הקלאסית."],
+cause:["סיבה ומטרה","הפל כל אפשרות שמוסיפה \"בגלל\" או \"כדי\" שלא היו במקור, או מחליפה ביניהם."],
+contrast:["ניגוד","although, despite, while: שני חלקי המשפט חייבים להישאר בניגוד גם בתשובה הנכונה."],
+quant:["כמויות","few = כמעט לא, a few = כמה. hardly, scarcely = כמעט לא. הכמות חייבת להישמר בדיוק."],
+main:["רעיון מרכזי","התשובה הנכונה מכסה את כל הקטע, לא רק חלק ממנו. אפשרות נכונה אבל צרה היא מלכודת."],
+detail:["פרטים בקטע","מצא בקטע את מילת המפתח מהשאלה וקרא את המשפט שלפניה ואחריה לפני שאתה בוחר."],
+vctx:["מילה בהקשר","הצב כל אפשרות במקום המילה וקרא את המשפט בקטע. הפירוש המילולי הוא לרוב המלכודת."],
+infer:["הסקה","התשובה נובעת מהקטע אבל לא כתובה בו במפורש. הפל תשובות קיצוניות (always, completely) ותשובות שהקטע לא תומך בהן."]
+};
+const INT = [0,1,2,4,7,15];
+const ORIENT = ["2026-10-11","2026-10-12","2026-10-13","2026-10-14"];
+
+/* ---------- utils ---------- */
+const pad = n => String(n).padStart(2,"0");
+const keyOf = d => d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today = () => keyOf(new Date());
+const addDays = (s,n) => { const d=new Date(s+"T12:00:00"); d.setDate(d.getDate()+n); return keyOf(d); };
+const diff = (a,b) => Math.round((new Date(b+"T12:00:00")-new Date(a+"T12:00:00"))/864e5);
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const WD = ["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","ש׳"];
+const wd = s => WD[new Date(s+"T12:00:00").getDay()];
+const dm = s => { const [,m,d]=s.split("-"); return (+d)+"/"+(+m); };
+
+/* ---------- state & persistence ---------- */
+const DEFAULT = {v:4,examDate:"2026-10-26",target:120,base:91,cards:{},custom:[],attempts:[],daily:{},items:{},skills:{},theta:null,thetaN:{},sims:[],updatedAt:0};
+const LS = "amirnet-coach-v1";
+let S = Object.assign({},DEFAULT);
+try{ const r=localStorage.getItem(LS); if(r) S=Object.assign({},DEFAULT,JSON.parse(r)); }catch(e){}
+function migrate(){ if(!S.v||S.v<2){ if(S.base===103) S.base=91; if(S.target===120) S.target=100; S.v=2; } if(S.v<3){ if(S.target===100) S.target=120; S.v=3; } if(S.v<4){ S.items=S.items||{}; S.skills=S.skills||{}; S.thetaN=S.thetaN||{}; delete S.tips; delete S.tipsAt; delete S.recentTopics; S.v=4; } for(const k of ["items","skills","thetaN","daily","cards"]) if(!S[k]) S[k]={}; for(const k of ["custom","attempts","sims"]) if(!Array.isArray(S[k])) S[k]=[]; }
+migrate();
+function band(v){ return v>=134?"פטור":v>=120?"מתקדמים ב׳":v>=100?"מתקדמים א׳":v>=85?"בסיסי":"טרום בסיסי"; }
+function bandEn(v){ return v>=134?"Exemption":v>=120?"Advanced B":v>=100?"Advanced A":v>=85?"Basic":"Pre-basic"; }
+let dbRef=null, writing=false, again=false, saveTimer=null;
+
+function setSync(t){ document.getElementById("sync").textContent=t; }
+function persist(){
+  S.updatedAt=Date.now();
+  try{ localStorage.setItem(LS,JSON.stringify(S)); }catch(e){}
+  if(!dbRef) return;
+  clearTimeout(saveTimer); saveTimer=setTimeout(flush,700);
+}
+async function flush(){
+  if(!dbRef) return;
+  if(writing){ again=true; return; }
+  writing=true;
+  try{ await dbRef.set(JSON.parse(JSON.stringify(S))); setSync("ההתקדמות נשמרת בחשבון שלך"); }
+  catch(e){ setSync("השמירה בחשבון נכשלה, נשמר מקומית במכשיר"); }
+  writing=false;
+  if(again){ again=false; flush(); }
+}
+async function connect(){
+  if(!window.claude || !window.claude.use){ setSync("שמירה מקומית במכשיר"); return; }
+  try{
+    const [db,user]=await Promise.all([claude.use("db"),claude.use("user")]);
+    if(!db||!user){ setSync("שמירה מקומית במכשיר"); return; }
+    const uid=await user.id();
+    dbRef=db.doc("data/users/"+uid+"/progress");
+    const snap=await dbRef.get();
+    if(snap.exists){
+      const remote=snap.data()||{};
+      if((remote.updatedAt||0)>=(S.updatedAt||0)){
+        S=Object.assign({},DEFAULT,JSON.parse(JSON.stringify(remote))); migrate();
+        try{ localStorage.setItem(LS,JSON.stringify(S)); }catch(e){}
+        render();
+      } else flush();
+    } else flush();
+    setSync("ההתקדמות נשמרת בחשבון שלך");
+  }catch(e){ setSync("שמירה מקומית במכשיר"); }
+}
+const IN_CLAUDE = !!(window.claude && window.claude.use);
+
+/* ---------- derived ---------- */
+function day(k){ return S.daily[k] || (S.daily[k]={nw:0,rv:0,ans:0,ok:0}); }
+function dayRead(k){ return S.daily[k] || {nw:0,rv:0,ans:0,ok:0}; }
+function allWords(){
+  const seen=new Set(), out=[];
+  for(const w of S.custom){ if(!seen.has(w.en)){seen.add(w.en);out.push(w);} }
+  for(const [en,he] of WORDS){ if(!seen.has(en)){seen.add(en);out.push({en,he});} }
+  return out;
+}
+function heOf(en){ const c=S.custom.find(w=>w.en===en); return c?c.he:(HE[en]||""); }
+function dueList(){ const t=today(); return Object.keys(S.cards).filter(k=>S.cards[k].due<=t); }
+function typeStats(t,n=40){
+  const a=S.attempts.filter(x=>x.type===t).slice(-n);
+  const ok=a.filter(x=>x.ok).length;
+  const ms=a.length?Math.round(a.reduce((s,x)=>s+(x.ms||0),0)/a.length/1000):0;
+  return {n:a.length,acc:a.length?ok/a.length:null,sec:ms};
+}
+function weakest(){
+  const o=["sc","rs","rc"].map(x=>({x,a:typeAcc(x)})).sort((a,b)=>a.a-b.a);
+  return o[0].x;
+}
+function estimate(){
+  if(S.attempts.length<15) return null;
+  initTheta(); const th=S.theta;
+  const m=(12*th.sc+6*th.rs+5*th.rc)/23;
+  return Math.max(50,Math.min(150,Math.round(113+15*m)));
+}
+function planFor(k){
+  const left=diff(k,S.examDate);
+  if(left<0) return null;
+  if(left===0) return {kind:"exam",label:"מבחן",nw:0,q:0};
+  if(left===1) return {kind:"rest",label:"חזרה קלה",nw:0,q:8};
+  if(left<=3) return {kind:"sim",label:"סימולציה",nw:10,q:25};
+  if(ORIENT.includes(k)) return {kind:"light",label:"קליל",nw:12,q:8};
+  return {kind:"normal",label:"רגיל",nw:25,q:15};
+}
+function dayDone(k){
+  const p=planFor(k); if(!p||p.kind==="exam") return false;
+  const d=dayRead(k);
+  return d.nw>=p.nw && (p.kind==="sim"?simToday(k):d.ans>=p.q);
+}
+function streak(){
+  let n=0,k=today();
+  const act=x=>{const d=dayRead(x);return d.ans>0||d.rv>0||d.nw>0;};
+  if(!act(k)) k=addDays(k,-1);
+  while(act(k)){ n++; k=addDays(k,-1); }
+  return n;
+}
+
+/* ---------- views ---------- */
+let tab="today", vs=null, ps=null, backup="", backupErr="";
+
+function pct(v){ return (Math.max(85,Math.min(145,v))-85)/(145-85)*100; }
+function rulerHTML(){
+  const est=estimate();
+  let h='<div class="ruler" dir="ltr" role="img" aria-label="סקאלת ציון: היום '+S.base+', יעד '+S.target+', פטור 134">';
+  h+='<div class="path" style="left:'+pct(S.base)+'%;width:'+(pct(S.target)-pct(S.base))+'%"></div>';
+  h+='<div class="track"></div>';
+  for(let v=85;v<=145;v+=5){ h+='<div class="tick'+(v%10?' minor':'')+'" style="left:'+pct(v)+'%"></div>'; if(v%10===0) h+='<div class="tlab" style="left:'+pct(v)+'%">'+v+'</div>'; }
+  h+='<div class="pin" style="left:'+pct(S.base)+'%"></div><div class="mk top" style="left:'+pct(S.base)+'%"><b>'+S.base+'</b>הנקודה שלך</div>';
+  h+='<div class="pin" style="left:'+pct(S.target)+'%"></div><div class="mk top" style="left:'+pct(S.target)+'%"><b>'+S.target+'</b>היעד</div>';
+  if(S.target<120&&S.base<120) h+='<div class="pin dash" style="left:'+pct(120)+'%"></div><div class="mk top" style="left:'+pct(120)+'%"><b>120</b>מתקדמים ב׳</div>';
+  if(S.target!==134) h+='<div class="pin dash" style="left:'+pct(134)+'%"></div><div class="mk top" style="left:'+pct(134)+'%"><b>134</b>פטור</div>';
+  if(est) h+='<div class="pin est" style="left:'+pct(est)+'%"></div><div class="mk bottom" style="left:'+pct(est)+'%;color:var(--blue)">כרגע בערך '+est+'</div>';
+  return h+'</div>';
+}
+
+function viewToday(){
+  const t=today(), p=planFor(t), d=dayRead(t), left=diff(t,S.examDate), due=dueList().length;
+  let h='<section class="sheet">'+rulerHTML();
+  h+='<p class="small muted" style="margin:8px 0 0">'+(estimate()?'הסימון הכחול הוא אומדן לפי כל התשובות שלך ורמת הקושי שלהן, לא ציון רשמי.':'אחרי 15 תשובות יופיע כאן אומדן של המיקום שלך.')+'</p></section>';
+
+  h+='<section class="sheet"><h2>';
+  if(!p) h+='המבחן כבר עבר';
+  else if(p.kind==="exam") h+='היום המבחן. בהצלחה!';
+  else h+='המשימות של היום';
+  h+='</h2>';
+  if(p && p.kind!=="exam"){
+    const w=weakest();
+    if(p.kind==="light") h+='<p class="muted small" style="margin-top:0">שבוע היכרות בקמפוס, אז היום רק מנה קטנה.</p>';
+    if(p.kind==="sim") h+='<p class="muted small" style="margin-top:0">שלב הסימולציות: עשרים שאלות ברצף, בקצב של מבחן.</p>';
+    if(p.kind==="rest") h+='<p class="muted small" style="margin-top:0">מחר מבחן. בלי מילים חדשות, חזרה קלה ולישון מוקדם.</p>';
+    h+='<ul class="tasks">';
+    const vOk = d.nw>=p.nw && due===0;
+    h+='<li><span class="chk'+(vOk?' on':'')+'">'+(vOk?'✓':'')+'</span><div><h3>מילים</h3><div class="small muted">'+(p.nw?p.nw+' מילים חדשות ('+d.nw+' נלמדו), ':'')+due+' חזרות ממתינות</div></div><button class="btn ghost go" data-act="go" data-arg="vocab">'+(vOk?'עוד':'התחל')+'</button></li>';
+    if(p.kind==="sim"){
+      const sOk=simToday(t);
+      h+='<li><span class="chk'+(sOk?' on':'')+'">'+(sOk?'✓':'')+'</span><div><h3>סימולציה מלאה</h3><div class="small muted">23 שאלות, 39 דקות, בתנאי מבחן</div></div><button class="btn ghost go" data-act="go" data-arg="practice">'+(sOk?'עוד':'התחל')+'</button></li>';
+    } else {
+      const qOk = d.ans>=p.q;
+      h+='<li><span class="chk'+(qOk?' on':'')+'">'+(qOk?'✓':'')+'</span><div><h3>תרגול</h3><div class="small muted">'+d.ans+' מתוך '+p.q+' שאלות. דגש: '+TYPES[w]+'</div></div><button class="btn ghost go" data-act="go" data-arg="practice">'+(qOk?'עוד':'התחל')+'</button></li>';
+      if(!(S.sims||[]).length) h+='<li><span class="chk"></span><div><h3>סימולציית פתיחה</h3><div class="small muted">פעם אחת, כדי לדעת מאיפה אתה מתחיל</div></div><button class="btn ghost go" data-act="go" data-arg="practice">התחל</button></li>';
+    }
+    h+='</ul>';
+  }
+  h+='</section>';
+
+  if(left>0){
+    h+='<section class="sheet"><h2>הדרך למבחן</h2><div class="days">';
+    for(let i=0;i<=left;i++){
+      const k=addDays(t,i), pp=planFor(k);
+      const cls=['day']; if(i===0) cls.push('today'); if(pp.kind==='exam') cls.push('exam'); else if(dayDone(k)) cls.push('done');
+      h+='<div class="'+cls.join(' ')+'"><span class="k">'+wd(k)+'</span><b>'+dm(k)+'</b>'+(dayDone(k)?'✓ ':'')+pp.label+'</div>';
+    }
+    h+='</div><div class="stats" style="margin-top:14px">';
+    h+='<div class="stat"><b>'+left+'</b><span>ימים למבחן</span></div>';
+    h+='<div class="stat"><b>'+streak()+'</b><span>ימים ברצף</span></div>';
+    h+='<div class="stat"><b>'+Object.values(S.cards).filter(c=>c.box>=3).length+'</b><span>מילים שולטות</span></div>';
+    h+='</div></section>';
+  }
+
+  h+='<section class="sheet"><h2>הגדרות</h2><div class="settings">';
+  h+='<label class="field">תאריך המבחן<input type="date" data-set="examDate" value="'+esc(S.examDate)+'"></label>';
+  h+='<label class="field">יעד<select data-set="target"><option value="100"'+(S.target===100?' selected':'')+'>100, מתקדמים א׳</option><option value="120"'+(S.target===120?' selected':'')+'>120, מתקדמים ב׳</option><option value="134"'+(S.target===134?' selected':'')+'>134, פטור</option></select></label>';
+  h+='<label class="field">ציון נוכחי<input type="number" min="50" max="150" data-set="base" value="'+S.base+'"></label>';
+  h+='</div><p class="small muted">אחרי שתירשם במאל״ו, עדכן כאן את התאריך האמיתי והתוכנית תתאים את עצמה.</p>';
+  h+='<h3 style="margin-top:18px">גיבוי</h3><div class="row"><button class="btn ghost" data-act="bexp">ייצוא</button><button class="btn ghost" data-act="bimp">ייבוא</button></div>';
+  if(backup==="exp") h+='<p class="small muted">העתק את הטקסט והדבק אותו בייבוא במכשיר השני.</p><textarea class="bk" readonly onclick="this.select()">'+esc(JSON.stringify(S))+'</textarea>';
+  if(backup==="imp") h+='<p class="small muted">הדבק כאן טקסט גיבוי. ההתקדמות הנוכחית במכשיר הזה תוחלף.</p><textarea class="bk" id="bkIn"></textarea><div class="row" style="margin-top:8px"><button class="btn" data-act="bapply">שחזר</button></div>'+(backupErr?'<p class="small" style="color:var(--bad)">'+backupErr+'</p>':'');
+  h+='</section>';
+  return h;
+}
+
+function buildVocab(){
+  const t=today(), p=planFor(t)||{nw:10}, d=dayRead(t);
+  const due=shuffle(dueList()).slice(0,40).map(en=>({en,he:heOf(en),isNew:false}));
+  const newLeft=Math.max(0,p.nw-d.nw);
+  const fresh=allWords().filter(w=>!S.cards[w.en]).slice(0,newLeft).map(w=>({en:w.en,he:w.he,isNew:true}));
+  return {queue:due.concat(fresh),i:0,revealed:false,known:0,miss:0,requeued:new Set()};
+}
+let vmode="cards", vq=null;
+const toks=he=>he.split(/[,(]\s*/).map(x=>x.replace(/[)\s]/g,"")).filter(Boolean);
+function mkVQ(en,all){
+  const he=heOf(en), lv=LEVEL[en]||2, tk=toks(he);
+  const okD=w=>w.en!==en && w.he && !toks(w.he).some(x=>tk.includes(x));
+  let others=shuffle(all.filter(w=>okD(w)&&(LEVEL[w.en]||2)===lv)).slice(0,3);
+  if(others.length<3) others=others.concat(shuffle(all.filter(w=>okD(w)&&!others.includes(w))).slice(0,3-others.length));
+  const rev=Math.random()<0.35;
+  const opts=shuffle([{en,he}].concat(others));
+  return {en,he,rev,options:opts.map(o=>rev?o.en:o.he),answer:opts.findIndex(o=>o.en===en)};
+}
+function buildVQ(){
+  const all=allWords().filter(w=>w.he);
+  const due=shuffle(dueList()).filter(en=>heOf(en));
+  const weak=shuffle(Object.keys(S.cards).filter(k=>S.cards[k].box<=2&&heOf(k)&&!due.includes(k)));
+  const est=estimate()||S.base, maxLv=est<100?1:est<118?2:3;
+  const fresh=all.filter(w=>!S.cards[w.en]&&(LEVEL[w.en]||2)<=maxLv).slice(0,60);
+  const pool=[...new Set([...due.slice(0,7),...weak.slice(0,4),...shuffle(fresh).map(w=>w.en)])].slice(0,15);
+  return {qs:pool.map(en=>mkVQ(en,all)),i:0,chosen:null,ok:0};
+}
+function vqAnswer(i){
+  const q=vq.qs[vq.i]; if(vq.chosen!==null) return;
+  vq.chosen=i; const ok=i===q.answer, t=today(), d=day(t);
+  const c=S.cards[q.en];
+  if(c){ c.box=ok?Math.min(c.box+1,5):0; c.due=ok?addDays(t,INT[c.box]):t; d.rv++; }
+  else { S.cards[q.en]={box:ok?1:0,due:ok?addDays(t,1):t}; d.nw++; }
+  S.vq=S.vq||{n:0,ok:0}; S.vq.n++; if(ok){ S.vq.ok++; vq.ok++; }
+  persist(); render();
+}
+function viewVQ(){
+  if(!vq) vq=buildVQ();
+  if(vq.i>=vq.qs.length){
+    return '<section class="sheet"><h2>'+vq.ok+' מתוך '+vq.qs.length+'</h2><p class="muted">מילים שפספסת חוזרות אליך כבר היום בכרטיסיות.</p><div class="row"><button class="btn" data-act="vqnew">עוד סבב</button><button class="btn ghost" data-act="vmode" data-arg="cards">לכרטיסיות</button></div></section>';
+  }
+  const q=vq.qs[vq.i], L="ABCD";
+  let h='<section class="sheet"><div class="row" style="justify-content:space-between"><span class="tag">'+(q.rev?'עברית ← אנגלית':'אנגלית ← עברית')+'</span><span class="small muted">'+(vq.i+1)+' / '+vq.qs.length+'</span></div>';
+  h+='<div class="bar" style="margin:8px 0 6px"><i style="width:'+(vq.i/vq.qs.length*100)+'%"></i></div>';
+  h+='<div class="card" style="padding:26px 10px 18px">'+(q.rev?'<div class="he" style="font-size:28px;font-weight:700">'+esc(q.he)+'</div>':'<div class="en" lang="en">'+esc(q.en)+'</div>')+'</div>';
+  h+='<div class="opts"'+(q.rev?' lang="en"':' dir="rtl" style="direction:rtl"')+'>';
+  q.options.forEach((o,i)=>{ let cls='opt'+(q.rev?'':' heopt'); if(vq.chosen!==null){ if(i===q.answer) cls+=' right'; else if(i===vq.chosen) cls+=' wrong'; } h+='<button class="'+cls+'" data-act="vqa" data-arg="'+i+'"'+(vq.chosen!==null?' disabled':'')+'><span class="l">'+(q.rev?L[i]:'')+'</span><span>'+esc(o)+'</span></button>'; });
+  h+='</div>';
+  if(vq.chosen!==null) h+='<div class="row" style="margin-top:14px;justify-content:space-between"><span class="small" dir="ltr">'+esc(q.en)+' = <span dir="rtl">'+esc(q.he)+'</span></span><button class="btn" data-act="vqnext">הבאה</button></div>';
+  return h+'</section>';
+}
+function vocabTabs(){ return '<div class="seg"><button data-act="vmode" data-arg="cards" aria-pressed="'+(vmode==="cards")+'">כרטיסיות</button><button data-act="vmode" data-arg="quiz" aria-pressed="'+(vmode==="quiz")+'">מבחן מילים</button></div>'; }
+function viewVocab(){
+  if(vmode==="quiz") return vocabTabs()+viewVQ();
+  return vocabTabs()+viewVocabCards();
+}
+function viewVocabCards(){
+  if(!vs) vs=buildVocab();
+  const total=vs.queue.length;
+  if(!total || vs.i>=total){
+    const mastered=Object.values(S.cards).filter(c=>c.box>=3).length;
+    let h='<section class="sheet"><h2>'+(total?'סיימת את המילים להיום':'אין מילים ממתינות כרגע')+'</h2>';
+    if(total) h+='<p>ידעת '+vs.known+', פספסת '+vs.miss+'. המילים שפספסת יחזרו שוב בקרוב.</p>';
+    h+='<p class="muted">'+mastered+' מילים שולטות מתוך '+allWords().length+' במאגר. '+(S.custom.length?S.custom.length+' מהן נוספו מטעויות בתרגול.':'')+'</p>';
+    h+='<div class="row"><button class="btn" data-act="vmode" data-arg="quiz">מבחן מילים</button><button class="btn ghost" data-act="vmore">עוד 10 מילים חדשות</button><button class="btn ghost" data-act="go" data-arg="practice">לתרגול</button></div></section>';
+    return h;
+  }
+  const c=vs.queue[vs.i];
+  let h='<section class="sheet"><div class="row" style="justify-content:space-between"><span class="small muted">'+(vs.i+1)+' / '+total+'</span><span class="tag">'+(c.isNew?'חדשה':'חזרה')+'</span></div>';
+  h+='<div class="bar" style="margin-top:8px"><i style="width:'+(vs.i/total*100)+'%"></i></div>';
+  h+='<div class="card"><div class="en" lang="en">'+esc(c.en)+'</div><div class="he">'+(vs.revealed?esc(c.he||'—'):'')+'</div></div>';
+  if(!vs.revealed) h+='<div class="row" style="justify-content:center"><button class="btn" data-act="vreveal">הצג תרגום</button></div>';
+  else h+='<div class="row" style="justify-content:center"><button class="btn ghost" data-act="vgrade" data-arg="0">לא ידעתי</button><button class="btn" data-act="vgrade" data-arg="1">ידעתי</button></div>';
+  h+='<p class="small muted" style="text-align:center;margin-bottom:0">נסה להיזכר לפני שאתה חושף. ענה בכנות, זה מה שמכוון את החזרות.</p></section>';
+  return h;
+}
+function grade(ok){
+  const c=vs.queue[vs.i], t=today(), d=day(t);
+  const card=S.cards[c.en]||{box:0,due:t};
+  const firstTime=!S.cards[c.en];
+  if(ok){ card.box=Math.min(card.box+1,5); card.due=addDays(t,INT[card.box]); vs.known++; }
+  else { card.box=0; card.due=t; vs.miss++; if(!vs.requeued.has(c.en)){ vs.requeued.add(c.en); vs.queue.push({en:c.en,he:c.he,isNew:false}); } }
+  S.cards[c.en]=card;
+  if(firstTime && c.isNew) d.nw++; else d.rv++;
+  vs.i++; vs.revealed=false;
+  persist(); render();
+}
+
+/* ---------- practice ---------- */
+/* ---------- adaptive engine ---------- */
+function initTheta(){
+  if(!S.theta){ const t0=(S.base-113)/15; S.theta={sc:t0,rs:t0,rc:t0}; S.thetaN={sc:0,rs:0,rc:0}; }
+}
+const bOf=it=>(it.d-2)*1.1;
+function smAcc(o){ o=o||{n:0,ok:0}; return (o.ok+2)/(o.n+4); }
+function typeAcc(t){ const a=S.attempts.filter(x=>x.type===t).slice(-40); return smAcc({n:a.length,ok:a.filter(x=>x.ok).length}); }
+function itemScore(it,t){
+  initTheta();
+  const target=S.theta[it.type]-0.3;
+  const fit=Math.exp(-((bOf(it)-target)**2)/0.9);
+  const weak=1-smAcc(S.skills[it.skill]);
+  const r=S.items[it.id]; let rec=0.6;
+  if(r){ const ds=diff(r.last,t); rec = !r.lastOk ? (ds>=1?1.1:-2) : (ds<3?-1.6:ds<7?-0.6:-0.1); }
+  const c=it.word&&S.cards[it.word.toLowerCase()];
+  return 1.2*fit + 1.2*weak + rec + (c&&c.box<=1?0.3:0) + Math.random()*0.25;
+}
+function pickTop(type,k,t){
+  return ITEMS.filter(it=>it.type===type).map(it=>({it,s:itemScore(it,t)})).sort((a,b)=>b.s-a.s).slice(0,k).map(x=>x.it);
+}
+function bestPassage(t,k){
+  let best=null;
+  PASSAGES.forEach((p,pi)=>{
+    const its=ITEMS.filter(x=>x.pid===pi).map(it=>({it,s:itemScore(it,t)})).sort((a,b)=>b.s-a.s).slice(0,k);
+    const avg=its.reduce((s,x)=>s+x.s,0)/its.length;
+    if(!best||avg>best.avg) best={pid:pi,avg,items:its.map(x=>x.it).sort((a,b)=>a.id<b.id?-1:1)};
+  });
+  return best;
+}
+function prepQ(it){
+  const idx=shuffle([0,1,2,3]);
+  return {id:it.id,type:it.type,skill:it.skill,d:it.d,passage:it.pid!==undefined?PASSAGES[it.pid].text:"",stem:it.stem,options:idx.map(i=>it.options[i]),answer:idx.indexOf(it.answer),explain:it.explain||"",word:it.word||"",wordHe:it.wordHe||(it.word?heOf(it.word):"")};
+}
+function explainSet(items){
+  const t=today(), cnt={sc:0,rs:0,rc:0}, sk={};
+  let rev=0, dsum=0;
+  for(const it of items){ cnt[it.type]++; sk[it.skill]=(sk[it.skill]||0)+1; dsum+=it.d; const r=S.items[it.id]; if(r&&!r.lastOk) rev++; }
+  const parts=["sc","rs","rc"].filter(x=>cnt[x]).map(x=>cnt[x]+" "+TYPES[x]);
+  const weakSk=Object.keys(sk).filter(k=>(S.skills[k]||{n:0}).n>=3).sort((a,b)=>smAcc(S.skills[a])-smAcc(S.skills[b])).slice(0,2).map(k=>SKILLS[k][0]);
+  const avg=dsum/items.length, lvl=avg<1.6?"בסיסית":avg<2.4?"בינונית":"גבוהה";
+  let s="בסט: "+parts.join(", ")+". רמת קושי "+lvl+".";
+  if(weakSk.length) s+=" דגש על "+weakSk.join(" ו")+".";
+  if(rev) s+=" "+rev+" שאלות חוזרות על טעויות קודמות.";
+  return s;
+}
+function smartSet(){
+  const t=today(), w={sc:1-typeAcc("sc")+0.15,rs:1-typeAcc("rs")+0.15,rc:1-typeAcc("rc")+0.15};
+  const nrc=(w.rc>=Math.max(w.sc,w.rs)*0.85 || S.attempts.filter(x=>x.type==="rc").length<5)?3:0;
+  const rest=10-nrc; let nsc=Math.round(rest*w.sc/(w.sc+w.rs)); nsc=Math.min(rest-2,Math.max(2,nsc));
+  const items=[...pickTop("sc",nsc,t),...pickTop("rs",rest-nsc,t),...(nrc?bestPassage(t,3).items:[])];
+  return {qs:items.map(prepQ),why:explainSet(items)};
+}
+function drillSet(type){
+  const t=today();
+  const items=type==="rc"?bestPassage(t,5).items:pickTop(type,8,t);
+  return {qs:items.map(prepQ),why:explainSet(items)};
+}
+function record(q,ok,ms,isSim){
+  const t=today(), d=day(t);
+  d.ans++; if(ok) d.ok++;
+  const att={type:q.type,id:q.id,ok,ms,ts:Date.now()}; if(isSim) att.sim=1; if(!ok) att.stem=q.stem.slice(0,140);
+  S.attempts.push(att); if(S.attempts.length>600) S.attempts=S.attempts.slice(-600);
+  const it=S.items[q.id]||{n:0,ok:0}; it.n++; if(ok) it.ok++; it.last=t; it.lastOk=ok; S.items[q.id]=it;
+  const sk=S.skills[q.skill]||{n:0,ok:0}; sk.n++; if(ok) sk.ok++; S.skills[q.skill]=sk;
+  initTheta();
+  const n=S.thetaN[q.type]||0, p=1/(1+Math.exp(-(S.theta[q.type]-bOf(q)))), K=Math.max(0.12,0.6/Math.sqrt(1+n/6));
+  S.theta[q.type]+=K*((ok?1:0)-p); S.thetaN[q.type]=n+1;
+  return !ok && addMissWord(q,t);
+}
+function coachLines(){
+  const L=[], t=today(), est=estimate(), left=diff(t,S.examDate);
+  const total=S.attempts.length;
+  if(total<10){ L.push("עוד "+(10-total)+" תשובות ואוכל לזהות דפוסים. הדרך הכי מהירה: סימולציית פתיחה אחת."); return L; }
+  if(est){
+    const gap=S.target-est;
+    L.push(gap>0?"האומדן שלך כרגע "+est+", חסרות "+gap+" נקודות ליעד"+(left>0?", ונשארו "+left+" ימים.":"."):"האומדן שלך ("+est+") כבר ביעד. עכשיו המטרה היא יציבות: סימולציה מלאה כל יומיים.");
+  }
+  const ts=["sc","rs","rc"].map(x=>({x,acc:typeAcc(x),n:S.attempts.filter(a=>a.type===x).length})).filter(o=>o.n>=4).sort((a,b)=>a.acc-b.acc);
+  if(ts.length) L.push("הסוג החלש ביותר: "+TYPES[ts[0].x]+" ("+Math.round(ts[0].acc*100)+"%). הסטים החכמים נותנים לו יותר משקל.");
+  const sk=Object.keys(S.skills).filter(k=>S.skills[k].n>=3&&SKILLS[k]).sort((a,b)=>smAcc(S.skills[a])-smAcc(S.skills[b])).slice(0,2);
+  for(const k of sk) if(smAcc(S.skills[k])<0.75) L.push(SKILLS[k][0]+" ("+Math.round(S.skills[k].ok/S.skills[k].n*100)+"% מתוך "+S.skills[k].n+"): "+SKILLS[k][1]);
+  const LIM={sc:60,rs:120,rc:180};
+  for(const x of ["sc","rs","rc"]){ const s=typeStats(x,20); if(s.n>=5&&s.sec>LIM[x]*0.9) L.push("ב"+TYPES[x]+" אתה עונה בממוצע "+s.sec+" שניות, ובמבחן יש בערך "+LIM[x]+" לשאלה. תרגל בקצב, ואם שאלה תוקעת אותך, סמן ניחוש ותמשיך."); }
+  const weakW=Object.keys(S.cards).filter(k=>S.cards[k].box===0).slice(0,5);
+  if(weakW.length) L.push("מילים שעדיין בורחות לך: "+weakW.join(", ")+".");
+  const sims=S.sims||[];
+  if(sims.length>=2){ const a=sims[sims.length-2], b=sims[sims.length-1], dd=b.raw-a.raw; L.push(dd>0?"בסימולציה האחרונה עלית ב-"+dd+" תשובות נכונות. תמשיך ככה.":dd<0?"בסימולציה האחרונה ירדת ב-"+(-dd)+". סימולציה אחת לא קובעת מגמה, אבל תבדוק בסקירה איזה סוג שאלות הפיל אותך.":"שתי הסימולציות האחרונות יצאו אותו דבר. כדאי לשים דגש על הנקודות החלשות שלמעלה."); }
+  return L;
+}
+function startSet(set,mode){ ps={qs:set.qs,why:set.why,i:0,chosen:null,t0:Date.now(),res:[],mode}; render(); window.scrollTo({top:0}); }
+
+function viewPractice(){
+  const w=weakest();
+  if(!ps){
+    const seen=ITEMS.filter(it=>S.items[it.id]).length;
+    let h='<section class="sheet"><h2>סט חכם</h2><p class="muted" style="margin-top:0">עשר שאלות שנבחרות לפי הנתונים שלך: יותר משקל לסוגי שאלות ולמיומנויות שבהן אתה מפספס, רמת קושי מעט מעל הרמה שלך, וחזרה על שאלות שטעית בהן אחרי יום. שאלות שענית עליהן נכון לא יחזרו בימים הקרובים.</p>';
+    h+='<p class="small" style="margin-top:0">החולשה הנוכחית: <span class="hl">'+TYPES[w]+'</span></p>';
+    h+='<div class="row"><button class="btn" data-act="psmart">בנה לי סט</button></div></section>';
+    h+='<section class="sheet"><h3>תרגול ממוקד</h3><div class="row" style="margin-top:8px"><button class="btn ghost" data-act="pdrill" data-arg="sc">השלמת משפטים</button><button class="btn ghost" data-act="pdrill" data-arg="rs">ניסוח מחדש</button><button class="btn ghost" data-act="pdrill" data-arg="rc">קטע קריאה</button></div>';
+    h+='<p class="small muted" style="margin-bottom:0">במאגר '+ITEMS.length+' שאלות: '+SCQ.length+' השלמת משפטים, '+RSQ.length+' ניסוח מחדש ו-'+PASSAGES.length+' קטעי קריאה. ענית עד עכשיו על '+seen+' מהן.</p></section>';
+    h+=simMenuHTML();
+    return h;
+  }
+  if(ps.i>=ps.qs.length){
+    const ok=ps.res.filter(r=>r.ok).length;
+    let h='<section class="sheet"><h2>'+ok+' מתוך '+ps.qs.length+'</h2>';
+    for(const t of ["sc","rs","rc"]){ const r=ps.res.filter(x=>x.type===t); if(r.length) h+='<p style="margin:4px 0">'+TYPES[t]+': '+r.filter(x=>x.ok).length+'/'+r.length+'</p>'; }
+    const added=ps.res.filter(r=>r.added).length;
+    if(added) h+='<p class="muted">'+added+' מילים נוספו לחפיסה שלך.</p>';
+    const est=estimate(); if(est) h+='<p class="muted">האומדן שלך עכשיו: '+est+'.</p>';
+    h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="psmart">סט חכם נוסף</button><button class="btn ghost" data-act="pback">חזרה</button></div></section>';
+    return h;
+  }
+  const q=ps.qs[ps.i], L="ABCD";
+  let h='<section class="sheet">';
+  if(ps.i===0&&ps.chosen===null&&ps.why) h+='<p class="small muted" style="margin-top:0">'+esc(ps.why)+'</p>';
+  h+='<div class="row" style="justify-content:space-between"><span class="row" style="gap:6px"><span class="tag">'+TYPES[q.type]+'</span><span class="tag">רמה '+LEVELS[q.d]+'</span></span><span class="small muted">'+(ps.i+1)+' / '+ps.qs.length+'</span></div>';
+  h+='<div class="bar" style="margin:8px 0 14px"><i style="width:'+(ps.i/ps.qs.length*100)+'%"></i></div>';
+  if(q.passage) h+='<div class="passage" lang="en">'+esc(q.passage)+'</div>';
+  h+='<div class="stem" lang="en">'+esc(q.stem)+'</div><div class="opts" lang="en">';
+  q.options.forEach((o,i)=>{
+    let cls='opt';
+    if(ps.chosen!==null){ if(i===q.answer) cls+=' right'; else if(i===ps.chosen) cls+=' wrong'; }
+    h+='<button class="'+cls+'" data-act="pchoose" data-arg="'+i+'"'+(ps.chosen!==null?' disabled':'')+'><span class="l">'+L[i]+'</span><span>'+esc(o)+'</span></button>';
+  });
+  h+='</div>';
+  if(ps.chosen!==null){
+    const r=ps.res[ps.res.length-1];
+    h+='<div class="explain"><strong>'+(r.ok?'נכון.':'לא הפעם.')+'</strong> '+esc(q.explain)+(r.added?'<div class="small muted" style="margin-top:6px">המילה '+esc(q.word)+' נוספה לחפיסה שלך.</div>':'')+(!r.ok&&SKILLS[q.skill]?'<div class="small muted" style="margin-top:6px">'+SKILLS[q.skill][0]+': '+SKILLS[q.skill][1]+'</div>':'')+'</div>';
+    h+='<div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn" data-act="pnext">'+(ps.i+1<ps.qs.length?'השאלה הבאה':'לסיכום')+'</button></div>';
+  }
+  return h+'</section>';
+}
+function addMissWord(q,t){
+  let added=false;
+  if(!q.word) return false;
+  const en=q.word.trim().toLowerCase();
+  if(!en||en.length>=40) return false;
+  if(!S.custom.find(w=>w.en===en) && !HE[en]){ S.custom.unshift({en,he:q.wordHe||""}); added=true; }
+  if(S.cards[en]){ S.cards[en].box=0; S.cards[en].due=t; }
+  else if(HE[en] && !S.custom.find(w=>w.en===en)){ S.custom.unshift({en,he:HE[en]}); added=true; }
+  S.custom=S.custom.slice(0,150);
+  return added;
+}
+function choose(i){
+  const q=ps.qs[ps.i]; if(ps.chosen!==null) return;
+  ps.chosen=i;
+  const ok=i===q.answer;
+  const added=record(q,ok,Date.now()-ps.t0,false);
+  ps.res.push({type:q.type,ok,added});
+  vs=null; persist(); render();
+}
+
+/* ---------- simulation ---------- */
+const CHAPTERS=[{type:"sc",n:4,min:4},{type:"sc",n:4,min:4},{type:"rc",n:5,min:15},{type:"rs",n:3,min:6},{type:"rs",n:3,min:6},{type:"sc",n:4,min:4}];
+const TIPS={sc:"קרא את כל המשפט לפני האפשרויות. חפש מילות קישור כמו although, because, despite, שמגלות אם צריך ניגוד או המשך.",rs:"פרק את המשפט לנושא, פעולה ומגבלה. הפל אפשרויות שהופכות את המשמעות, משנות זמן או מוסיפות סיבה שלא הייתה.",rc:"קרא קודם את השאלה, ורק אז חפש את התשובה בקטע. אל תתקע על מילה אחת שאתה לא מכיר."};
+let sim=null, simTick=null;
+const fmt=ms=>{ const t=Math.max(0,Math.ceil(ms/1000)); return Math.floor(t/60)+":"+pad(t%60); };
+function simToday(k){ return (S.sims||[]).some(x=>x.date===k); }
+function simMenuHTML(){
+  const last=(S.sims||[]).slice(-1)[0];
+  let h='<section class="sheet sim-entry"><h2>סימולציה מלאה</h2><p class="muted" style="margin-top:0">שישה פרקים, 23 שאלות ו-39 דקות, במבנה של המבחן: טיימר נפרד לכל פרק, חזרה לשאלות רק בתוך הפרק, והתשובות נחשפות רק בסוף. השאלות נבחרות כך שיהיו בעיקר כאלה שעוד לא ראית.</p>';
+  if(last) h+='<p class="small" style="margin-top:0">בסימולציה האחרונה ('+dm(last.date)+'): '+last.raw+' מתוך 23, אומדן '+last.est+'.</p>';
+  return h+'<div class="row"><button class="btn" data-act="sgen">התחל סימולציה</button></div></section>';
+}
+function simGroups(){
+  const t=today();
+  const sc=pickTop("sc",12,t).map(prepQ), rs=pickTop("rs",6,t).map(prepQ), rc=bestPassage(t,5).items.map(prepQ);
+  return [sc.slice(0,4),sc.slice(4,8),rc,rs.slice(0,3),rs.slice(3,6),sc.slice(8,12)];
+}
+function startSim(groups){
+  sim={chapters:CHAPTERS.map((c,i)=>Object.assign({},c,{qs:groups[i]})),ci:0,qi:0,phase:"intro",ans:groups.map(g=>g.map(()=>null)),used:[],confirm:false};
+  ps=null; render(); window.scrollTo({top:0});
+}
+function startChapter(){
+  const c=sim.chapters[sim.ci];
+  sim.phase="run"; sim.qi=0; sim.confirm=false;
+  sim.deadline=Date.now()+c.min*60000; sim.cStart=Date.now();
+  clearInterval(simTick); simTick=setInterval(tick,500);
+  render(); window.scrollTo({top:0});
+}
+function tick(){
+  if(!sim||sim.phase!=="run"){ clearInterval(simTick); return; }
+  const left=sim.deadline-Date.now();
+  const el=document.getElementById("simClock");
+  if(el){ el.textContent=fmt(left); el.classList.toggle("low",left<60000); }
+  if(left<=0) endChapter(true);
+}
+function endChapter(timeout){
+  clearInterval(simTick);
+  sim.used[sim.ci]=Math.min(Date.now()-sim.cStart,sim.chapters[sim.ci].min*60000);
+  if(timeout) sim.timedOut=(sim.timedOut||[]).concat([sim.ci]);
+  sim.confirm=false;
+  if(sim.ci<sim.chapters.length-1){ sim.ci++; sim.phase="intro"; } else finishSim();
+  render(); window.scrollTo({top:0});
+}
+function finishSim(){
+  sim.phase="done";
+  const t=today(); let raw=0; const by={sc:[0,0],rs:[0,0],rc:[0,0]}; let added=0;
+  sim.chapters.forEach((c,ci)=>c.qs.forEach((q,qi)=>{
+    const ok=sim.ans[ci][qi]===q.answer;
+    if(ok) raw++; by[q.type][1]++; if(ok) by[q.type][0]++;
+    if(record(q,ok,Math.round((sim.used[ci]||0)/c.qs.length),true)) added++;
+  }));
+  const total=sim.chapters.reduce((s,c)=>s+c.qs.length,0);
+  sim.raw=raw; sim.total=total; sim.est=estimate()||Math.round(50+raw/total*100); sim.by=by; sim.added=added;
+  S.sims=(S.sims||[]).concat([{date:t,raw,est:sim.est,by}]).slice(-30);
+  vs=null; persist();
+}
+function viewSim(){
+  const L="ABCD";
+  if(sim.phase==="intro"){
+    const c=sim.chapters[sim.ci];
+    let h='<section class="sheet chap"><div class="chapno">פרק '+(sim.ci+1)+' מתוך '+sim.chapters.length+'</div><h2>'+TYPES[c.type]+'</h2>';
+    h+='<p class="chapmeta">'+c.qs.length+' שאלות, '+c.min+' דקות</p><p>'+TIPS[c.type]+'</p>';
+    if(sim.ci===0) h+='<p class="small muted">כשתתחיל, הטיימר של הפרק ירוץ. אפשר לדלג ולחזור לשאלות בתוך הפרק, אבל אי אפשר לחזור לפרק שהסתיים. כשהזמן נגמר, עוברים לפרק הבא.</p>';
+    if(sim.timedOut&&sim.timedOut.includes(sim.ci-1)) h+='<p class="small" style="color:var(--bad)">הזמן של הפרק הקודם נגמר.</p>';
+    h+='<div class="row" style="margin-top:16px"><button class="btn" data-act="sstart">התחל את הפרק</button>'+(sim.ci===0?'<button class="btn ghost" data-act="sexit">ביטול</button>':'')+'</div></section>';
+    return h;
+  }
+  if(sim.phase==="run"){
+    const c=sim.chapters[sim.ci], q=c.qs[sim.qi], a=sim.ans[sim.ci], left=sim.deadline-Date.now();
+    let h='<div class="exambar"><span>פרק '+(sim.ci+1)+'/'+sim.chapters.length+': '+TYPES[c.type]+'</span><span id="simClock" class="clock'+(left<60000?' low':'')+'" aria-live="off">'+fmt(left)+'</span></div>';
+    h+='<div class="qnav" role="tablist">';
+    c.qs.forEach((_,i)=>{ h+='<button class="qdot'+(a[i]!==null?' done':'')+(i===sim.qi?' cur':'')+'" data-act="sgo" data-arg="'+i+'" aria-label="שאלה '+(i+1)+'">'+(i+1)+'</button>'; });
+    h+='</div><section class="sheet">';
+    if(q.passage) h+='<div class="passage" lang="en">'+esc(q.passage)+'</div>';
+    h+='<div class="stem" lang="en">'+esc(q.stem)+'</div><div class="opts" lang="en">';
+    q.options.forEach((o,i)=>{ h+='<button class="opt'+(a[sim.qi]===i?' sel':'')+'" data-act="spick" data-arg="'+i+'" aria-pressed="'+(a[sim.qi]===i)+'"><span class="l">'+L[i]+'</span><span>'+esc(o)+'</span></button>'; });
+    h+='</div>';
+    if(sim.confirm){
+      const un=a.filter(x=>x===null).length;
+      h+='<div class="explain" style="border-color:var(--bad)">'+(un?'יש '+un+' שאלות בלי תשובה בפרק הזה. ':'')+'אחרי הסיום לא תוכל לחזור לפרק. <div class="row" style="margin-top:10px"><button class="btn" data-act="sconfirm">כן, סיים את הפרק</button><button class="btn ghost" data-act="scancel">חזרה לפרק</button></div></div>';
+    }
+    h+='<div class="row simnav"><button class="btn ghost" data-act="sprev"'+(sim.qi===0?' disabled':'')+'>הקודמת</button>';
+    h+=sim.qi<c.qs.length-1?'<button class="btn" data-act="snext">הבאה</button>':'<button class="btn" data-act="send">סיום הפרק</button>';
+    h+='</div></section>';
+    return h;
+  }
+  if(sim.phase==="done"){
+    let h='<section class="sheet"><div class="chapno">תוצאות הסימולציה</div><h2 class="bigscore">'+sim.raw+' <small>מתוך '+sim.total+'</small></h2>';
+    h+='<p>אומדן לא רשמי: <span class="hl">'+sim.est+'</span>. הוא מחושב מכל התשובות שלך עד עכשיו, תוך התחשבות ברמת הקושי של כל שאלה. הציון האמיתי במאל״ו מחושב אחרת, אז תסתכל בעיקר על המגמה.</p>';
+    for(const t of ["sc","rs","rc"]) h+='<p style="margin:4px 0">'+TYPES[t]+': '+sim.by[t][0]+'/'+sim.by[t][1]+'</p>';
+    if(sim.added) h+='<p class="muted">'+sim.added+' מילים מהטעויות נוספו לחפיסה שלך.</p>';
+    h+='<div class="row" style="margin-top:14px"><button class="btn" data-act="sreview">סקירת התשובות</button><button class="btn ghost" data-act="sexit">חזרה לתרגול</button></div></section>';
+    return h;
+  }
+  if(sim.phase==="review"){
+    let h='<section class="sheet"><div class="row" style="justify-content:space-between"><h2 style="margin:0">סקירת התשובות</h2><button class="btn ghost" data-act="sexit">סיום</button></div></section>';
+    sim.chapters.forEach((c,ci)=>{
+      h+='<section class="sheet"><h3>פרק '+(ci+1)+': '+TYPES[c.type]+'</h3>';
+      if(c.type==="rc"&&c.qs[0]) h+='<details><summary class="small">הצג את הקטע</summary><div class="passage" lang="en" style="margin-top:8px">'+esc(c.qs[0].passage)+'</div></details>';
+      c.qs.forEach((q,qi)=>{
+        const my=sim.ans[ci][qi], ok=my===q.answer;
+        h+='<div class="rev"><div class="stem small-stem" lang="en">'+esc(q.stem)+'</div>';
+        h+='<div class="small" dir="ltr" style="text-align:left">'+(ok?'<span class="hl">'+L[q.answer]+'. '+esc(q.options[q.answer])+'</span>':(my===null?'<span style="color:var(--bad)">No answer</span>':'<s style="color:var(--bad)">'+L[my]+'. '+esc(q.options[my])+'</s>')+'  <span class="hl">'+L[q.answer]+'. '+esc(q.options[q.answer])+'</span>')+'</div>';
+        h+='<div class="small muted" style="margin-top:4px">'+esc(q.explain)+'</div></div>';
+      });
+      h+='</section>';
+    });
+    return h;
+  }
+  return "";
+}
+
+/* ---------- stats ---------- */
+function viewStats(){
+  let h='<section class="sheet"><h2>איפה אתה עומד</h2>';
+  const any=S.attempts.length;
+  if(!any) h+='<p class="muted" style="margin:0">עוד אין נתונים. אחרי סט תרגול אחד תראה כאן דיוק וזמן לפי סוג שאלה.</p>';
+  else for(const t of ["sc","rs","rc"]){
+    const s=typeStats(t);
+    const a=s.acc===null?0:Math.round(s.acc*100);
+    const cls=a<60?'low':a<80?'mid':'hi';
+    h+='<div class="typebar"><span>'+TYPES[t]+'</span><div class="bar"><i class="'+cls+'" style="width:'+a+'%"></i></div><span class="small" style="font-variant-numeric:tabular-nums">'+(s.n?a+'%':'—')+'</span></div>';
+    if(s.n) h+='<div class="small muted" style="margin:-6px 0 6px">'+s.n+' שאלות, ממוצע '+s.sec+' שניות לשאלה</div>';
+  }
+  const est=estimate();
+  if(est) h+='<p style="margin-bottom:0">אומדן: <span class="hl">'+est+'</span>. הוא מתעדכן אחרי כל תשובה ומתחשב ברמת הקושי של השאלה. זה כיוון, לא תחזית מדויקת.</p>';
+  h+='</section>';
+
+  const misses=S.attempts.filter(a=>!a.ok&&a.stem).slice(-6).reverse();
+  if(misses.length){
+    h+='<section class="sheet"><h2>הטעויות האחרונות</h2>';
+    for(const m of misses) h+='<div class="miss"><span class="tag">'+TYPES[m.type]+'</span><span class="en" lang="en">'+esc(m.stem)+'</span></div>';
+    h+='</section>';
+  }
+
+  const sims=(S.sims||[]).slice(-8).reverse();
+  if(sims.length){
+    h+='<section class="sheet"><h2>סימולציות</h2>';
+    for(const x of sims) h+='<div class="miss row" style="justify-content:space-between"><span>'+wd(x.date)+' '+dm(x.date)+'</span><span style="font-variant-numeric:tabular-nums">'+x.raw+'/23, אומדן '+x.est+'</span></div>';
+    h+='</section>';
+  }
+  h+='<section class="sheet"><h2>המאמן שלך</h2><ul class="coachlist">'+coachLines().map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>';
+  const sks=Object.keys(S.skills).filter(k=>SKILLS[k]&&S.skills[k].n>=2).sort((a,b)=>smAcc(S.skills[a])-smAcc(S.skills[b]));
+  if(sks.length){
+    h+='<section class="sheet"><h2>לפי מיומנות</h2>';
+    for(const k of sks){ const o=S.skills[k], a=Math.round(o.ok/o.n*100), cls=a<60?'low':a<80?'mid':'hi'; h+='<div class="typebar"><span class="small">'+SKILLS[k][0]+'</span><div class="bar"><i class="'+cls+'" style="width:'+a+'%"></i></div><span class="small" style="font-variant-numeric:tabular-nums">'+a+'%</span></div>'; }
+    h+='</section>';
+  }
+  return h;
+}
+
+/* ---------- render & events ---------- */
+function render(){
+  const left=diff(today(),S.examDate);
+  document.getElementById("sub").textContent = left>0 ? "מ-"+S.base+" ("+band(S.base)+") ל-"+S.target+" ("+band(S.target)+"). נשארו "+left+" ימים עד המבחן ב-"+dm(S.examDate)+"." : left===0 ? "היום המבחן." : "עדכן את תאריך המבחן בהגדרות.";
+  document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-current",b.dataset.arg===tab?"page":"false"));
+  const m=document.getElementById("main");
+  document.body.classList.toggle("insim", !!(sim&&sim.phase==="run"&&tab==="practice"));
+  m.innerHTML = tab==="today"?viewToday():tab==="vocab"?viewVocab():tab==="practice"?(sim?viewSim():viewPractice()):viewStats();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]"); if(!b) return;
+  const a=b.dataset.act, arg=b.dataset.arg;
+  if(a==="tab"||a==="go"){ tab=arg; if(arg==="vocab"&&vs&&vs.i>=vs.queue.length) vs=null; render(); window.scrollTo({top:0}); }
+  else if(a==="vmode"){ vmode=arg; if(arg==="quiz"&&vq&&vq.i>=vq.qs.length) vq=null; render(); }
+  else if(a==="vqa") vqAnswer(+arg);
+  else if(a==="vqnext"){ vq.i++; vq.chosen=null; render(); }
+  else if(a==="vqnew"){ vq=null; render(); }
+  else if(a==="vreveal"){ vs.revealed=true; render(); }
+  else if(a==="vgrade"){ grade(arg==="1"); }
+  else if(a==="vmore"){
+    const fresh=allWords().filter(w=>!S.cards[w.en]).slice(0,10).map(w=>({en:w.en,he:w.he,isNew:true}));
+    vs={queue:fresh,i:0,revealed:false,known:0,miss:0,requeued:new Set()}; render();
+  }
+  else if(a==="psmart") startSet(smartSet(),"smart");
+  else if(a==="pdrill") startSet(drillSet(arg),"drill");
+  else if(a==="pchoose") choose(+arg);
+  else if(a==="pnext"){ ps.i++; ps.chosen=null; ps.t0=Date.now(); render(); window.scrollTo({top:0}); }
+  else if(a==="pback"){ ps=null; render(); }
+  else if(a==="sgen") startSim(simGroups());
+  else if(a==="sstart") startChapter();
+  else if(a==="spick"){ sim.ans[sim.ci][sim.qi]=+arg; render(); }
+  else if(a==="sgo"){ sim.qi=+arg; sim.confirm=false; render(); }
+  else if(a==="sprev"){ if(sim.qi>0) sim.qi--; sim.confirm=false; render(); }
+  else if(a==="snext"){ sim.qi++; sim.confirm=false; render(); }
+  else if(a==="send"){ sim.confirm=true; render(); }
+  else if(a==="scancel"){ sim.confirm=false; render(); }
+  else if(a==="sconfirm") endChapter(false);
+  else if(a==="sreview"){ sim.phase="review"; render(); window.scrollTo({top:0}); }
+  else if(a==="sexit"){ clearInterval(simTick); sim=null; render(); window.scrollTo({top:0}); }
+  else if(a==="bexp"){ backup=backup==="exp"?"":"exp"; backupErr=""; render(); }
+  else if(a==="bimp"){ backup=backup==="imp"?"":"imp"; backupErr=""; render(); }
+  else if(a==="bapply"){
+    try{ const v=JSON.parse(document.getElementById("bkIn").value); if(!v||typeof v!=="object"||!v.cards) throw 0; S=Object.assign({},DEFAULT,v); migrate(); vs=null; backup=""; backupErr=""; persist(); }
+    catch(e){ backupErr="הטקסט הזה לא נראה כמו גיבוי תקין. העתק אותו שוב מהייצוא."; }
+    render();
+  }
+});
+document.addEventListener("keydown",e=>{
+  if(tab==="vocab"&&vmode==="cards"&&vs&&vs.i<vs.queue.length){
+    if(e.key===" "&&!vs.revealed){ e.preventDefault(); vs.revealed=true; render(); }
+    else if(vs.revealed&&(e.key==="1"||e.key==="2")){ grade(e.key==="2"); }
+  }
+});
+document.addEventListener("change",e=>{
+  const el=e.target.closest("[data-set]"); if(!el) return;
+  const k=el.dataset.set;
+  if(k==="examDate"&&/^\d{4}-\d{2}-\d{2}$/.test(el.value)) S.examDate=el.value;
+  if(k==="target") S.target=+el.value;
+  if(k==="base"){ const v=+el.value; if(v>=50&&v<=150){ S.base=v; if(!S.attempts.length) S.theta=null; } }
+  vs=null; persist(); render();
+});
+render();
+connect();
+if(!IN_CLAUDE){
+  try{
+    const l=document.createElement("link"); l.rel="manifest"; l.href="manifest.webmanifest"; document.head.appendChild(l);
+    const i=document.createElement("link"); i.rel="apple-touch-icon"; i.href="icon-192.png"; document.head.appendChild(i);
+    if("serviceWorker" in navigator && location.protocol==="https:") navigator.serviceWorker.register("sw.js").catch(()=>{});
+  }catch(e){}
+}
+</script>
+</body>
+</html>
