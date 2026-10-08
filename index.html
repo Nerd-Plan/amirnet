@@ -380,6 +380,113 @@ h2 .owl{display:inline-block;vertical-align:-8px;margin-inline-end:6px;filter:no
 .backupnag{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(135deg,var(--sheet),var(--goodbg))}
 .backupnag .owl{flex:none}
 .notebook h2{margin-bottom:6px}
+.rgt{background:radial-gradient(120% 90% at 50% 0%,#2E3C86 0%,#1A1F48 55%,#12152F 100%);color:#EEF1FF;border:0;box-shadow:0 10px 30px rgba(10,14,40,.35)}
+.rgt h2,.rgt h3{color:#fff}
+.rgt .rgdim,.rgt .muted{color:rgba(238,241,255,.66)}
+.rgt .btn.ghost{color:#EEF1FF;border-color:rgba(238,241,255,.35);background:transparent}
+.rgt .btn.ghost.on{background:rgba(255,255,255,.16);border-color:#fff}
+.rgt .bar{background:rgba(255,255,255,.14)}
+.rgt .bar i{background:linear-gradient(90deg,#FFC83D,#FF8A3D)}
+.rgt .btn.rgbtn{background:#FFC83D;color:#241A00;border-color:#FFC83D;font-weight:800;width:100%;margin-top:12px;font-size:18px;padding:12px}
+.rgt .btn.rgdisc{background:#C2352B;color:#fff;border-color:#C2352B;margin-top:12px}
+.rgt .btn:disabled{opacity:.42}
+.rgintro p{color:rgba(238,241,255,.88)}
+.rglogo{font-size:46px;letter-spacing:-6px;margin:4px 0 6px}
+.rghow,.rghands{margin-top:14px;text-align:right;background:rgba(255,255,255,.06);border-radius:12px;padding:10px 14px}
+.rghow summary,.rghands summary{cursor:pointer;font-weight:700}
+.rghow ol{padding-right:20px;margin:8px 0}
+.rghands table{width:100%;border-collapse:collapse;margin-top:6px}
+.rghands td{padding:6px 2px;border-top:1px solid rgba(255,255,255,.1);vertical-align:top}
+.rghands td.num{text-align:left;white-space:nowrap;font-weight:700}
+.rghead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rgbl b{display:block;font-size:19px}
+.rgbl small,.rgsc small{display:block;color:rgba(238,241,255,.66);font-size:13px}
+.rgbl.boss b{color:#FF9DB0}
+.rgsc{text-align:left}
+.rgsc b{font-size:26px;font-variant-numeric:tabular-nums}
+.rgbar{height:9px;margin:8px 0 6px}
+.rgbossd{margin:4px 0;font-size:14px;color:#FFB3C1}
+.rgstats{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:rgba(238,241,255,.85);margin:6px 0}
+.rgjok{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0 4px}
+.jk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:62px;border-radius:10px;background:#2A2556;border:2px solid #6C8CFF;color:#fff;cursor:pointer;font:inherit;padding:4px 2px}
+.jk span{font-size:24px;line-height:1}
+.jk small{font-size:10.5px;line-height:1.15;text-align:center}
+.jk.r2{border-color:#3ECF8E}.jk.r3{border-color:#FF6BD6;box-shadow:0 0 10px rgba(255,107,214,.35)}
+.jk.on{background:#3B3580}
+.jk.empty{background:transparent;border:2px dashed rgba(255,255,255,.18);cursor:default}
+.jkinfo{background:rgba(255,255,255,.08);border-radius:10px;padding:8px 12px;font-size:14px;margin:6px 0}
+.rgprev{text-align:center;margin:12px 0 10px;font-size:17px;min-height:30px}
+.cx,.mx{display:inline-block;min-width:34px;padding:2px 9px;border-radius:8px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+.cx{background:#2F6BFF}.mx{background:#E5484D}
+.rghand{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;direction:ltr}
+@media (min-width:620px){.rghand{grid-template-columns:repeat(5,1fr)}}
+.wc{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:96px;padding:20px 4px 16px;border-radius:11px;background:#FBF7EE;color:#1D2430;border:2px solid #E3DCCB;box-shadow:0 3px 0 rgba(0,0,0,.25);cursor:pointer;font:inherit;transition:transform .15s ease,box-shadow .15s ease;touch-action:manipulation}
+.wc .wl{position:absolute;top:4px;left:7px;font-weight:800;font-size:17px;line-height:1}
+.wc .wu{position:absolute;top:3px;right:5px;font-size:13px}
+.wc .ww{font-weight:700;font-size:14.5px;line-height:1.15;overflow-wrap:anywhere;text-align:center}
+.wc .wp{position:absolute;bottom:4px;left:7px;font-size:9px;letter-spacing:1px}
+.wc .wv{position:absolute;bottom:3px;right:6px;font-size:11px;font-weight:700;color:#2F6BFF}
+.wc.lv1 .wl,.wc.lv1 .wp{color:#1F8A5B}.wc.lv2 .wl,.wc.lv2 .wp{color:#2442B8}.wc.lv3 .wl,.wc.lv3 .wp{color:#8A2BC2}
+.wc.u{border-color:#F2C94C}
+.wc.sel{transform:translateY(-10px);box-shadow:0 0 0 3px #FFC83D,0 10px 18px rgba(0,0,0,.35)}
+.rgsortrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
+.rgacts{display:grid;grid-template-columns:1fr 1.6fr;gap:10px;align-items:stretch;margin-top:12px}
+.rgt .rgacts .btn{width:100%;margin:0;min-height:52px}
+.rgacts.sticky{position:sticky;bottom:calc(78px + env(safe-area-inset-bottom,0px));z-index:4;padding:10px 0 2px;background:linear-gradient(transparent,#171B40 30%)}
+.wc .ww.sm{font-size:12.5px}.wc .ww.xs{font-size:11px}.wc .ww.xxs{font-size:10px}
+.rghow summary,.rghands summary{color:#fff}
+.eq{display:inline-block}
+.cx.sm,.mx.sm{min-width:0;padding:0 7px;font-size:14px}
+.rgdots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0}
+.rgdots span{font-size:13px;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.1)}
+.rgdots .cur{outline:2px solid #FFC83D}.rgdots .ok{background:#1F8A5B}.rgdots .no{background:#C2352B}.rgdots .sh{background:#B7791F}
+.rgt .card.rgq{background:#FBF7EE;color:#1D2430;border-radius:14px;padding:20px 10px 12px;margin:8px 0 12px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.rgt .card.rgq .rgdim{color:#5D6778;margin-top:6px}
+.rgt .opt{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.22);color:#EEF1FF}
+.rgt .opt .l{color:rgba(238,241,255,.6)}
+.rgt .opt.right{background:#FFE14D;border-color:#FFE14D;color:#1D2430}
+.rgt .opt.wrong{color:#FF8C84;border-color:#FF8C84}
+.rgfb{margin-top:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.08)}
+.rgfb.ok{background:rgba(31,138,91,.35)}.rgfb.no{background:rgba(194,53,43,.35)}.rgfb.sh{background:rgba(183,121,31,.4)}
+.rgclk{display:flex;align-items:center;gap:10px}
+.rgclk b{font-size:22px;min-width:24px;color:#FFB3C1}
+.rgclk .bar{flex:1;height:8px}
+.rgscore{margin:12px 0 4px;background:rgba(0,0,0,.18);border-radius:12px;padding:8px 12px}
+.rgl{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);opacity:0;animation:rgIn .32s ease forwards}
+.rgl span:nth-child(2){flex:1}
+.rgl.k-chips b{color:#8FB2FF}.rgl.k-joker b{color:#FFD36B}.rgl.k-hand{font-weight:700}
+.rgtot{text-align:center;font-size:22px;padding:12px 0 4px;opacity:0;animation:rgPop .45s cubic-bezier(.2,1.6,.4,1) forwards}
+.rgtot b{font-size:30px;color:#FFC83D}
+@keyframes rgIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@keyframes rgPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.rgcash{max-width:360px;margin:10px auto;text-align:right}
+.rgcash div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.rgcash b{color:#FFC83D}
+.rgt .drow{border-color:rgba(255,255,255,.1)}.rgt .dhe{color:rgba(238,241,255,.75)}
+.rgante{text-align:center;font-weight:800;font-size:20px;margin-bottom:10px}
+.rgblinds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rgbcard{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;padding:12px 6px;border-radius:12px;background:rgba(255,255,255,.07);border:2px solid transparent}
+.rgbcard .bic{font-size:28px}
+.rgbcard small{color:rgba(238,241,255,.7);font-size:12.5px}
+.rgbcard em{font-style:normal;font-size:12px;color:#FFB3C1;line-height:1.25;margin-top:4px}
+.rgbcard.cur{border-color:#FFC83D;background:rgba(255,200,61,.12)}
+.rgbcard.done{opacity:.5}
+.rgbcard i{position:absolute;top:6px;left:8px;font-style:normal;color:#3ECF8E;font-weight:800}
+.rgsh{margin:16px 0 6px;font-size:16px}
+.rgshop{display:grid;gap:8px}
+.shi{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border-radius:12px;padding:10px;border-right:4px solid #6C8CFF}
+.shi.r2{border-right-color:#3ECF8E}.shi.r3{border-right-color:#FF6BD6}.shi.up{border-right-color:#FFC83D}
+.shi .sic{font-size:28px;flex:none}
+.shi div{flex:1;min-width:0}
+.shi b{display:block}
+.shi small{display:block;color:rgba(238,241,255,.75);font-size:13px;line-height:1.35}
+.shi em{font-style:normal;font-size:11px;color:rgba(238,241,255,.5)}
+.shi .btn{flex:none;background:#FFC83D;color:#241A00;border-color:#FFC83D;font-weight:800}
+.rghome{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#2E3C86,#1A1F48);color:#EEF1FF;border:0}
+.rghome h3{color:#fff}.rghome .rgic{font-size:34px;flex:none}.rghome div{flex:1}
+.rghome .btn{background:#FFC83D;color:#241A00;border-color:#FFC83D;font-weight:800}
+@media (prefers-reduced-motion:reduce){.rgl,.rgtot{animation:none;opacity:1}.wc{transition:none}}
+
 .filebtn{cursor:pointer}
 @media (max-width:640px){
   nav{background:var(--sheet);border-top:0;box-shadow:0 -4px 24px rgba(0,0,0,.08)}
@@ -1133,7 +1240,7 @@ function viewVQ(){
   if(vq.chosen!==null) h+='<div class="row" style="margin-top:14px;justify-content:space-between"><span class="small" dir="ltr">'+esc(q.en)+' = <span dir="rtl">'+esc(q.he)+'</span></span><button class="btn" data-act="vqnext">הבאה</button></div>';
   return h+'</section>';
 }
-function vocabTabs(){ const b=(m,t)=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'">'+t+'</button>'; const playing=(vmode==="sprint"&&spr&&!spr.done)||(vmode==="boss"&&boss&&!boss.ended);
+function vocabTabs(){ const b=(m,t)=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'">'+t+'</button>'; const playing=(vmode==="sprint"&&spr&&!spr.done)||(vmode==="boss"&&boss&&!boss.ended)||(vmode==="run"&&S.rg&&["play","quiz","score"].includes(S.rg.phase));
   if(playing) return gameMiniHTML()+'<div class="row" style="justify-content:flex-end;margin-top:8px"><button class="btn ghost mini" data-act="vmode" data-arg="cards">✕ יציאה</button></div>';
   return gameMiniHTML()+modesHTML(); }
 function viewVocab(){
@@ -1143,9 +1250,10 @@ function viewVocab(){
   if(vmode==="dict") return vocabTabs()+viewDict();
   if(vmode==="sprint") return vocabTabs()+viewSprint();
   if(vmode==="boss") return vocabTabs()+viewBoss();
+  if(vmode==="run") return vocabTabs()+viewRun();
   return vocabTabs()+viewCardsV3();
 }
-const APP_VERSION="3.1";
+const APP_VERSION="3.2";
 /* ---------- speech & guessing ---------- */
 const TTS = ("speechSynthesis" in window) && typeof SpeechSynthesisUtterance!=="undefined";
 let enVoice=null, lastSpoken="";
@@ -1716,6 +1824,7 @@ function viewTodayV3(){
   h+=gameBarHTML();
   h+=tasksHTML();
   if(needBackup()) h+=backupNagHTML();
+  h+=rgHomeHTML();
   const wk=weekStats(), pm=progressMoment();
   if(wk.days>0||pm){
     h+='<section class="sheet"><h2>השבוע שלך</h2>';
@@ -1784,7 +1893,7 @@ function viewCardsV3(){
   h+='<div class="actbar">'+(vs.revealed?'<button class="btn act no" data-act="vgrade" data-arg="0">🧺 לא ידעתי</button><button class="btn act yes" data-act="vgrade" data-arg="1">✓ ידעתי</button>':(vs.hint?'':'<button class="btn ghost act" data-act="vhint">💡 רמז</button>')+'<button class="btn act" data-act="vreveal">הפוך את הכרטיס</button>')+'</div>';
   return h;
 }
-const MODES=[["cards","כרטיסיות","🃏"],["quiz","מבחן","✅"],["phr","ביטויים","💬"],["conn","מילות קישור","🔗"],["dict","מילון","📖"],["sprint","ספרינט","⚡"],["boss","קשות","👾"]];
+const MODES=[["cards","כרטיסיות","🃏"],["run","ג'וקרים","🎴"],["quiz","מבחן","✅"],["phr","ביטויים","💬"],["conn","מילות קישור","🔗"],["dict","מילון","📖"],["sprint","ספרינט","⚡"],["boss","קשות","👾"]];
 function modesHTML(){
   const hl=hardList().length;
   return '<div class="seg modes" role="tablist">'+MODES.map(([m,t,ic])=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'"><span>'+ic+'</span>'+t+(m==="boss"&&hl?'<i class="cnt">'+hl+'</i>':'')+'</button>').join('')+'</div>';
@@ -2170,6 +2279,377 @@ function viewStats(){
 }
 
 /* ---------- render & events ---------- */
+/* ---------- v3.2: joker card run (roguelike) ---------- */
+const RG_HANDS={
+  high:["קלף בודד",5,1,10,1,"קלף אחד או קלפים בלי שום התאמה"],
+  pair:["זוג",10,2,15,1,"2 מילים שמתחילות באותה אות"],
+  two:["שני זוגות",20,2,20,1,"2 זוגות של אותיות פתיחה"],
+  three:["שלישייה",30,3,20,2,"3 מילים שמתחילות באותה אות"],
+  straight:["רצף",30,4,30,3,"4-5 מילים שאותיות הפתיחה שלהן עוקבות (c d e f)"],
+  flush:["צבע",35,4,15,2,"5 מילים מאותה רמה (אותו צבע)"],
+  full:["פול האוס",40,4,25,2,"שלישייה + זוג"],
+  four:["רביעייה",60,7,30,3,"4 מילים שמתחילות באותה אות"],
+  sflush:["רצף צבע",100,8,40,4,"רצף שכל המילים בו מאותה רמה"]
+};
+const RG_ORDER=["high","pair","two","three","straight","flush","full","four","sflush"];
+const JOKERS=[
+  {id:"owl",ic:"🦉",n:"הינשוף",d:"+4 מכפיל לכל יד",r:1,p:4},
+  {id:"hunter",ic:"🧩",n:"צייד הזרים",d:"+25 צ'יפים על כל מילה לא מוכרת שענית עליה נכון",r:1,p:5},
+  {id:"heavy",ic:"📕",n:"המילון הכבד",d:"+3 מכפיל על כל מילה ברמה גבוהה שענית עליה נכון",r:1,p:5},
+  {id:"abc",ic:"🔤",n:"האלף-בית",d:"+12 צ'יפים על כל אות פתיחה שונה ביד",r:1,p:4},
+  {id:"mini",ic:"🎯",n:"המינימליסט",d:"+15 מכפיל אם שיחקת 3 קלפים או פחות",r:1,p:5},
+  {id:"recycle",ic:"♻️",n:"המחזר",d:"+1 זריקה בכל סיבוב",r:1,p:4},
+  {id:"piggy",ic:"🐷",n:"קופת חיסכון",d:"+3 מטבעות בסוף כל סיבוב שניצחת",r:1,p:4},
+  {id:"chain",ic:"🔥",n:"השרשרת",d:"+1 מכפיל על כל תשובה נכונה ברצף (עד 25)",r:2,p:6},
+  {id:"memory",ic:"🧠",n:"זיכרון ארוך",d:"+3 מכפיל על כל מילה שכבר למדת וזכרת",r:2,p:6},
+  {id:"revenge",ic:"💀",n:"הנקמה",d:"+12 מכפיל אם ביד יש מילה שטעית בה קודם בריצה, וענית עליה נכון",r:2,p:6},
+  {id:"twins",ic:"👯",n:"התאומים",d:"מכפיל ×2 אם ביד יש זוג (זוג, שני זוגות, שלישייה, פול האוס, רביעייה)",r:2,p:7},
+  {id:"palette",ic:"🎨",n:"הפלטה",d:"מכפיל ×2.5 על צבע או רצף צבע",r:2,p:6},
+  {id:"bighand",ic:"✋",n:"יד גדולה",d:"+1 קלף ביד",r:2,p:6},
+  {id:"extra",ic:"🏃",n:"סיבוב נוסף",d:"+1 יד בכל סיבוב",r:2,p:7},
+  {id:"shield",ic:"🛡️",n:"המחברת",d:"פעם אחת בכל סיבוב, טעות נחשבת כתשובה נכונה (המילה עדיין נכנסת לחזרה)",r:2,p:6},
+  {id:"worm",ic:"📈",n:"תולעת ספרים",d:"מתחיל ב-0. מקבל +1 מכפיל לתמיד על כל מילה לא מוכרת שתענה עליה נכון",r:3,p:8},
+  {id:"flash",ic:"⚡",n:"הברק",d:"מכפיל ×2 אם ענית נכון על כל הקלפים ביד, כל אחד בפחות מ-4 שניות",r:3,p:8},
+  {id:"brave",ic:"🦁",n:"הנועז",d:"מכפיל ×2 אם כל המילים שקלעו היו לא מוכרות (לפחות 3)",r:3,p:8},
+  {id:"gamble",ic:"🎲",n:"המהמר",d:"סיכוי של 1 ל-3 למכפיל ×3",r:3,p:7}
+];
+const JK=Object.fromEntries(JOKERS.map(j=>[j.id,j]));
+const RG_BOSSES=[
+  {id:"clock",ic:"⏱️",n:"השעון",d:"רק 6 שניות לכל תשובה"},
+  {id:"mirror",ic:"🪞",n:"המראה",d:"כל השאלות הפוכות: מעברית לאנגלית"},
+  {id:"miser",ic:"🔒",n:"הקמצן",d:"אין זריקות בסיבוב הזה"},
+  {id:"weight",ic:"🪨",n:"המשקולת",d:"מילים ברמה בסיסית לא שוות צ'יפים"},
+  {id:"narrow",ic:"🤏",n:"הצר",d:"רק 6 קלפים ביד"},
+  {id:"thief",ic:"🦝",n:"הגנב",d:"יד אחת פחות"}
+];
+const RG_BASE=[100,250,550,1200,2500,5000,9000,16000], RG_BM=[1,1.5,2], RG_ANTES=8;
+const RG_LV={1:"בסיסית",2:"בינונית",3:"גבוהה"};
+let rgTimer=null, rgNextT=null;
+const hasJ=id=>!!(S.rg&&S.rg.jokers.some(j=>j.id===id));
+const rgTarget=(a,b)=>Math.round(RG_BASE[a-1]*RG_BM[b]);
+function rgStats(){ return S.rgStats||(S.rgStats={runs:0,wins:0,bestAnte:0,bestHand:0,blinds:0,bosses:0}); }
+function rgCardMeta(en){ const c=S.cards[en]; return {u:!c||isHard(c)||c.box<=1, k:!!c&&c.box>=2&&!isHard(c)}; }
+function rgDeck(){
+  const used=new Set(), out=[];
+  const add=en=>{ if(!en||used.has(en)||!heOf(en)||!/^[a-z]/i.test(en)) return; used.add(en); out.push({en,lv:LEVEL[en]||2}); };
+  shuffle(hardList()).slice(0,12).forEach(add);
+  shuffle(Object.keys(S.cards).filter(k=>S.cards[k].box<=2)).slice(0,8).forEach(add);
+  shuffle(Object.keys(S.cards).filter(k=>S.cards[k].box>=3)).slice(0,4).forEach(add);
+  freshRandom(60-out.length,used).forEach(w=>add(w.en));
+  return shuffle(out).slice(0,44).map((c,i)=>Object.assign(c,{id:i}));
+}
+function startRun(){
+  const st=rgStats(); st.runs++;
+  const bosses=[]; for(let a=0;a<RG_ANTES;a++){ let b; do{ b=RG_BOSSES[Math.floor(Math.random()*RG_BOSSES.length)].id; }while(bosses.length&&b===bosses[bosses.length-1]); bosses.push(b); }
+  S.rg={ante:1,bi:0,coins:4,jokers:[],lv:{},deck:rgDeck(),bosses,phase:"blind",streak:0,missed:[],learned:[],xp0:S.xp||0,ans:0,ok:0,best:0,sort:"",jinfo:-1};
+  persist(); render();
+}
+function rgBoss(){ const rg=S.rg; return rg.bi===2?RG_BOSSES.find(b=>b.id===rg.bosses[rg.ante-1]):null; }
+function rgDraw(){ const rg=S.rg; while(rg.hand.length<rg.hs&&rg.pile.length) rg.hand.push(rg.pile.pop()); rgSort(); }
+function rgSort(){ const rg=S.rg; if(rg.sort==="letter") rg.hand.sort((a,b)=>a.en.toLowerCase().localeCompare(b.en.toLowerCase())); else if(rg.sort==="level") rg.hand.sort((a,b)=>b.lv-a.lv||a.en.localeCompare(b.en)); }
+function rgBegin(){
+  const rg=S.rg, boss=rgBoss(), bid=boss&&boss.id;
+  rg.target=rgTarget(rg.ante,rg.bi); rg.score=0;
+  rg.hands=4+(hasJ("extra")?1:0)-(bid==="thief"?1:0);
+  rg.discards=bid==="miser"?0:3+(hasJ("recycle")?1:0);
+  rg.hs=(bid==="narrow"?6:8)+(hasJ("bighand")?1:0);
+  rg.pile=shuffle(rg.deck.map(c=>Object.assign({},c,rgCardMeta(c.en))));
+  rg.hand=[]; rg.sel=[]; rg.shieldUsed=false; rg.phase="play"; rg.played=null; rg.res=null;
+  rgDraw(); persist(); render(); window.scrollTo({top:0});
+}
+function rgDetect(cs){
+  const n=cs.length; if(!n) return null;
+  const L=cs.map(c=>c.en[0].toLowerCase()), cnt={};
+  L.forEach(x=>cnt[x]=(cnt[x]||0)+1);
+  const g=Object.values(cnt).sort((a,b)=>b-a);
+  const sameLv=cs.every(c=>c.lv===cs[0].lv);
+  let straight=false;
+  if(n>=4&&g[0]===1){ const cd=L.map(x=>x.charCodeAt(0)).sort((a,b)=>a-b); straight=cd.every((c,i)=>i===0||c===cd[i-1]+1); }
+  if(straight&&sameLv) return "sflush";
+  if(g[0]>=4) return "four";
+  if(g[0]===3&&g[1]>=2) return "full";
+  if(n===5&&sameLv) return "flush";
+  if(straight) return "straight";
+  if(g[0]===3) return "three";
+  if(g[0]===2&&g[1]===2) return "two";
+  if(g[0]===2) return "pair";
+  return "high";
+}
+function rgHandBase(type){ const H=RG_HANDS[type], lv=(S.rg.lv[type]||1); return {chips:H[1]+(lv-1)*H[3], mult:H[2]+(lv-1)*H[4], lv}; }
+function rgCardChips(c){ const boss=rgBoss(); if(boss&&boss.id==="weight"&&c.lv===1) return 0; return ({1:5,2:10,3:15}[c.lv]||10)+(c.u?10:0); }
+function rgPill(v){ let m; if((m=v.match(/^\+(\d+) מכפיל/))) return '<span class="mx sm">+'+m[1]+'</span>'; if((m=v.match(/^\+(\d+) צ'יפים/))) return '<span class="cx sm">+'+m[1]+'</span>'; if((m=v.match(/×([\d.]+)/))) return '<span class="mx sm">×'+m[1]+'</span>'; return esc(v); }
+function rgCompute(){
+  const rg=S.rg, played=rg.played, ok=played.filter(c=>c.ok), lines=[];
+  if(!ok.length) return {type:null,chips:0,mult:0,total:0,lines:[{ic:"💨",t:"אף תשובה לא הייתה נכונה, אז היד לא קלעה"}]};
+  const type=rgDetect(ok), hb=rgHandBase(type); let chips=hb.chips, mult=hb.mult;
+  lines.push({ic:"🃏",t:RG_HANDS[type][0]+(hb.lv>1?" · רמה "+hb.lv:""),vh:'<span class="cx sm">'+chips+'</span> × <span class="mx sm">'+mult+'</span>',k:"hand"});
+  for(const c of ok){ const v=rgCardChips(c); chips+=v; lines.push({ic:c.u?"✨":"•",t:c.en,ltr:1,v:"+"+v,k:"chips"}); }
+  const missedSet=new Set(rg.missedBefore||[]);
+  for(const j of rg.jokers){
+    const J=JK[j.id]; let v=null;
+    if(j.id==="owl"){ mult+=4; v="+4 מכפיל"; }
+    else if(j.id==="hunter"){ const n=ok.filter(c=>c.u).length; if(n){ chips+=25*n; v="+"+(25*n)+" צ'יפים"; } }
+    else if(j.id==="heavy"){ const n=ok.filter(c=>c.lv===3).length; if(n){ mult+=3*n; v="+"+(3*n)+" מכפיל"; } }
+    else if(j.id==="abc"){ const n=new Set(ok.map(c=>c.en[0].toLowerCase())).size; chips+=12*n; v="+"+(12*n)+" צ'יפים"; }
+    else if(j.id==="mini"){ if(played.length<=3){ mult+=15; v="+15 מכפיל"; } }
+    else if(j.id==="chain"){ const n=Math.min(25,rg.streak); if(n){ mult+=n; v="+"+n+" מכפיל"; } }
+    else if(j.id==="memory"){ const n=ok.filter(c=>c.k).length; if(n){ mult+=3*n; v="+"+(3*n)+" מכפיל"; } }
+    else if(j.id==="revenge"){ if(ok.some(c=>missedSet.has(c.en))){ mult+=12; v="+12 מכפיל"; } }
+    else if(j.id==="worm"){ if(j.v){ mult+=j.v; v="+"+j.v+" מכפיל"; } }
+    else if(j.id==="twins"){ if(["pair","two","three","full","four"].includes(type)){ mult*=2; v="מכפיל ×2"; } }
+    else if(j.id==="palette"){ if(type==="flush"||type==="sflush"){ mult*=2.5; v="מכפיל ×2.5"; } }
+    else if(j.id==="flash"){ if(ok.length===played.length&&played.every(c=>!c.shielded&&c.t<4000)){ mult*=2; v="מכפיל ×2"; } }
+    else if(j.id==="brave"){ if(ok.length>=3&&ok.every(c=>c.u)){ mult*=2; v="מכפיל ×2"; } }
+    else if(j.id==="gamble"){ if(Math.random()<1/3){ mult*=3; v="מכפיל ×3!"; } }
+    if(v) lines.push({ic:J.ic,t:J.n,vh:rgPill(v),k:"joker"});
+  }
+  mult=Math.round(mult*10)/10;
+  return {type,chips,mult,total:Math.round(chips*mult),lines};
+}
+function rgPick(){
+  const rg=S.rg, c=rg.played[rg.qi], boss=rgBoss(), all=allWords().filter(w=>w.he);
+  const rev=!!(boss&&boss.id==="mirror");
+  let q=mkVQ(c.en,all), tries=0;
+  if(rev){ while(!q.rev&&tries++<12) q=mkVQ(c.en,all); }
+  else if(q.rev){ q=Object.assign({},q,{rev:false,options:q.options.map(o=>heOf(o)||o)}); }
+  rg.q=q; rg.chosen=null; rg.qStart=Date.now(); rg.deadline=null;
+}
+function rgPlay(){
+  const rg=S.rg; if(rg.phase!=="play"||!rg.sel.length||rg.hands<=0) return;
+  rg.played=rg.hand.filter(c=>rg.sel.includes(c.id)).map(c=>Object.assign({},c,{ok:null}));
+  rg.hand=rg.hand.filter(c=>!rg.sel.includes(c.id)); rg.sel=[]; rg.hands--;
+  rg.missedBefore=rg.missed.slice();
+  rg.qi=0; rg.phase="quiz"; rgPick(); persist(); render(); window.scrollTo({top:0});
+}
+function rgDiscard(){
+  const rg=S.rg; if(rg.phase!=="play"||!rg.sel.length||rg.discards<=0) return;
+  rg.hand=rg.hand.filter(c=>!rg.sel.includes(c.id)); rg.sel=[]; rg.discards--; rgDraw(); persist(); render();
+}
+function rgStopClock(){ if(rgTimer){ clearInterval(rgTimer); rgTimer=null; } }
+function rgClock(){
+  const rg=S.rg, boss=rg&&rgBoss();
+  if(!rg||rg.phase!=="quiz"||rg.chosen!==null||!boss||boss.id!=="clock"){ rgStopClock(); return; }
+  if(rgTimer) return;
+  rg.deadline=Date.now()+6000;
+  rgTimer=setInterval(()=>{
+    const r=S.rg;
+    if(!r||r.phase!=="quiz"||r.chosen!==null||tab!=="vocab"||vmode!=="run"){ rgStopClock(); return; }
+    const left=r.deadline-Date.now(), el=document.getElementById("rgClk"), bar=document.getElementById("rgClkBar");
+    if(el) el.textContent=Math.max(0,Math.ceil(left/1000));
+    if(bar) bar.style.width=Math.max(0,left/60)+"%";
+    if(left<=0){ rgStopClock(); rgAnswer(-1); }
+  },150);
+}
+function rgAnswer(i){
+  const rg=S.rg; if(!rg||rg.phase!=="quiz"||rg.chosen!==null) return;
+  rgStopClock();
+  const q=rg.q, c=rg.played[rg.qi]; let ok=i===q.answer;
+  rg.chosen=i; c.t=Date.now()-rg.qStart; rg.ans++;
+  if(!ok){
+    const sc=S.cards[c.en]; if(sc){ sc.box=0; sc.due=today(); sc.m=(sc.m||0)+1; } else S.cards[c.en]={box:0,due:today(),m:1};
+    if(!rg.missed.includes(c.en)) rg.missed.push(c.en);
+    if(hasJ("shield")&&!rg.shieldUsed){ rg.shieldUsed=true; ok=true; c.shielded=true; }
+    rg.streak=0; fxQ.push({t:"no"});
+  } else {
+    rg.ok++; rg.streak++; fxQ.push({t:"ok"}); gainXP(4,{lv:c.lv});
+    if(c.u){ if(!rg.learned.includes(c.en)) rg.learned.push(c.en); const w=rg.jokers.find(j=>j.id==="worm"); if(w) w.v=(w.v||0)+1; }
+  }
+  c.ok=ok;
+  if(autoSpeak()) speak(c.en);
+  persist(); render();
+  clearTimeout(rgNextT);
+  const tok=rg.qi+":"+c.en;
+  rgNextT=setTimeout(()=>{ const r=S.rg; if(r&&r.phase==="quiz"&&r.chosen!==null&&(r.qi+":"+r.played[r.qi].en)===tok&&tab==="vocab"&&vmode==="run") rgNextQ(); }, i===q.answer?650:1700);
+}
+function rgNextQ(){
+  const rg=S.rg; if(!rg||rg.phase!=="quiz"||rg.chosen===null) return;
+  clearTimeout(rgNextT);
+  rg.qi++;
+  if(rg.qi<rg.played.length){ rgPick(); persist(); render(); return; }
+  const res=rgCompute(); rg.res=res; rg.score+=res.total; rg.phase="score";
+  const st=rgStats(); if(res.total>st.bestHand) st.bestHand=res.total; if(res.total>rg.best) rg.best=res.total;
+  if(res.total>0) tone(SND.combo);
+  persist(); render(); window.scrollTo({top:0});
+}
+function rgAfterScore(){
+  const rg=S.rg; if(rg.phase!=="score") return;
+  if(rg.score>=rg.target){
+    const st=rgStats(); st.blinds++; if(rg.bi===2) st.bosses++;
+    const interest=Math.min(5,Math.floor(rg.coins/5)), piggy=rg.jokers.filter(j=>j.id==="piggy").length*3;
+    rg.cash={base:[3,4,5][rg.bi],hands:rg.hands,interest,piggy};
+    rg.cash.total=rg.cash.base+rg.cash.hands+interest+piggy;
+    gainXP(15+rg.bi*10+rg.ante*5,{label:"ניצחון בסיבוב"});
+    if(rg.bi===2) fxQ.push({t:"bosswin"}); else tone(SND.level);
+    rg.phase="cash";
+  } else if(rg.hands<=0||(!rg.hand.length&&!rg.pile.length)){ rgEnd(false); return; }
+  else { rgDraw(); rg.phase="play"; rg.res=null; rg.played=null; }
+  checkAch(); persist(); render(); window.scrollTo({top:0});
+}
+function rgEnd(won){
+  const rg=S.rg, st=rgStats();
+  st.bestAnte=Math.max(st.bestAnte||0, won?RG_ANTES+1:rg.ante);
+  if(won){ st.wins++; gainXP(200,{label:"ניצחת ריצה שלמה"}); fxQ.push({t:"ach",ic:"🃏",ti:"ניצחת את כל 8 השלבים!"}); }
+  rg.phase=won?"won":"over"; rg.xp=(S.xp||0)-rg.xp0;
+  checkAch(); persist(); render(); window.scrollTo({top:0});
+}
+function rgShopGen(){
+  const rg=S.rg, own=new Set(rg.jokers.map(j=>j.id));
+  const pool=JOKERS.filter(j=>!own.has(j.id)), pick=[];
+  for(let n=0;n<2&&pool.length;n++){
+    const rr=Math.random(), want=rr<0.6?1:rr<0.9?2:3;
+    let cand=pool.filter(j=>j.r===want&&!pick.includes(j.id)); if(!cand.length) cand=pool.filter(j=>!pick.includes(j.id)); if(!cand.length) break;
+    pick.push(cand[Math.floor(Math.random()*cand.length)].id);
+  }
+  const ups=shuffle(["pair","pair","two","three","three","straight","flush","flush","full","four","high"]);
+  const u=[]; for(const t of ups){ if(!u.includes(t)) u.push(t); if(u.length===2) break; }
+  rg.shop={j:pick,u,reroll:5};
+}
+function rgToShop(){ const rg=S.rg; if(rg.phase!=="cash") return; rg.coins+=rg.cash.total; rg.shop=null; rgShopGen(); rg.phase="shop"; persist(); render(); window.scrollTo({top:0}); }
+function rgAdvance(){
+  const rg=S.rg; rg.bi++; if(rg.bi>2){ rg.bi=0; rg.ante++; }
+  if(rg.ante>RG_ANTES){ rgEnd(true); return; }
+  rg.phase="blind"; rg.shop=null; persist(); render(); window.scrollTo({top:0});
+}
+function rgAct(a,arg){
+  const rg=S.rg;
+  if(a==="rgstart"){ startRun(); return; }
+  if(!rg) return;
+  if(a==="rgsel"){ if(rg.phase!=="play") return; const id=+arg, k=rg.sel.indexOf(id); if(k>=0) rg.sel.splice(k,1); else if(rg.sel.length<5) rg.sel.push(id); else toast("עד 5 קלפים ביד אחת"); persist(); render(); }
+  else if(a==="rgplay") rgPlay();
+  else if(a==="rgdisc") rgDiscard();
+  else if(a==="rgsort"){ rg.sort=arg; rgSort(); persist(); render(); }
+  else if(a==="rgbegin") rgBegin();
+  else if(a==="rgans") rgAnswer(+arg);
+  else if(a==="rgnext") rgNextQ();
+  else if(a==="rgcont") rgAfterScore();
+  else if(a==="rgshop") rgToShop();
+  else if(a==="rgadv") rgAdvance();
+  else if(a==="rgjinfo"){ rg.jinfo=rg.jinfo===+arg?-1:+arg; render(); }
+  else if(a==="rgbuyj"){ const J=JK[arg]; if(!J||rg.coins<J.p) return; if(rg.jokers.length>=5){ toast("יש לך כבר 5 ג'וקרים","מכור אחד כדי לפנות מקום"); return; } rg.coins-=J.p; rg.jokers.push({id:J.id,v:0}); rg.shop.j=rg.shop.j.filter(x=>x!==J.id); tone(SND.collect); persist(); render(); }
+  else if(a==="rgbuyu"){ if(rg.coins<3||!rg.shop.u.includes(arg)) return; rg.coins-=3; rg.lv[arg]=(rg.lv[arg]||1)+1; rg.shop.u=rg.shop.u.filter(x=>x!==arg); tone(SND.collect); toast("📘 "+RG_HANDS[arg][0]+" עלה לרמה "+rg.lv[arg]); persist(); render(); }
+  else if(a==="rgsell"){ const i=+arg, j=rg.jokers[i]; if(!j) return; rg.coins+=Math.floor(JK[j.id].p/2); rg.jokers.splice(i,1); rg.jinfo=-1; persist(); render(); }
+  else if(a==="rgreroll"){ if(rg.coins<rg.shop.reroll) return; rg.coins-=rg.shop.reroll; const r=rg.shop.reroll+1; rgShopGen(); rg.shop.reroll=r; persist(); render(); }
+  else if(a==="rgquit"){ if(rg.phase==="over"||rg.phase==="won"){ S.rg=null; persist(); render(); } else if(rg.quitAsk&&Date.now()-rg.quitAsk<4000){ rg.quitAsk=0; rgEnd(false); } else { rg.quitAsk=Date.now(); toast("לחץ שוב כדי לוותר על הריצה"); } }
+  else if(a==="rgnew"){ startRun(); }
+}
+/* ---------- views ---------- */
+function rgCardHTML(c,sel){
+  return '<button class="wc lv'+c.lv+(sel?' sel':'')+(c.u?' u':'')+'" data-act="rgsel" data-arg="'+c.id+'" aria-pressed="'+!!sel+'"><span class="wl">'+esc(c.en[0].toUpperCase())+'</span>'+(c.u?'<span class="wu" title="מילה לא מוכרת: שווה יותר">✨</span>':'')+'<span class="ww'+(c.en.length>12?' xxs':c.en.length>9?' xs':c.en.length>7?' sm':'')+'" lang="en" dir="ltr">'+esc(c.en)+'</span><span class="wp">'+'●'.repeat(c.lv)+'</span><span class="wv">+'+rgCardChips(c)+'</span></button>';
+}
+function rgJokersHTML(sell){
+  const rg=S.rg;
+  let h='<div class="rgjok">';
+  for(let i=0;i<5;i++){ const j=rg.jokers[i]; if(!j){ h+='<span class="jk empty"></span>'; continue; } const J=JK[j.id]; h+='<button class="jk r'+J.r+(rg.jinfo===i?' on':'')+'" data-act="rgjinfo" data-arg="'+i+'"><span>'+J.ic+'</span><small>'+esc(J.n)+(j.id==="worm"?' +'+(j.v||0):'')+'</small></button>'; }
+  h+='</div>';
+  const j=rg.jokers[rg.jinfo];
+  if(j){ const J=JK[j.id]; h+='<div class="jkinfo"><b>'+J.ic+' '+esc(J.n)+'</b> '+esc(J.d)+(j.id==="worm"?' (כרגע +'+(j.v||0)+')':'')+(sell?' <button class="btn ghost mini" data-act="rgsell" data-arg="'+rg.jinfo+'">מכור ב-'+Math.floor(J.p/2)+' 🪙</button>':'')+'</div>'; }
+  return h;
+}
+function rgHeadHTML(){
+  const rg=S.rg, boss=rgBoss(), nm=boss?boss.ic+' '+boss.n:['סיבוב קטן','סיבוב גדול'][rg.bi], p=Math.min(100,Math.round(rg.score/rg.target*100));
+  let h='<div class="rghead"><div class="rgbl'+(boss?' boss':'')+'"><b>'+nm+'</b><small>שלב '+rg.ante+'/'+RG_ANTES+' · יעד <bdi>'+rg.target.toLocaleString()+'</bdi></small></div><div class="rgsc"><small>ניקוד</small><b><bdi>'+rg.score.toLocaleString()+'</bdi></b></div></div>';
+  h+='<div class="bar rgbar"><i style="width:'+p+'%"></i></div>';
+  if(boss) h+='<p class="rgbossd">'+boss.ic+' '+esc(boss.d)+'</p>';
+  h+='<div class="rgstats"><span>✋ <b>'+rg.hands+'</b> ידיים</span><span>🗑️ <b>'+rg.discards+'</b> זריקות</span><span>🪙 <b>'+rg.coins+'</b></span><span>🔥 <b>'+rg.streak+'</b></span></div>';
+  return h+rgJokersHTML(false);
+}
+function rgHandsTable(){
+  const rg=S.rg;
+  let h='<details class="rghands"><summary>טבלת ידיים</summary><table>';
+  for(const t of RG_ORDER){ const H=RG_HANDS[t], b=rg?rgHandBase(t):{chips:H[1],mult:H[2],lv:1}; h+='<tr><td><b>'+H[0]+'</b>'+(b.lv>1?' <small>רמה '+b.lv+'</small>':'')+'<br><small class="muted">'+H[5]+'</small></td><td class="num"><bdi>'+b.chips+' × '+b.mult+'</bdi></td></tr>'; }
+  return h+'</table></details>';
+}
+function viewRun(){
+  const rg=S.rg, st=rgStats();
+  if(!rg){
+    return '<section class="sheet rgt rgintro center"><div class="rglogo">🃏🎴🃏</div><h2>משחק הג\'וקרים</h2><p>בונים ידיים מקלפי מילים, עונים על הפירוש של כל קלף, וצוברים צ\'יפים ומכפילים. בין סיבוב לסיבוב קונים ג\'וקרים שמשנים את החוקים. כל ריצה היא חפיסה חדשה של מילים, והמילים שאתה <b>לא מכיר</b> שוות הכי הרבה.</p>'
+     +'<button class="btn rgbtn" data-act="rgstart">התחל ריצה</button>'
+     +'<p class="small rgdim">ריצות: '+st.runs+' · שלב שיא: '+(st.bestAnte>RG_ANTES?'ניצחון 🏆':st.bestAnte||0)+' · יד שיא: <bdi>'+(st.bestHand||0).toLocaleString()+'</bdi></p>'
+     +'<details class="rghow"><summary>איך משחקים?</summary><ol><li>בוחרים עד 5 קלפים מהיד. כל קלף הוא מילה באנגלית.</li><li>ההתאמה בין הקלפים קובעת את היד: <b>זוג</b> = שתי מילים שמתחילות באותה אות, <b>צבע</b> = 5 מילים מאותה רמה, <b>רצף</b> = אותיות פתיחה עוקבות, ועוד.</li><li>אחרי ששיחקת, עונים מה הפירוש של כל קלף. רק תשובות נכונות קולעות.</li><li>ניקוד = צ\'יפים × מכפיל. מילה לא מוכרת (✨) שווה +10 צ\'יפים.</li><li>מגיעים ליעד לפני שנגמרות הידיים, מקבלים מטבעות, וקונים ג\'וקרים ושדרוגים בחנות.</li><li>8 שלבים, בכל שלב 3 סיבובים, והשלישי הוא בוס עם חוק מיוחד.</li></ol><p class="small">כל מילה שטעית בה נכנסת לחזרה בכרטיסיות ולקרב המילים הקשות.</p></details></section>';
+  }
+  if(rg.phase==="blind"){
+    let h='<section class="sheet rgt"><div class="rgante">שלב '+rg.ante+' מתוך '+RG_ANTES+'</div><div class="rgblinds">';
+    for(let b=0;b<3;b++){ const boss=b===2?RG_BOSSES.find(x=>x.id===rg.bosses[rg.ante-1]):null; h+='<div class="rgbcard'+(b===rg.bi?' cur':b<rg.bi?' done':'')+(boss?' boss':'')+'"><span class="bic">'+(boss?boss.ic:b===0?'🔹':'🔷')+'</span><b>'+(boss?boss.n:['קטן','גדול'][b])+'</b><small>יעד <bdi>'+rgTarget(rg.ante,b).toLocaleString()+'</bdi></small><small>פרס '+[3,4,5][b]+' 🪙</small>'+(boss?'<em>'+esc(boss.d)+'</em>':'')+(b<rg.bi?'<i>✓</i>':'')+'</div>'; }
+    h+='</div>'+rgJokersHTML(false)+'<div class="rgstats"><span>🪙 <b>'+rg.coins+'</b> מטבעות</span><span>🃏 '+rg.deck.length+' קלפים בחפיסה</span></div><button class="btn rgbtn" data-act="rgbegin">שחק</button>'+rgHandsTable()+'<p class="center" style="margin:10px 0 0"><button class="btn ghost mini rgquit" data-act="rgquit">לוותר על הריצה</button></p></section>';
+    return h;
+  }
+  if(rg.phase==="play"){
+    const sel=rg.hand.filter(c=>rg.sel.includes(c.id)), t=rgDetect(sel);
+    let h='<section class="sheet rgt">'+rgHeadHTML();
+    h+='<div class="rgprev">'+(t?'<b>'+RG_HANDS[t][0]+'</b> <span dir="ltr" class="eq"><span class="cx">'+rgHandBase(t).chips+'</span> × <span class="mx">'+rgHandBase(t).mult+'</span></span>':'<span class="rgdim">בחר עד 5 קלפים</span>')+'</div>';
+    h+='<div class="rghand">'+rg.hand.map(c=>rgCardHTML(c,rg.sel.includes(c.id))).join('')+'</div>';
+    h+='<div class="rgsortrow"><span class="small rgdim">סידור:</span><button class="btn ghost mini'+(rg.sort==="letter"?' on':'')+'" data-act="rgsort" data-arg="letter">לפי אות</button><button class="btn ghost mini'+(rg.sort==="level"?' on':'')+'" data-act="rgsort" data-arg="level">לפי רמה</button><span class="small rgdim">נשארו '+rg.pile.length+' בחפיסה</span></div>';
+    h+='<div class="rgacts sticky"><button class="btn rgdisc" data-act="rgdisc"'+(!rg.sel.length||rg.discards<=0?' disabled':'')+'>🗑️ זרוק'+(rg.sel.length?' ('+rg.sel.length+')':'')+'</button><button class="btn rgbtn" data-act="rgplay"'+(!rg.sel.length?' disabled':'')+'>שחק יד'+(rg.sel.length?' ('+rg.sel.length+')':'')+'</button></div>';
+    return h+rgHandsTable()+'</section>';
+  }
+  if(rg.phase==="quiz"){
+    const q=rg.q, c=rg.played[rg.qi], L="ABCD", boss=rgBoss();
+    let h='<section class="sheet rgt">'+rgHeadHTML();
+    h+='<div class="rgdots">'+rg.played.map((p,i)=>'<span class="'+(i<rg.qi||(i===rg.qi&&rg.chosen!==null)?(p.ok?(p.shielded?'sh':'ok'):'no'):i===rg.qi?'cur':'')+'" lang="en" dir="ltr">'+esc(p.en)+'</span>').join('')+'</div>';
+    if(boss&&boss.id==="clock") h+='<div class="rgclk"><b id="rgClk">6</b><div class="bar"><i id="rgClkBar" style="width:100%"></i></div></div>';
+    h+='<div class="card rgq">'+(q.rev?'<div class="he" style="font-size:26px;font-weight:700">'+esc(q.he)+'</div>':'<div class="en" lang="en">'+esc(q.en)+'</div><div class="spkrow">'+spkBtn(q.en)+'</div>')+'<div class="small rgdim">'+(c.u?'✨ מילה לא מוכרת · ':'')+'רמה '+RG_LV[c.lv]+' · +'+rgCardChips(c)+' צ\'יפים</div></div>';
+    h+='<div class="opts"'+(q.rev?' lang="en"':' dir="rtl" style="direction:rtl"')+'>';
+    q.options.forEach((o,i)=>{ let cls='opt'+(q.rev?'':' heopt'); if(rg.chosen!==null){ if(i===q.answer) cls+=' right'; else if(i===rg.chosen) cls+=' wrong'; } h+='<button class="'+cls+'" data-act="rgans" data-arg="'+i+'"'+(rg.chosen!==null?' disabled':'')+'><span class="l">'+(q.rev?L[i]:'')+'</span><span>'+esc(o)+'</span></button>'; });
+    h+='</div>';
+    if(rg.chosen!==null){
+      const ex=exOf(q.en);
+      h+='<div class="rgfb '+(c.ok?(c.shielded?'sh':'ok'):'no')+'">'+(c.shielded?'🛡️ המחברת הצילה את הקלף. ':(rg.chosen===q.answer?'✓ ':(rg.chosen<0?'⏱️ נגמר הזמן. ':'✗ ')))+'<span dir="ltr">'+esc(q.en)+'</span> = '+esc(q.he)+(ex&&rg.chosen!==q.answer?'<br><small dir="ltr" lang="en">'+hlWord(ex,q.en)+'</small>':'')+'</div>';
+      h+='<div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn" data-act="rgnext">'+(rg.qi+1<rg.played.length?'הבא':'לניקוד')+'</button></div>';
+    }
+    setTimeout(rgClock,0);
+    return h+'</section>';
+  }
+  if(rg.phase==="score"){
+    const r=rg.res, won=rg.score>=rg.target;
+    let h='<section class="sheet rgt">'+rgHeadHTML()+'<div class="rgscore">';
+    r.lines.forEach((l,i)=>{ h+='<div class="rgl k-'+(l.k||'x')+'" style="animation-delay:'+(i*0.18)+'s"><span>'+l.ic+'</span><span'+(l.ltr?' dir="ltr" lang="en"':'')+'>'+esc(l.t)+'</span>'+(l.vh?'<b dir="ltr">'+l.vh+'</b>':l.v?'<b dir="ltr">'+esc(l.v)+'</b>':'')+'</div>'; });
+    const d=r.lines.length*0.18;
+    if(r.type) h+='<div class="rgtot" dir="ltr" style="animation-delay:'+d+'s"><span class="cx">'+r.chips+'</span> × <span class="mx">'+r.mult+'</span> = <b>'+r.total.toLocaleString()+'</b></div>';
+    h+='</div><p class="center small rgdim">'+(won?'🎉 הגעת ליעד!':rg.hands>0?'חסרות עוד <bdi>'+(rg.target-rg.score).toLocaleString()+'</bdi> נקודות. נשארו '+rg.hands+' ידיים.':'נגמרו הידיים.')+'</p>';
+    return h+'<button class="btn rgbtn" data-act="rgcont">'+(won?'לאסוף את הפרס':rg.hands>0?'ליד הבאה':'לסיכום')+'</button></section>';
+  }
+  if(rg.phase==="cash"){
+    const c=rg.cash;
+    let h='<section class="sheet rgt center"><div class="bigemo">'+(rg.bi===2?'👑':'💰')+'</div><h2>'+(rg.bi===2?'הבוס הובס!':'ניצחת בסיבוב')+'</h2><div class="rgcash">';
+    h+='<div><span>פרס על הסיבוב</span><b>+'+c.base+' 🪙</b></div>';
+    if(c.hands) h+='<div><span>'+c.hands+' ידיים שלא שיחקת</span><b>+'+c.hands+' 🪙</b></div>';
+    if(c.interest) h+='<div><span>ריבית (1 על כל 5 מטבעות)</span><b>+'+c.interest+' 🪙</b></div>';
+    if(c.piggy) h+='<div><span>🐷 קופת חיסכון</span><b>+'+c.piggy+' 🪙</b></div>';
+    h+='</div><button class="btn rgbtn" data-act="rgshop">לחנות (+'+c.total+' 🪙)</button></section>';
+    return h;
+  }
+  if(rg.phase==="shop"){
+    const sh=rg.shop;
+    let h='<section class="sheet rgt"><div class="rghead"><div class="rgbl"><b>🛒 החנות</b><small>הבא: '+(rg.bi===2?'שלב '+(rg.ante+1):'סיבוב '+['גדול','בוס'][rg.bi])+'</small></div><div class="rgsc"><small>מטבעות</small><b>'+rg.coins+' 🪙</b></div></div>';
+    h+='<h3 class="rgsh">הג\'וקרים שלך ('+rg.jokers.length+'/5) <small class="rgdim">· הקש על ג\'וקר כדי למכור</small></h3>'+rgJokersHTML(true);
+    h+='<h3 class="rgsh">ג\'וקרים למכירה</h3><div class="rgshop">';
+    if(!sh.j.length) h+='<p class="small rgdim">נקנה הכול. אפשר לגלגל מחדש.</p>';
+    for(const id of sh.j){ const J=JK[id]; h+='<div class="shi r'+J.r+'"><span class="sic">'+J.ic+'</span><div><b>'+esc(J.n)+'</b><small>'+esc(J.d)+'</small><em>'+['','רגיל','לא נפוץ','נדיר'][J.r]+'</em></div><button class="btn mini" data-act="rgbuyj" data-arg="'+id+'"'+(rg.coins<J.p||rg.jokers.length>=5?' disabled':'')+'>'+J.p+' 🪙</button></div>'; }
+    h+='</div><h3 class="rgsh">ספרי שדרוג</h3><div class="rgshop">';
+    for(const t of sh.u){ const H=RG_HANDS[t], lv=rg.lv[t]||1; h+='<div class="shi up"><span class="sic">📘</span><div><b>'+H[0]+' → רמה '+(lv+1)+'</b><small>+'+H[3]+' צ\'יפים, +'+H[4]+' מכפיל לכל '+H[0]+'</small></div><button class="btn mini" data-act="rgbuyu" data-arg="'+t+'"'+(rg.coins<3?' disabled':'')+'>3 🪙</button></div>'; }
+    h+='</div><div class="rgacts"><button class="btn rgdisc" data-act="rgreroll"'+(rg.coins<sh.reroll?' disabled':'')+'>🎲 גלגול · '+sh.reroll+' 🪙</button><button class="btn rgbtn" data-act="rgadv">לסיבוב הבא ←</button></div>';
+    return h+'</section>';
+  }
+  if(rg.phase==="over"||rg.phase==="won"){
+    const won=rg.phase==="won";
+    let h='<section class="sheet rgt center"><div class="bigemo">'+(won?'🏆':'💨')+'</div><h2>'+(won?'ניצחת את כל 8 השלבים!':'הריצה נגמרה')+'</h2><p>'+(won?'זו ריצה מושלמת.':'הגעת לשלב '+rg.ante+', '+(rgBoss()?'הבוס '+rgBoss().n:['הסיבוב הקטן','הסיבוב הגדול'][rg.bi])+'.')+'</p>';
+    h+='<div class="rgcash"><div><span>תשובות נכונות</span><b>'+rg.ok+'/'+rg.ans+'</b></div><div><span>היד הכי טובה</span><b><bdi>'+(rg.best||0).toLocaleString()+'</bdi></b></div><div><span>מילים לא מוכרות שענית עליהן נכון</span><b>'+rg.learned.length+'</b></div><div><span>XP בריצה</span><b>+'+(rg.xp||0)+'</b></div></div>';
+    if(rg.missed.length){ h+='<div class="misslist" style="text-align:right"><h3>המילים שהפילו אותך ('+rg.missed.length+')</h3>'; for(const en of rg.missed.slice(0,30)) h+='<div class="drow"><span class="en" lang="en" dir="ltr">'+esc(en)+'</span><span class="dhe">'+esc(heOf(en))+'</span></div>'; h+='<p class="small rgdim">הן נכנסו לחזרה של היום ולקרב המילים הקשות. בריצה הבאה הן יחזרו לחפיסה, ושוות יותר.</p></div>'; }
+    return h+'<div class="row" style="justify-content:center"><button class="btn rgbtn" data-act="rgnew">ריצה חדשה</button>'+(rg.missed.length?'<button class="btn ghost" data-act="vmode" data-arg="boss">👾 לקרב במילים הקשות</button>':'')+'</div></section>';
+  }
+  return '';
+}
+function rgHomeHTML(){
+  const rg=S.rg, live=rg&&!["over","won"].includes(rg.phase);
+  return '<section class="sheet rghome"><span class="rgic">🃏</span><div><h3 style="margin:0 0 2px">משחק הג\'וקרים</h3><p class="small" style="margin:0">'+(live?'יש לך ריצה פתוחה: שלב '+rg.ante+', '+rg.jokers.length+' ג\'וקרים, '+rg.coins+' מטבעות.':'ידיים, ג\'וקרים ובוסים, ובכל קלף מילה שצריך לזהות.')+'</p></div><button class="btn mini" data-act="rghome">'+(live?'להמשיך':'לשחק')+'</button></section>';
+}
+ACH.push(
+  ["rgfirst","🎴","הקלף הראשון","ניצחת סיבוב במשחק הג'וקרים",()=>!!(S.rgStats&&S.rgStats.blinds>0)],
+  ["rgboss","👑","מפיל בוסים","ניצחת בוס במשחק הג'וקרים",()=>!!(S.rgStats&&S.rgStats.bosses>0)],
+  ["rghand","💥","יד של 1,000","קלעת 1,000 נקודות ביד אחת",()=>!!(S.rgStats&&S.rgStats.bestHand>=1000)],
+  ["rgwin","🃏","ריצה מושלמת","עברת את כל 8 השלבים",()=>!!(S.rgStats&&S.rgStats.wins>0)]
+);
+
 function render(){
   const left=diff(today(),S.examDate);
   document.getElementById("sub").textContent = left>0 ? "מ-"+S.base+" ("+band(S.base)+") ל-"+S.target+" ("+band(S.target)+"). נשארו "+left+" ימים עד המבחן ב-"+dm(S.examDate)+"." : left===0 ? "היום המבחן." : "עדכן את תאריך המבחן בהגדרות.";
@@ -2198,6 +2678,8 @@ document.addEventListener("click",e=>{
   else if(a==="vhint"){ if(vs){ vs.hint=true; render(); } }
   else if(a==="sprgo"){ vmode="sprint"; startSprint(); }
   else if(a==="spra") sprAnswer(+arg);
+  else if(a==="rghome"){ tab="vocab"; vmode="run"; render(); window.scrollTo({top:0}); }
+  else if(a.startsWith("rg")) rgAct(a,arg);
   else if(a==="bossgo"){ vmode="boss"; if(hardList().length) startBoss(); else { boss=null; render(); } }
   else if(a==="bossa") bossAnswer(+arg);
   else if(a==="bossnext") bossNext();
