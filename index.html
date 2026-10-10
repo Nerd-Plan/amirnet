@@ -380,6 +380,10 @@ h2 .owl{display:inline-block;vertical-align:-8px;margin-inline-end:6px;filter:no
 .backupnag{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(135deg,var(--sheet),var(--goodbg))}
 .backupnag .owl{flex:none}
 .notebook h2{margin-bottom:6px}
+.gb-vg{display:flex;align-items:center;gap:8px;margin-top:6px;color:var(--muted)}
+.gb-vg select{font:inherit;font-size:13px;padding:2px 6px;border-radius:8px;border:1px solid var(--line);background:var(--sheet);color:var(--ink)}
+.estnote{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+
 .goalbar{position:sticky;top:0;z-index:8;margin:10px 0 4px;background:var(--sheet);border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.07)}
 body.insim .goalbar{display:none}
 .gb-main{display:flex;align-items:center;gap:10px;width:100%;padding:8px 12px;background:none;border:0;color:var(--ink);font:inherit;text-align:right;cursor:pointer}
@@ -1219,11 +1223,22 @@ const wd = s => WD[new Date(s+"T12:00:00").getDay()];
 const dm = s => { const [,m,d]=s.split("-"); return (+d)+"/"+(+m); };
 
 /* ---------- state & persistence ---------- */
-const DEFAULT = {v:4,examDate:"2026-10-26",target:120,base:91,cards:{},custom:[],attempts:[],daily:{},items:{},skills:{},theta:null,thetaN:{},sims:[],updatedAt:0};
+const DEFAULT = {v:5,examDate:"2026-10-26",target:120,base:91,cards:{},custom:[],attempts:[],daily:{},items:{},skills:{},theta:null,thetaN:{},sims:[],updatedAt:0};
 const LS = "amirnet-coach-v1";
 let S = Object.assign({},DEFAULT);
 try{ const r=localStorage.getItem(LS); if(r) S=Object.assign({},DEFAULT,JSON.parse(r)); }catch(e){}
-function migrate(){ if(!S.v||S.v<2){ if(S.base===103) S.base=91; if(S.target===120) S.target=100; S.v=2; } if(S.v<3){ if(S.target===100) S.target=120; S.v=3; } if(S.v<4){ S.items=S.items||{}; S.skills=S.skills||{}; S.thetaN=S.thetaN||{}; delete S.tips; delete S.tipsAt; delete S.recentTopics; S.v=4; } for(const k of ["items","skills","thetaN","daily","cards"]) if(!S[k]) S[k]={}; for(const k of ["custom","attempts","sims"]) if(!Array.isArray(S[k])) S[k]=[]; }
+function migrate(){ if(!S.v||S.v<2){ if(S.base===103) S.base=91; if(S.target===120) S.target=100; S.v=2; } if(S.v<3){ if(S.target===100) S.target=120; S.v=3; } if(S.v<4){ S.items=S.items||{}; S.skills=S.skills||{}; S.thetaN=S.thetaN||{}; delete S.tips; delete S.tipsAt; delete S.recentTopics; S.v=4; } for(const k of ["items","skills","thetaN","daily","cards"]) if(!S[k]) S[k]={}; for(const k of ["custom","attempts","sims"]) if(!Array.isArray(S[k])) S[k]=[]; try{ migrateV5(); }catch(e){} }
+function migrateV5(){
+  if((S.v||0)>=5) return;
+  const isAi=id=>String(id||"").startsWith("ai-");
+  const before=S.attempts.length; S.attempts=S.attempts.filter(a=>!isAi(a.id));
+  let had=before!==S.attempts.length;
+  for(const k of Object.keys(S.items)) if(isAi(k)){ delete S.items[k]; had=true; }
+  if(had){ const sk={}; for(const it of ITEMS){ const r=S.items[it.id]; if(r){ const o=sk[it.skill]||(sk[it.skill]={n:0,ok:0}); o.n+=r.n||0; o.ok+=r.ok||0; } } S.skills=sk; }
+  S.gh={}; if(S.goalHit&&typeof S.goalHit==="string") delete S.goalHit;
+  S.v=5;
+  try{ localStorage.setItem(LS,JSON.stringify(S)); }catch(e){}
+}
 migrate();
 function band(v){ return v>=134?"פטור":v>=120?"מתקדמים ב׳":v>=100?"מתקדמים א׳":v>=85?"בסיסי":"טרום בסיסי"; }
 function bandEn(v){ return v>=134?"Exemption":v>=120?"Advanced B":v>=100?"Advanced A":v>=85?"Basic":"Pre-basic"; }
@@ -1374,7 +1389,7 @@ function viewToday(){
     h+='</div><div class="stats" style="margin-top:14px">';
     h+='<div class="stat"><b>'+left+'</b><span>ימים למבחן</span></div>';
     h+='<div class="stat"><b>'+streak()+'</b><span>ימים ברצף</span></div>';
-    h+='<div class="stat"><b>'+Object.values(S.cards).filter(c=>c.box>=3).length+'</b><span>מילים שולטות</span></div>';
+    h+='<div class="stat"><b>'+masteredN()+'</b><span>מילים שולטות</span></div>';
     h+='</div></section>';
   }
 
@@ -1458,7 +1473,7 @@ function viewVocab(){
   if(vmode==="run") return vocabTabs()+viewRun();
   return vocabTabs()+viewCardsV3();
 }
-const APP_VERSION="3.6";
+const APP_VERSION="3.7";
 /* ---------- speech & guessing ---------- */
 const TTS = ("speechSynthesis" in window) && typeof SpeechSynthesisUtterance!=="undefined";
 let enVoice=null, lastSpoken="";
@@ -1505,7 +1520,7 @@ function viewVocabCards(){
   if(!vs) vs=buildVocab();
   const total=vs.queue.length;
   if(!total || vs.i>=total){
-    const mastered=Object.values(S.cards).filter(c=>c.box>=3).length;
+    const mastered=masteredN();
     let h='<section class="sheet center"><div class="bigemo">'+(total?'🎉':'😴')+'</div><h2>'+(total?'סיימת את הסבב!':'אין מילים ממתינות כרגע')+'</h2>';
     if(total) h+='<p>ידעת '+vs.known+', פספסת '+vs.miss+(vs.extra?', ו-'+vs.extra+' מילים שכבר הכרת הוחלפו בחדשות':'')+'.</p><p class="hl" style="display:inline-block">+'+Math.max(0,(S.xp||0)-(vs.xp0||0))+' XP בסבב הזה</p><p class="small">'+esc(cheer())+'</p>';
     if(hardList().length) h+='<p><button class="btn" data-act="vmode" data-arg="boss">👾 '+hardList().length+' מילים קשות מחכות לקרב</button></p>';
@@ -1711,7 +1726,8 @@ const isHard=c=>!!c && (c.m||0)>=1 && c.box<=2;
 function hardList(){ return Object.keys(S.cards).filter(k=>isHard(S.cards[k])&&heOf(k)); }
 function slayCheck(en,wasHard){ const c=S.cards[en]; if(wasHard && c && c.box>=3){ S.bossWins=(S.bossWins||0)+1; gainXP(25,{label:"מילה קשה הובסה"}); fxQ.push({t:"slay",w:en}); } }
 const cardsN=()=>Object.keys(S.cards).length;
-const masteredN=()=>Object.values(S.cards).filter(c=>c.box>=3).length;
+const isMastered=c=>!!c&&c.box>=3&&(c.ok||0)>=2;
+const masteredN=()=>Object.values(S.cards).filter(isMastered).length;
 const ACH=[
  ["first","🌱","מילה ראשונה","למדת את המילה הראשונה שלך",()=>cardsN()>=1],
  ["w50","📚","50 מילים","50 מילים אצלך",()=>cardsN()>=50],
@@ -1728,7 +1744,7 @@ const ACH=[
  ["sp15","⚡","ספרינטר","15 תשובות נכונות בספרינט אחד",()=>(S.sprintBest||0)>=15],
  ["sp25","🚀","טיל","25 תשובות נכונות בספרינט אחד",()=>(S.sprintBest||0)>=25],
  ["goal","✅","יעד יומי","השלמת את יעד ה-XP היומי",()=>xpToday()>=DAILY_GOAL()],
- ["hard20","💎","יהלומים","20 מילים ברמה גבוהה בשליטה",()=>Object.keys(S.cards).filter(k=>LEVEL[k]===3&&S.cards[k].box>=3).length>=20],
+ ["hard20","💎","יהלומים","20 מילים ברמה גבוהה בשליטה",()=>Object.keys(S.cards).filter(k=>LEVEL[k]===3&&isMastered(S.cards[k])).length>=20],
  ["sim","🏁","סימולציה ראשונה","סיימת סימולציה",()=>(S.sims||[]).length>=1],
  ["lv5","🏅","רמה 5","הגעת לרמה 5",()=>lvlOf(S.xp||0)>=5],
  ["lv10","🏆","רמה 10","הגעת לרמה 10",()=>lvlOf(S.xp||0)>=10]
@@ -1878,7 +1894,7 @@ function bossAnswer(i){
   const t=today(), c=S.cards[q.en]||(S.cards[q.en]={box:0,due:t,m:1}), wasHard=isHard(c);
   if(ok){
     if(!boss.beaten.has(q.en)){ boss.beaten.add(q.en); boss.hp=Math.max(0,boss.hp-1); }
-    c.box=Math.min(c.box+1,5); c.due=addDays(t,INT[c.box]); day(t).rv++;
+    c.box=Math.min(c.box+1,5); c.ok=(c.ok||0)+1; c.due=addDays(t,INT[c.box]); day(t).rv++;
     gainXP(15,{combo:true,lv:LEVEL[q.en]}); slayCheck(q.en,wasHard);
   } else {
     c.box=0; c.due=t; c.m=(c.m||0)+1;
@@ -2041,7 +2057,7 @@ function viewTodayV3(){
   }
   h+='<section class="sheet"><h2>איפה אתה עומד</h2>'+rulerHTML()+'<p class="small muted" style="margin:8px 0 0">'+(estimate()?'הסימון הכחול הוא הניחוש שלי לציון שלך, לפי כל התשובות ורמת הקושי שלהן. הוא לא ציון רשמי.':'אחרי 15 תשובות אסמן כאן את הניחוש שלי לציון שלך.')+'</p></section>';
   if(left>0){
-    h+='<section class="sheet"><h2>הדרך למבחן</h2>'+journeyHTML()+'<div class="stats" style="margin-top:12px"><div class="stat"><b>'+left+'</b><span>ימים למבחן</span></div><div class="stat"><b>'+streak()+'</b><span>ימים ברצף</span></div><div class="stat"><b>'+Object.values(S.cards).filter(c=>c.box>=3).length+'</b><span>מילים שאתה שולט בהן</span></div></div></section>';
+    h+='<section class="sheet"><h2>הדרך למבחן</h2>'+journeyHTML()+'<div class="stats" style="margin-top:12px"><div class="stat"><b>'+left+'</b><span>ימים למבחן</span></div><div class="stat"><b>'+streak()+'</b><span>ימים ברצף</span></div><div class="stat"><b>'+masteredN()+'</b><span>מילים שאתה שולט בהן</span></div></div></section>';
   }
   return h;
 }
@@ -2074,7 +2090,7 @@ function cardNudge(){
   return "";
 }
 function cardsDoneHTML(total){
-  const mastered=Object.values(S.cards).filter(c=>c.box>=3).length, gained=Math.max(0,(S.xp||0)-((vs&&vs.xp0)||S.xp||0));
+  const mastered=masteredN(), gained=Math.max(0,(S.xp||0)-((vs&&vs.xp0)||S.xp||0));
   let h='<section class="sheet center">'+owl(total?"cheer":"sleepy",92)+'<h2>'+(total?'כל הכבוד'+NM()+', סיימת את הסבב!':'אין מילים שמחכות כרגע')+'</h2>';
   if(total) h+='<p>ידעת '+vs.known+', אספת '+vs.miss+' מילים חדשות'+(vs.extra?', ו-'+vs.extra+' מילים שכבר הכרת הוחלפו בחדשות':'')+'.</p><p class="hl" style="display:inline-block">+'+gained+' XP בסבב הזה</p>';
   h+='<p class="small">'+esc(cheer())+'</p><p class="small muted">'+mastered+' מילים שאתה כבר שולט בהן, מתוך '+allWords().length+'.</p>';
@@ -2225,9 +2241,11 @@ function drillSet(type){
   const items=type==="rc"?bestPassage(t,5).items:pickTop(type,8,t);
   return {qs:items.map(prepQ),why:explainSet(items)};
 }
+function isAiItem(q){ return !!(q&&(q.ai||String(q.id||"").startsWith("ai-"))); }
 function record(q,ok,ms,isSim){
   const t=today(), d=day(t);
   d.ans++; if(ok) d.ok++;
+  if(isAiItem(q)){ S.aiLog=(S.aiLog||[]).concat([{id:q.id,ok,ts:Date.now()}]).slice(-300); return false; }
   const att={type:q.type,id:q.id,ok,ms,ts:Date.now()}; if(isSim) att.sim=1; if(!ok) att.stem=q.stem.slice(0,140);
   S.attempts.push(att); if(S.attempts.length>600) S.attempts=S.attempts.slice(-600);
   const it=S.items[q.id]||{n:0,ok:0}; it.n++; if(ok) it.ok++; it.last=t; it.lastOk=ok; S.items[q.id]=it;
@@ -2278,7 +2296,7 @@ function viewPractice(){
     for(const t of ["sc","rs","rc"]){ const r=ps.res.filter(x=>x.type===t); if(r.length) h+='<p style="margin:4px 0">'+TYPES[t]+': '+r.filter(x=>x.ok).length+'/'+r.length+'</p>'; }
     const added=ps.res.filter(r=>r.added).length;
     if(added) h+='<p class="muted">'+added+' מילים נוספו למילים שלך.</p>';
-    const est=estimate(); if(est) h+='<p class="muted">הציון המשוער שלך עכשיו: '+est+'.</p>';
+    const est=estimate(); if(est) h+='<p class="muted">אומדן התרגול שלך עכשיו: ~'+est+' (לא ציון רשמי).</p>';
     h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="psmart">סט חכם נוסף</button><button class="btn ghost" data-act="pback">חזרה</button></div></section>';
     return h;
   }
@@ -2334,7 +2352,7 @@ function simToday(k){ return (S.sims||[]).some(x=>x.date===k); }
 function simMenuHTML(){
   const last=(S.sims||[]).slice(-1)[0];
   let h='<section class="sheet sim-entry"><h2>סימולציה מלאה</h2><p class="muted" style="margin-top:0">שישה פרקים, 23 שאלות ו-39 דקות, במבנה של המבחן: טיימר נפרד לכל פרק, חזרה לשאלות רק בתוך הפרק, והתשובות נחשפות רק בסוף. השאלות נבחרות כך שיהיו בעיקר כאלה שעוד לא ראית.</p>';
-  if(last) h+='<p class="small" style="margin-top:0">בסימולציה האחרונה ('+dm(last.date)+'): '+last.raw+' מתוך '+(last.total||23)+', אומדן '+last.est+'.</p>';
+  if(last) h+='<p class="small" style="margin-top:0">בסימולציה האחרונה ('+dm(last.date)+'): '+last.raw+' מתוך '+(last.total||23)+(last.est?', אומדן תרגול ~'+last.est:'')+'.</p>';
   const left=simsLeft();
   h+='<p class="small muted" style="margin-top:0">'+(left>0?'במאגר יש שאלות חדשות לעוד כ-'+left+' סימולציות מלאות שלא ראית.':'כבר ראית את רוב השאלות. סימולציות נוספות יחזרו בעיקר על שאלות שטעית בהן.')+'</p>';
   return h+'<div class="row"><button class="btn" data-act="sgen">התחל סימולציה</button><button class="btn ghost" data-act="sgen" data-arg="short">סימולציה קצרה (12 שאלות, 25 דקות)</button></div></section>';
@@ -2386,7 +2404,7 @@ function finishSim(){
     if(record(q,ok,Math.round((sim.used[ci]||0)/c.qs.length),true)) added++;
   }));
   const total=sim.chapters.reduce((s,c)=>s+c.qs.length,0);
-  sim.raw=raw; sim.total=total; sim.est=estimate()||Math.round(50+raw/total*100); sim.by=by; sim.added=added;
+  sim.raw=raw; sim.total=total; sim.est=estimate()||null; sim.by=by; sim.added=added;
   S.sims=(S.sims||[]).concat([{date:t,raw,total,est:sim.est,by,short:sim.short}]).slice(-30);
   gainXP(raw*8+(sim.short?20:50),{label:"סימולציה"}); checkAch();
   vs=null; persist();
@@ -2423,7 +2441,7 @@ function viewSim(){
   }
   if(sim.phase==="done"){
     let h='<section class="sheet"><div class="chapno">תוצאות הסימולציה</div><h2 class="bigscore">'+sim.raw+' <small>מתוך '+sim.total+'</small></h2>';
-    h+='<p>הציון המשוער שלך: <span class="hl">'+sim.est+'</span>. הוא מחושב מכל התשובות שלך עד עכשיו, תוך התחשבות ברמת הקושי של כל שאלה. הציון האמיתי במאל״ו מחושב אחרת, אז תסתכל בעיקר על המגמה.</p>';
+    h+=sim.est?'<p>אומדן תרגול: <span class="hl">~'+sim.est+'</span>. הוא מחושב מכל התשובות שלך עד עכשיו ומתחשב ברמת הקושי שסימנו לכל שאלה.</p>'+'<p class="estnote">'+EST_NOTE+'</p>':'<p>עוד אין מספיק תשובות לאומדן (צריך לפחות 15). התוצאה היא מספר התשובות הנכונות בלבד.</p>';
     for(const t of ["sc","rs","rc"]) h+='<p style="margin:4px 0">'+TYPES[t]+': '+sim.by[t][0]+'/'+sim.by[t][1]+'</p>';
     if(sim.added) h+='<p class="muted">'+sim.added+' מילים מהטעויות נוספו למילים שלך.</p>';
     h+='<div class="row" style="margin-top:14px"><button class="btn" data-act="sreview">סקירת התשובות</button><button class="btn ghost" data-act="sexit">חזרה לתרגול</button></div></section>';
@@ -2460,7 +2478,7 @@ function viewStats(){
     if(s.n) h+='<div class="small muted" style="margin:-6px 0 6px">'+s.n+' שאלות, ממוצע '+s.sec+' שניות לשאלה</div>';
   }
   const est=estimate();
-  if(est) h+='<p style="margin-bottom:0">הציון המשוער שלך: <span class="hl">'+est+'</span>. הוא מתעדכן אחרי כל תשובה ומתחשב ברמת הקושי של השאלה. זה כיוון, לא תחזית מדויקת.</p>';
+  if(est) h+='<p style="margin-bottom:0">אומדן תרגול: <span class="hl">~'+est+'</span> (מבוסס על '+S.attempts.length+' תשובות אחרונות).</p>'+'<p class="estnote">'+EST_NOTE+'</p>';
   h+='</section>';
 
   const misses=S.attempts.filter(a=>!a.ok&&a.stem).slice(-6).reverse();
@@ -2974,7 +2992,7 @@ function aiStatsText(){
   const lines=["Days until exam: "+left,"Current level estimate (Amirnet 50-150): "+(est||S.base)+", target: "+S.target,
     "Accuracy by section: "+["sc","rs","rc"].map(k=>TYPES[k]+" "+(byType[k][0]?Math.round(byType[k][1]/byType[k][0]*100)+"% of "+byType[k][0]:"no data")).join("; "),
     "Accuracy by skill: "+(sk.join("; ")||"no data yet"),
-    "Words learned: "+Object.keys(S.cards).length+", mastered: "+Object.values(S.cards).filter(c=>c.box>=3).length+", hard words now: "+hardList().length,
+    "Words learned: "+Object.keys(S.cards).length+", mastered: "+masteredN()+", hard words now: "+hardList().length,
     "Examples of hard words: "+(hard.join(", ")||"none"),"Study streak (days): "+streak(),"Daily new words setting: "+(S.nwDaily||25)];
   return lines.join("\n");
 }
@@ -3326,9 +3344,11 @@ document.addEventListener("input",e=>{
 });
 
 /* ---------- v3.5: always-visible goal tracker ---------- */
-const GOALS={100:{name:"מתקדמים א׳",short:"מתקדמים א׳",words:1200,acc:60},120:{name:"מתקדמים ב׳",short:"מתקדמים ב׳",words:2000,acc:72},134:{name:"פטור",short:"פטור",words:3000,acc:85}};
+const GOAL_NAMES={100:"מתקדמים א׳",120:"מתקדמים ב׳",134:"פטור"};
+const CUTOFF_NOTE="ספי הרמות (100, 120, 134) נפוצים במוסדות רבים, למשל באוניברסיטת תל אביב. מאל״ו לא קובע אותם: כל מוסד מחליט בעצמו, אז כדאי לבדוק במוסד שלך.";
+const EST_NOTE="אומדן תרגול: מחושב מהתשובות שלך באפליקציה ולא מכויל מול ציונים רשמיים של מאל״ו. השתמש בו כדי לראות מגמה, לא כתחזית.";
 let goalOpen=false;
-function goalOf(){ return GOALS[S.target]||GOALS[120]; }
+function goalOf(){ return {name:GOAL_NAMES[S.target]||("ציון "+S.target)}; }
 function recentAcc(){
   const a=S.attempts.filter(x=>!x.sim).slice(-60);
   if(a.length<15) return null;
@@ -3347,18 +3367,15 @@ function wordPace(){
   const k=ref[0], days=Math.max(1,diff(k,t));
   return Math.max(0,(masteredN()-S.gh[k].m)/days);
 }
+/* readiness = practice estimate vs. chosen target ONLY. Vocabulary and accuracy are shown as information,
+   never as requirements (no official vocabulary/accuracy thresholds exist). */
 function goalState(){
-  const g=goalOf(), est=estimate(), cur=est||S.base, acc=recentAcc(), m=masteredN(), left=Math.max(0,diff(today(),S.examDate));
-  const score={v:Math.max(0,Math.min(1,(cur-50)/(S.target-50))),cur,known:!!est,gap:Math.max(0,S.target-cur)};
-  const words={v:Math.min(1,m/g.words),m,need:g.words,gap:Math.max(0,g.words-m)};
-  const accm=acc==null?null:{v:Math.min(1,acc/g.acc),acc,need:g.acc};
-  let wsum=0, tot=0;
-  for(const [x,w] of [[score,.5],[words,.3],[accm,.2]]) if(x){ tot+=x.v*w; wsum+=w; }
-  const pct=Math.round(tot/wsum*100);
-  const pace=wordPace(), perDay=left>0?Math.ceil(words.gap/left):words.gap;
-  const parts=[["score",score.v],["words",words.v]].concat(accm?[["acc",accm.v]]:[]);
-  const weakest=parts.sort((a,b)=>a[1]-b[1])[0][0];
-  return {g,score,words,acc:accm,pct,left,pace,perDay,weakest,done:pct>=100||cur>=S.target&&words.v>=1};
+  const est=estimate(), acc=recentAcc(), m=masteredN(), left=Math.max(0,diff(today(),S.examDate)), vg=S.vocabGoal||null;
+  const score=est?{v:Math.max(0,Math.min(1,(est-50)/(S.target-50))),cur:est,gap:Math.max(0,S.target-est)}:null;
+  const words={m,goal:vg,v:vg?Math.min(1,m/vg):null,gap:vg?Math.max(0,vg-m):0};
+  const pct=score?Math.round(score.v*100):null;
+  const pace=wordPace(), perDay=vg&&left>0?Math.ceil(words.gap/left):null;
+  return {g:goalOf(),score,words,acc,pct,left,pace,perDay,need:Math.max(0,15-S.attempts.length)};
 }
 function goalRing(p,size){
   const r=size/2-4, c=2*Math.PI*r, off=c*(1-Math.min(1,p/100));
@@ -3366,23 +3383,23 @@ function goalRing(p,size){
 }
 function goalBarHTML(){
   const s=goalState();
-  let h='<button class="gb-main" data-act="goaltoggle" aria-expanded="'+goalOpen+'"><span class="gb-ring">'+goalRing(s.pct,40)+'<b>'+s.pct+'%</b></span><span class="gb-txt"><b>מוכנות ל'+s.g.name+'</b><small>'+(s.score.known?'ציון משוער ~'+s.score.cur:'ציון התחלתי '+s.score.cur)+' · יעד '+S.target+(s.left?' · '+s.left+' ימים':'')+'</small></span><span class="gb-chips"><span title="מילים שאתה שולט בהן">📚 <bdi>'+s.words.m.toLocaleString()+'/'+s.g.words.toLocaleString()+'</bdi></span>'+(s.acc?'<span title="דיוק בתרגול">🎯 '+s.acc.acc+'%</span>':'')+'</span><span class="gb-chev">'+(goalOpen?'▴':'▾')+'</span></button>';
+  let h='<button class="gb-main" data-act="goaltoggle" aria-expanded="'+goalOpen+'"><span class="gb-ring">'+goalRing(s.pct||0,40)+'<b>'+(s.pct==null?'—':s.pct+'%')+'</b></span><span class="gb-txt"><b>'+(s.score?'אומדן מול יעד '+s.g.name:'יעד: '+s.g.name+' ('+S.target+')')+'</b><small>'+(s.score?'אומדן תרגול ~'+s.score.cur+' · יעד '+S.target:'עוד אין אומדן · עוד '+s.need+' תשובות בתרגול')+(s.left?' · '+s.left+' ימים':'')+'</small></span><span class="gb-chips"><span title="מילים בשליטה (נבדקו בחזרה מאוחרת)">📚 <bdi>'+s.words.m.toLocaleString()+(s.words.goal?'/'+s.words.goal.toLocaleString():'')+'</bdi></span>'+(s.acc!=null?'<span title="דיוק ב-60 התשובות האחרונות">🎯 '+s.acc+'%</span>':'')+'</span><span class="gb-chev">'+(goalOpen?'▴':'▾')+'</span></button>';
   if(goalOpen) h+=goalDetailHTML(s);
   return h;
 }
 function goalMeter(ic,title,v,now,need,note){
-  const p=Math.round(Math.min(1,v)*100);
-  return '<div class="gm"><div class="gm-top"><span>'+ic+' <b>'+title+'</b></span><span class="gm-num" dir="ltr">'+now+' / '+need+'</span></div><div class="gm-bar"><i style="width:'+p+'%"></i></div>'+(note?'<small>'+note+'</small>':'')+'</div>';
+  const p=Math.round(Math.min(1,v||0)*100);
+  return '<div class="gm"><div class="gm-top"><span>'+ic+' <b>'+title+'</b></span><span class="gm-num" dir="ltr">'+now+(need!=null?' / '+need:'')+'</span></div>'+(v!=null?'<div class="gm-bar"><i style="width:'+p+'%"></i></div>':'')+(note?'<small>'+note+'</small>':'')+'</div>';
 }
 function goalDetailHTML(s){
-  const g=s.g;
-  let h='<div class="gb-detail"><div class="gb-goals">'+[100,120,134].map(v=>'<button class="gb-goal'+(S.target===v?' on':'')+'" data-act="goalset" data-arg="'+v+'">'+GOALS[v].name+'<small>'+v+'</small></button>').join('')+'</div>';
-  h+=goalMeter("🏁","ציון אמירנט",s.score.v,s.score.cur,S.target,s.score.known?(s.score.gap?'חסרות בערך '+s.score.gap+' נקודות. ההערכה מתעדכנת אחרי כל תרגול.':'הגעת לציון היעד בהערכה! תמשיך כדי לייצב.'):'עוד אין מספיק תשובות להערכה. סימולציה אחת תיתן נקודת פתיחה אמיתית.');
-  h+=goalMeter("📚","מילים שאתה שולט בהן",s.words.v,s.words.m.toLocaleString(),g.words.toLocaleString(),s.words.gap?'כדי להגיע עד המבחן: ~'+s.perDay+' מילים חדשות ביום'+(s.pace!=null?' · הקצב שלך עכשיו: '+(Math.round(s.pace*10)/10)+' ביום':'')+'.':'יש לך מספיק מילים ליעד הזה.');
-  h+=s.acc?goalMeter("🎯","דיוק בתרגול (60 אחרונות)",s.acc.v,s.acc.acc+'%',g.acc+'%',s.acc.acc>=g.acc?'הדיוק שלך ברמת היעד.':'רמת היעד דורשת בערך '+g.acc+'% תשובות נכונות.'):goalMeter("🎯","דיוק בתרגול",0,'—',g.acc+'%','יופיע אחרי 15 שאלות תרגול.');
-  const next={score:["הכי משתלם עכשיו: לתרגל ולעדכן את ההערכה",'goalgo','practice',"לתרגול"],words:["הכי משתלם עכשיו: מילים",'goalgo','vocab',"למילים"],acc:["הכי משתלם עכשיו: תרגול ממוקד",'goalsmart','',"לסט חכם"]}[s.weakest];
+  let h='<div class="gb-detail"><div class="gb-goals">'+[100,120,134].map(v=>'<button class="gb-goal'+(S.target===v?' on':'')+'" data-act="goalset" data-arg="'+v+'">'+GOAL_NAMES[v]+'<small>'+v+'</small></button>').join('')+'</div>';
+  h+=s.score?goalMeter("🏁","אומדן תרגול מול היעד",s.score.v,'~'+s.score.cur,S.target,s.score.gap?'האומדן נמוך מהיעד בכ-'+s.score.gap+' נקודות.':'האומדן הגיע ליעד. המשך לתרגל כדי לוודא שזה יציב.'):goalMeter("🏁","אומדן תרגול",null,'—',null,'אין עדיין אומדן. הוא יופיע אחרי 15 תשובות בתרגול או בסימולציה (עוד '+s.need+').');
+  const opts=[0,1000,2000,3000,4000,5000].map(v=>'<option value="'+v+'"'+((S.vocabGoal||0)===v?' selected':'')+'>'+(v?v.toLocaleString()+' מילים':'בלי יעד')+'</option>').join('');
+  h+=goalMeter("📚","מילים בשליטה",s.words.v,s.words.m.toLocaleString(),s.words.goal?s.words.goal.toLocaleString():null,'מילה נחשבת "בשליטה" רק אחרי שזכרת אותה גם בחזרה מאוחרת.'+(s.words.goal?' זה יעד אישי שבחרת, לא דרישה של המבחן'+(s.perDay!=null?': כדי להגיע אליו עד המבחן צריך ~'+s.perDay+' ביום':'')+(s.pace!=null?' · הקצב שלך: '+(Math.round(s.pace*10)/10)+' ביום':'')+'.':''))+'<label class="gb-vg small">יעד מילים אישי (רשות) <select id="vocabGoalSel">'+opts+'</select></label>';
+  h+=goalMeter("🎯","דיוק בתרגול (60 אחרונות)",null,s.acc!=null?s.acc+'%':'—',null,s.acc!=null?'מידע בלבד. אין סף דיוק רשמי.':'יופיע אחרי 15 שאלות תרגול.');
+  const next=s.score?["סט חכם מתמקד בחולשות שלך",'goalsmart','',"לסט חכם"]:["סימולציה או תרגול ייתנו אומדן ראשון",'goalgo','practice',"לתרגול"];
   h+='<div class="gb-next"><span>👉 '+next[0]+'</span><button class="btn mini" data-act="'+next[1]+'"'+(next[2]?' data-arg="'+next[2]+'"':'')+'>'+next[3]+'</button></div>';
-  h+='<p class="gb-note">ההערכה מבוססת על התרגול באפליקציה ואינה ציון רשמי. מספרי המילים הם יעד מומלץ, לא דרישה של המבחן.</p></div>';
+  h+='<p class="gb-note">'+EST_NOTE+' '+CUTOFF_NOTE+'</p></div>';
   return h;
 }
 function goalAfterRender(){
@@ -3392,8 +3409,9 @@ function goalAfterRender(){
   gb.innerHTML=goalBarHTML();
   gb.classList.toggle("open",goalOpen);
   const s=goalState();
-  if(s.pct>=100&&!S.goalHit){ S.goalHit=today(); fxQ.push({t:"ach",ic:"🏆",ti:"הגעת למוכנות מלאה ל"+s.g.name+"!"}); persist(); }
+  if(s.score&&s.score.cur>=S.target&&S.goalHit!==S.target){ S.goalHit=S.target; fxQ.push({t:"ach",ic:"🏆",ti:"אומדן התרגול הגיע ליעד "+s.g.name}); persist(); }
 }
+document.addEventListener("change",e=>{ if(e.target&&e.target.id==="vocabGoalSel"){ S.vocabGoal=+e.target.value||null; persist(); render(); } });
 
 function render(){
   const left=diff(today(),S.examDate);

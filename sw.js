@@ -1,4 +1,4 @@
-const CACHE = "amirnet-v13";
+const CACHE = "amirnet-v14";
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE))); self.skipWaiting(); });
 self.addEventListener("activate", e => {
@@ -10,8 +10,9 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || u.hostname === "api.anthropic.com") return;
   if (u.origin === location.origin) {
     // network first for the app itself, so updates arrive; cache as fallback offline
-    e.respondWith(fetch(e.request).then(r => { const c = r.clone(); caches.open(CACHE).then(x => x.put(e.request, c)); return r; }).catch(() => caches.match(e.request).then(r => r || caches.match("./index.html"))));
-  } else if (u.hostname.endsWith("googleapis.com") || u.hostname.endsWith("gstatic.com")) {
-    e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).then(res => { const c = res.clone(); caches.open(CACHE).then(x => x.put(e.request, c)); return res; })));
+    e.respondWith(fetch(e.request).then(r => { if (r.ok) { const c = r.clone(); caches.open(CACHE).then(x => x.put(e.request, c)); } return r; }).catch(() => caches.match(e.request).then(r => r || caches.match("./index.html"))));
+  } else if (u.hostname === "fonts.googleapis.com" || u.hostname === "fonts.gstatic.com") {
+    // fonts only: never cache API hosts (e.g. generativelanguage.googleapis.com) or error responses
+    e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).then(res => { if (res.ok) { const c = res.clone(); caches.open(CACHE).then(x => x.put(e.request, c)); } return res; })));
   }
 });
