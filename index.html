@@ -380,6 +380,14 @@ h2 .owl{display:inline-block;vertical-align:-8px;margin-inline-end:6px;filter:no
 .backupnag{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(135deg,var(--sheet),var(--goodbg))}
 .backupnag .owl{flex:none}
 .notebook h2{margin-bottom:6px}
+.veng{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:10px 14px;margin:12px 0}
+.veng summary{cursor:pointer;font-weight:700;list-style-position:inside}
+.veng-row{display:grid;grid-template-columns:90px 1fr;gap:4px 10px;align-items:center;margin:8px 0}
+.veng-row>span:last-child{grid-column:1/-1;color:var(--muted)}
+.veng-row .bar{height:9px;border-radius:999px;background:var(--soft);overflow:hidden}
+.veng-row .bar i{display:block;height:100%;background:var(--good)}
+.opt.idk{opacity:.8;border-style:dashed}
+
 .gb-vg{display:flex;align-items:center;gap:8px;margin-top:6px;color:var(--muted)}
 .gb-vg select{font:inherit;font-size:13px;padding:2px 6px;border-radius:8px;border:1px solid var(--line);background:var(--sheet);color:var(--ink)}
 .estnote{font-size:12.5px;color:var(--muted);margin:6px 0 0}
@@ -464,235 +472,6 @@ body.aiopen{overflow:hidden}
 .linkish{background:none;border:0;color:var(--accent,#2442B8);text-decoration:underline;font:inherit;cursor:pointer;padding:0}
 .aiwhybtn{margin-top:10px}
 .rgfb .chipbtn{margin-top:8px;display:inline-block}
-
-body.rgopen{overflow:hidden}
-body.rgopen .xpfloat{display:none}
-.rgx,.rgintro,.rghome{--felt:radial-gradient(130% 85% at 50% 18%,#1F7D60 0%,#135840 46%,#0A3328 100%);--cream:linear-gradient(180deg,#FFFDF6,#F5EAD2);--txt:#F3FFF9;--dimc:rgba(243,255,249,.64);--gold:#F5C542}
-.rgx{position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:var(--felt);color:var(--txt);font-family:Rubik,Assistant,"Segoe UI",Arial,sans-serif}
-.rgx::before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-radial-gradient(circle at 30% 20%,rgba(255,255,255,.018) 0 1px,transparent 1px 4px);box-shadow:inset 0 0 160px rgba(0,0,0,.55)}
-.rgwrap{position:relative;max-width:520px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 0}
-.rgbody{flex:1;padding-bottom:14px}
-.rgfoot{position:sticky;bottom:0;z-index:3;margin:auto -14px 0;display:flex;gap:10px;padding:16px 14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(rgba(8,40,31,0),rgba(8,40,31,.92) 36%)}
-.rgfoot .gbtn{white-space:nowrap}
-.rgfoot .gbtn:not(.gold){font-size:17px}
-.rgbody.table{display:flex;flex-direction:column}
-.rgbody.table .handbar{margin-top:auto}
-.tablehint{margin:auto 0;padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(243,255,249,.75)}
-.tablehint:empty{display:none}
-.tablehint b{font-family:"Secular One",Rubik,sans-serif;font-size:30px;color:rgba(255,255,255,.92);text-shadow:0 3px 0 rgba(0,0,0,.25)}
-.tablehint span{font-size:14px}
-.rgbody.center-v{justify-content:center}
-.rgx summary,.rgintro summary{color:#fff}
-.rgx .dim,.rgintro .dim{color:var(--dimc)}
-.rgx h2,.rgx h3{color:inherit}
-.rgtop{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.rgtitle{flex:1;font-family:"Secular One",Rubik,sans-serif;font-size:19px}
-.rgtitle span{opacity:.55}
-.rgcoins{background:rgba(0,0,0,.32);border:1px solid rgba(245,197,66,.45);border-radius:999px;padding:4px 12px;font-weight:700;color:#FFD86B;font-variant-numeric:tabular-nums}
-.rgclose{width:38px;height:38px;flex:none;border-radius:12px;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:16px;cursor:pointer}
-.rghud{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:10px 12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.rghud.boss{border-color:rgba(240,72,78,.45)}
-.hud1{display:flex;align-items:center;gap:10px}
-.blindtok{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#62A6FF,#1C4CB4);box-shadow:0 0 0 3px rgba(255,255,255,.16),0 4px 10px rgba(0,0,0,.35);font-size:15px;color:#fff;letter-spacing:-2px}
-.blindtok.boss{background:radial-gradient(circle at 35% 30%,#FF7D8B,#A0122A);font-size:22px;letter-spacing:0}
-.hudblind{flex:1;min-width:0}
-.hudblind b{display:block;font-size:17px}
-.hudblind small,.hudscore small{color:var(--dimc);font-size:13px}
-.hudscore{text-align:left}
-.hudscore small{display:block}
-.hudscore b{display:inline-block;font-family:"Secular One",Rubik,sans-serif;font-size:28px;line-height:1.05;font-variant-numeric:tabular-nums}
-.rgprog{height:8px;border-radius:999px;background:rgba(0,0,0,.38);overflow:hidden;margin:10px 0 8px}
-.rgprog i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#F5C542,#FF9F1C);transition:width .7s cubic-bezier(.2,.8,.2,1)}
-.rgprog.red i{background:linear-gradient(90deg,#FF8A8F,#F0484E);transition:none}
-.bossrule{font-size:13.5px;color:#FFC2CA;background:rgba(240,72,78,.16);border-radius:10px;padding:5px 10px;margin-bottom:8px}
-.hud2{display:flex;align-items:stretch;gap:10px}
-.rgcalc{flex:1;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(0,0,0,.25);border-radius:14px;padding:6px 10px;min-width:0}
-.rgcalc .hn{font-weight:700;font-size:15px;line-height:1.2;min-width:0}
-.rgx em,.rgintro em{font-style:normal;font-size:11px;font-weight:700;background:rgba(245,197,66,.2);color:#FFD86B;border-radius:6px;padding:1px 6px}
-.rgcalc .cm{display:flex;align-items:center;gap:6px;flex:none}
-.rgcalc .x{font-size:20px;opacity:.8}
-.cbox,.mbox{display:inline-block;min-width:52px;padding:2px 8px;border-radius:10px;font-family:"Secular One",Rubik,sans-serif;font-size:22px;text-align:center;color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,.22);font-variant-numeric:tabular-nums}
-.cbox{background:linear-gradient(#3F8EFF,#1F63DA)}
-.mbox{background:linear-gradient(#FF5E63,#D52F38)}
-.cbox.sm,.mbox.sm{min-width:0;font-size:14px;padding:0 8px;border-radius:7px}
-.hudres{display:flex;flex-direction:column;gap:4px}
-.hudres div{display:flex;align-items:baseline;justify-content:center;gap:5px;background:rgba(0,0,0,.25);border-radius:10px;padding:2px 10px;min-width:84px}
-.hudres b{font-family:"Secular One",Rubik,sans-serif;font-size:18px;line-height:1.3}
-.hudres div:first-child b{color:#7DB6FF}.hudres div:last-child b{color:#FF8A8F}
-.hudres small{font-size:11px;color:var(--dimc)}
-.bump{animation:rgBump .38s cubic-bezier(.2,1.8,.4,1)}
-@keyframes rgBump{40%{transform:scale(1.28)}}
-.rgjrow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0 2px}
-.rgjrow.empty{font-size:13px;color:var(--dimc);background:rgba(0,0,0,.16);border:1px dashed rgba(255,255,255,.16);border-radius:12px;padding:8px 12px}
-.jc{position:relative;width:60px;height:80px;border-radius:10px;background:linear-gradient(160deg,#4E3D95,#2A1F5C);border:2px solid #8FA8FF;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;box-shadow:0 4px 0 rgba(0,0,0,.3);padding:2px;cursor:pointer;font:inherit;transition:transform .15s}
-.jc.r2{border-color:#4ADE9B}.jc.r3{border-color:#FF7AD9;box-shadow:0 4px 0 rgba(0,0,0,.3),0 0 14px rgba(255,122,217,.45)}
-.jc.on{transform:translateY(-5px)}
-.jc-ic{font-size:24px;line-height:1}
-.jc-n{font-size:9.5px;line-height:1.1;text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.jc-badge{position:absolute;top:-8px;left:-8px;background:#F0484E;color:#fff;font-size:11px;font-weight:800;border-radius:999px;padding:1px 6px}
-.jc.wig{animation:rgWig .5s}
-@keyframes rgWig{25%{transform:rotate(-11deg) scale(1.15)}60%{transform:rotate(9deg) scale(1.15)}}
-.jtip{background:#FFF9EC;color:#1F2A24;border-radius:12px;padding:10px 12px;margin:8px 0 0;font-size:14px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;box-shadow:0 8px 20px rgba(0,0,0,.3)}
-.jtip span{flex:1 1 200px}
-.handbar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 0 8px;font-size:13px}
-.chipbtn{flex:none;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
-.hand{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 8px;direction:ltr;padding:10px 2px 0}
-@media (min-width:500px){.hand{gap:14px 12px}}
-.pc{position:relative;width:100%;aspect-ratio:5/7;border-radius:10px;background:var(--cream,linear-gradient(180deg,#FFFDF6,#F5EAD2));border:1px solid #D9C9A3;box-shadow:inset 0 1px 0 #fff,0 4px 0 rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.25);color:#1F2A24;display:flex;align-items:center;justify-content:center;padding:16px 4px;transform:translateY(var(--y,0)) rotate(var(--r,0deg));transition:transform .2s cubic-bezier(.2,1.4,.4,1),box-shadow .2s;font:inherit;-webkit-tap-highlight-color:transparent;overflow:hidden}
-button.pc{cursor:pointer}
-.pc::before{content:"";position:absolute;inset:4px;border:1px solid rgba(0,0,0,.07);border-radius:7px;pointer-events:none}
-.pc-c{position:absolute;display:flex;flex-direction:column;align-items:center;line-height:.95}
-.pc-c b{font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:700}
-.pc-c i{font-style:normal;font-size:12px}
-.pc-c.tl{top:5px;left:6px}.pc-c.br{bottom:5px;right:6px;transform:rotate(180deg)}
-.pc-w{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:15.5px;line-height:1.1;text-align:center;overflow-wrap:anywhere;color:#1F2A24}
-.pc-w.sm{font-size:14px}.pc-w.xs{font-size:12.5px}.pc-w.xxs{font-size:11px}
-@supports (font-size:1cqw){.pc{container-type:inline-size}.pc-w,.pc-w.sm,.pc-w.xs,.pc-w.xxs{font-size:clamp(9px,calc(158cqw / var(--l,8)),17px)}}
-.pc-v{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;color:#1F63DA;background:rgba(45,127,249,.12);border-radius:999px;padding:0 6px;white-space:nowrap}
-.s1 .pc-c,.qcard.s1 .pc-c,.minis .mini.s1{color:#12805C}
-.s2 .pc-c,.qcard.s2 .pc-c,.minis .mini.s2{color:#1D5FD1}
-.s3 .pc-c,.qcard.s3 .pc-c,.minis .mini.s3{color:#5B2BB5}
-.pc.gold,.qcard.gold{border-color:#D9A82E;box-shadow:inset 0 0 0 1px rgba(217,168,46,.55),inset 0 1px 0 #fff,0 4px 0 rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.25)}
-.pc.gold::before,.qcard.gold::before{border-color:rgba(217,168,46,.55)}
-.pc-foil{position:absolute;top:4px;right:6px;color:#B98512;font-size:12px}
-.pc.gold::after,.qcard.gold::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 38%,rgba(255,226,140,.45) 48%,transparent 58%);background-size:260% 100%;animation:rgShine 3.4s linear infinite;pointer-events:none}
-@keyframes rgShine{from{background-position:130% 0}to{background-position:-130% 0}}
-.pc.sel{transform:translateY(-16px) rotate(0deg) scale(1.05);box-shadow:0 0 0 3px #F5C542,0 16px 26px rgba(0,0,0,.42)}
-.pc.deal{animation:rgDeal .5s cubic-bezier(.2,1.2,.4,1) backwards;animation-delay:var(--d,0s)}
-@keyframes rgDeal{from{opacity:0;transform:translateY(80px) rotate(14deg) scale(.8)}}
-.pc.dead{filter:grayscale(1) brightness(.85);opacity:.55}
-.xmark{position:absolute;inset:0;display:grid;place-items:center;font-size:46px;color:#D52F38;font-weight:900}
-.pc.pop{animation:rgPop .42s cubic-bezier(.2,1.8,.4,1)}
-@keyframes rgPop{40%{transform:translateY(-18px) rotate(var(--r,0deg)) scale(1.16)}}
-.played{display:flex;justify-content:center;gap:8px;margin:26px 0 12px;direction:ltr}
-.played .pc{width:min(19%,86px);flex:none}
-.total{text-align:center;font-family:"Secular One",Rubik,sans-serif;font-size:24px;opacity:0;transform:scale(.6);transition:opacity .3s,transform .4s cubic-bezier(.2,1.6,.4,1)}
-.total.show{opacity:1;transform:none}
-.total b{font-size:50px;color:#FFD86B;text-shadow:0 4px 0 rgba(0,0,0,.25)}
-.verdict{text-align:center;opacity:0;transition:opacity .3s;font-size:15px;margin:6px 0 0}
-.verdict.show{opacity:1}
-.rgfloat{position:fixed;z-index:70;transform:translate(-50%,-50%);font-family:"Secular One",Rubik,sans-serif;font-size:26px;pointer-events:none;animation:rgFlt .95s ease-out forwards;text-shadow:0 2px 0 rgba(0,0,0,.45),0 0 12px rgba(0,0,0,.35);white-space:nowrap}
-.rgfloat{background:rgba(8,18,40,.88);padding:0 10px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.35)}
-.rgfloat.chips{color:#8EC2FF}.rgfloat.mult{color:#FF8A8F}
-@keyframes rgFlt{0%{opacity:0;transform:translate(-50%,-20%) scale(.6)}20%{opacity:1;transform:translate(-50%,-70%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-180%) scale(1)}}
-.minis{display:flex;justify-content:center;gap:7px;margin:12px 0 10px;direction:ltr}
-.minis .mini{position:relative;width:38px;height:52px;border-radius:7px;background:#FFF9EC;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;box-shadow:0 3px 0 rgba(0,0,0,.25);opacity:.7;transition:transform .2s}
-.minis .mini b{font-family:Georgia,serif;font-size:16px}.minis .mini i{font-style:normal;font-size:11px}
-.minis .mini.cur{opacity:1;transform:translateY(-6px);box-shadow:0 0 0 2px #F5C542,0 6px 10px rgba(0,0,0,.3)}
-.minis .mini .mkk{position:absolute;inset:0;display:grid;place-items:center;border-radius:inherit;font-size:20px;font-weight:900;color:#fff}
-.minis .mini.ok,.minis .mini.no,.minis .mini.sh{opacity:1}
-.minis .mini.ok .mkk{background:rgba(18,150,100,.88)}.minis .mini.no .mkk{background:rgba(213,47,56,.88)}.minis .mini.sh .mkk{background:rgba(201,150,26,.88)}
-.clock{display:flex;gap:10px;align-items:center;max-width:340px;margin:0 auto 6px}
-.clock b{font-family:"Secular One",Rubik,sans-serif;font-size:22px;color:#FF9AA0;min-width:22px;text-align:center}
-.clock .rgprog{flex:1;margin:0}
-.qcard{position:relative;margin:6px auto 16px;max-width:340px;min-height:172px;border-radius:16px;background:linear-gradient(180deg,#FFFDF6,#F5EAD2);color:#1F2A24;border:1px solid #D9C9A3;box-shadow:0 6px 0 rgba(0,0,0,.2),0 14px 28px rgba(0,0,0,.32);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 40px 16px;animation:rgQin .38s cubic-bezier(.2,1.3,.4,1);overflow:visible}
-.qcard.gold::after{overflow:hidden}
-@keyframes rgQin{from{opacity:0;transform:translateY(24px) rotate(-3deg) scale(.92)}}
-.qcard .pc-c b{font-size:22px}.qcard .pc-c i{font-size:15px}
-.qcard .pc-c.tl{top:8px;left:10px}.qcard .pc-c.br{bottom:8px;right:10px}
-.qw{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:clamp(28px,8.5vw,40px);line-height:1.1;text-align:center;overflow-wrap:anywhere}
-.qw.he{font-family:Rubik,Assistant,sans-serif;font-size:26px}
-.qspk{margin-top:8px;display:flex;gap:8px;justify-content:center}
-.qmeta{font-size:12.5px;color:#6B6455;margin-top:8px}
-.qcard.right{box-shadow:0 0 0 4px #19A974,0 14px 28px rgba(0,0,0,.32)}
-.qcard.saved{box-shadow:0 0 0 4px #E0A526,0 14px 28px rgba(0,0,0,.32)}
-.qcard.wrong{box-shadow:0 0 0 4px #F0484E,0 14px 28px rgba(0,0,0,.32);animation:rgShake .4s}
-@keyframes rgShake{20%{transform:translateX(-8px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
-.stamp{position:absolute;top:-14px;right:-12px;z-index:2;width:46px;height:46px;box-shadow:0 4px 10px rgba(0,0,0,.3);border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:900;color:#fff;animation:rgStamp .35s cubic-bezier(.2,1.8,.4,1)}
-.qcard.right .stamp{background:#19A974}.qcard.wrong .stamp{background:#F0484E}.qcard.saved .stamp{background:#E0A526}
-@keyframes rgStamp{from{transform:scale(2.2) rotate(-20deg);opacity:0}}
-.qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.qo{min-height:66px;border-radius:14px;border:0;background:#fff;color:#1F2A24;font:inherit;font-weight:600;font-size:16px;line-height:1.25;padding:10px 8px;box-shadow:0 4px 0 #9FB5AA;cursor:pointer;transition:transform .08s,box-shadow .08s,opacity .2s}
-.qo:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 #9FB5AA}
-.qopts.en .qo{font-family:Georgia,serif;font-size:17px}
-.qo.right{background:#19A974;color:#fff;box-shadow:0 4px 0 #0E7A52}
-.qo.wrong{background:#F0484E;color:#fff;box-shadow:0 4px 0 #A8232A}
-.qo.fade{opacity:.4}
-.qo:disabled{cursor:default}
-.rgfb{margin-top:12px;border-radius:12px;padding:10px 12px;background:rgba(0,0,0,.3);font-size:15px;border-right:4px solid #19A974}
-.rgfb.no{border-right-color:#F0484E}.rgfb.sh{border-right-color:#E0A526}
-.rgfb small{display:block;margin-top:4px;opacity:.85}
-.rgfb mark{background:#FFE14D;color:#1F2A24;border-radius:3px;padding:0 2px}
-.qhint{flex:1;text-align:center;color:var(--dimc);font-size:14px;padding:16px 0}
-.gbtn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:58px;border:0;border-radius:15px;font:inherit;font-family:"Secular One",Rubik,sans-serif;font-size:19px;line-height:1.15;color:#fff;cursor:pointer;box-shadow:0 5px 0 var(--sh,#000);transition:transform .08s,box-shadow .08s,filter .2s;padding:6px 12px;-webkit-tap-highlight-color:transparent}
-.gbtn small{font-family:Rubik,Assistant,sans-serif;font-size:11.5px;font-weight:500;opacity:.85}
-.gbtn:active:not(:disabled){transform:translateY(4px);box-shadow:0 1px 0 var(--sh,#000)}
-.gbtn:disabled{filter:grayscale(.7) brightness(.85);opacity:.55;cursor:default}
-.gbtn.gold{background:linear-gradient(#FFD65E,#F5A623);color:#3A2600;--sh:#B8770C}
-.gbtn.red{background:linear-gradient(#FF6B70,#E5383F);--sh:#9E1F25}
-.gbtn.blue{background:linear-gradient(#4C9BFF,#2271E8);--sh:#1446A0}
-.gbtn.big{min-height:62px;font-size:21px}
-.gbtn.sm{flex:none;min-height:36px;font-size:14px;padding:4px 14px;border-radius:11px;box-shadow:0 3px 0 var(--sh,#000)}
-.gbtn.sm:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 var(--sh,#000)}
-.rgfoot .gbtn.gold{flex:1.6}
-.phh{font-family:"Secular One",Rubik,sans-serif;text-align:center;font-size:21px;margin:8px 0 14px}
-.blinds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.bl{position:relative;background:rgba(0,0,0,.26);border:2px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 6px 12px;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;transition:transform .2s}
-.bl.cur{border-color:#F5C542;background:rgba(245,197,66,.13);transform:translateY(-5px);box-shadow:0 10px 22px rgba(0,0,0,.32)}
-.bl.done{opacity:.42}
-.bl .tg{font-family:"Secular One",Rubik,sans-serif;font-size:21px;line-height:1.1}
-.bl .tg small{display:block;font-family:Rubik,sans-serif;font-size:11px;opacity:.7}
-.bl .rw{font-size:10px;letter-spacing:-1px}
-.bl em{background:none;color:#FFC2CA;font-weight:500;font-size:11.5px;line-height:1.25;padding:0}
-.bl .ok{position:absolute;top:6px;left:9px;color:#4ADE9B;font-style:normal;font-weight:900}
-.rgx .sub{font-size:15px;margin:18px 0 4px}
-.rgx .sub small{font-weight:400;opacity:.65;font-size:12px}
-.rghands{margin-top:16px;background:rgba(0,0,0,.22);border-radius:14px;padding:10px 14px;text-align:right}
-.rghands summary,.rghow summary{cursor:pointer;font-weight:700}
-.rghands table{width:100%;border-collapse:collapse;margin-top:6px}
-.rghands td{padding:7px 2px;border-top:1px solid rgba(255,255,255,.08);vertical-align:middle}
-.rghands td small{display:block;opacity:.65;font-size:12px}
-.rghands td.num{text-align:left;white-space:nowrap}
-.suits{display:flex;gap:14px;font-size:13px;margin:8px 0 0}
-.suits span.s1{color:#5FE0A8}.suits span.s2{color:#8DB8FF}.suits span.s3{color:#C9A6FF}
-.linkbtn{background:none;border:0;color:rgba(255,255,255,.55);text-decoration:underline;font:inherit;font-size:13px;margin-top:16px;cursor:pointer}
-.winpanel{background:rgba(0,0,0,.28);border-radius:20px;padding:22px 16px;text-align:center;margin-top:16px;border:1px solid rgba(245,197,66,.4)}
-.winpanel.lost{border-color:rgba(255,255,255,.12)}
-.burst{font-size:66px;line-height:1;animation:rgBurst .6s cubic-bezier(.2,1.6,.4,1)}
-@keyframes rgBurst{from{transform:scale(.3) rotate(-30deg);opacity:0}}
-.winpanel h2{font-family:"Secular One",Rubik,sans-serif;font-size:27px;margin:8px 0 2px;color:#FFD86B}
-.winpanel.lost h2{color:#fff}
-.cashrows{max-width:320px;margin:14px auto 0;text-align:right}
-.cashrows div{display:flex;justify-content:space-between;gap:10px;padding:8px 2px;border-bottom:1px solid rgba(255,255,255,.08)}
-.cashrows b{color:#FFD86B}
-.cashrows .sum{border:0;font-size:19px;font-weight:700}
-.istats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.istats div{background:rgba(0,0,0,.22);border-radius:12px;padding:8px 4px;text-align:center}
-.istats b{display:block;font-family:"Secular One",Rubik,sans-serif;font-size:21px}
-.istats small{font-size:11.5px;opacity:.75;line-height:1.2;display:block}
-.misses{margin-top:16px;background:rgba(0,0,0,.22);border-radius:16px;padding:12px 14px}
-.misses h3{margin:0 0 6px;font-size:16px}
-.mrow{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.08)}
-.mrow b{font-family:Georgia,serif}
-.shopgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sc{position:relative;background:linear-gradient(160deg,#4E3D95,#2A1F5C);border:2px solid #8FA8FF;border-radius:16px;padding:24px 10px 10px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;box-shadow:0 5px 0 rgba(0,0,0,.3)}
-.sc.r2{border-color:#4ADE9B}.sc.r3{border-color:#FF7AD9;box-shadow:0 5px 0 rgba(0,0,0,.3),0 0 18px rgba(255,122,217,.35)}
-.sc.book{background:linear-gradient(160deg,#2063BE,#123A78);border-color:#7DB6FF}
-.sc .rar{position:absolute;top:6px;font-size:10.5px;opacity:.75}
-.sc-ic{font-size:36px;line-height:1.1}
-.sc b{font-size:15px}
-.sc small{font-size:12px;opacity:.88;line-height:1.3;flex:1}
-.sc .gbtn{width:100%;margin-top:6px}
-.rgintro{background:var(--felt);color:var(--txt);border:0;text-align:center;overflow:hidden;box-shadow:0 10px 30px rgba(10,40,30,.35)}
-.rgintro .fan{display:flex;justify-content:center;margin:10px 0 8px;direction:ltr;height:128px;align-items:flex-start}
-.rgintro .fan .pc{width:84px;margin:0 -10px}
-.rgintro h2{font-family:"Secular One",Rubik,sans-serif;font-size:27px;color:#FFD86B;margin:8px 0 4px}
-.rgintro .lead{color:rgba(243,255,249,.86);margin:0 0 14px}
-.rgintro .gbtn{width:100%}
-.rghow{margin-top:14px;background:rgba(0,0,0,.22);border-radius:14px;padding:10px 14px;text-align:right}
-.rghow ol{padding-right:20px;margin:8px 0}
-.rghow li{margin-bottom:6px}
-.rghome{display:flex;gap:12px;align-items:center;background:var(--felt);color:var(--txt);border:0;box-shadow:0 8px 22px rgba(10,40,30,.3)}
-.rghome h3{margin:0 0 2px;color:#FFD86B;font-family:"Secular One",Rubik,sans-serif;font-size:18px}
-.rghome p{margin:0;opacity:.88}
-.rghome>div:nth-child(2){flex:1}
-.minifan{position:relative;width:72px;height:70px;flex:none;direction:ltr}
-.minifan .pc{position:absolute;top:2px;width:44px;padding:6px 2px;border-radius:7px}
-.minifan .pc:first-child{left:0}.minifan .pc:nth-child(2){left:24px;top:6px}
-.minifan .pc-w{font-size:10px}.minifan .pc-c b{font-size:10px}.minifan .pc-c i{font-size:7px}.minifan .pc::before{inset:2px}
-.rgcalc .hn .dim{font-weight:400;font-size:13px}
-@media (max-height:720px){.tablehint{padding:2px 0;gap:2px 8px;flex-direction:row;flex-wrap:wrap;justify-content:center}.tablehint b{font-size:19px}.tablehint span{font-size:12.5px}.tablehint .chipbtn{padding:3px 10px}.hand .pc{aspect-ratio:5/6.2}.hand{gap:14px 8px}.rgtop{margin-bottom:6px}.handbar{margin:8px 0 4px}.rgfoot{padding-top:10px}.gbtn{min-height:52px}}
-@media (prefers-reduced-motion:reduce){.pc,.pc.deal,.pc.pop,.jc.wig,.qcard,.stamp,.burst,.bump,.pc.gold::after,.qcard.gold::after{animation:none!important;transition:none}.total,.verdict{transition:none}}
 
 .filebtn{cursor:pointer}
 @media (max-width:640px){
@@ -1223,11 +1002,11 @@ const wd = s => WD[new Date(s+"T12:00:00").getDay()];
 const dm = s => { const [,m,d]=s.split("-"); return (+d)+"/"+(+m); };
 
 /* ---------- state & persistence ---------- */
-const DEFAULT = {v:5,examDate:"2026-10-26",target:120,base:91,cards:{},custom:[],attempts:[],daily:{},items:{},skills:{},theta:null,thetaN:{},sims:[],updatedAt:0};
+const DEFAULT = {v:6,examDate:"2026-10-26",target:120,base:91,cards:{},custom:[],attempts:[],daily:{},items:{},skills:{},theta:null,thetaN:{},sims:[],updatedAt:0};
 const LS = "amirnet-coach-v1";
 let S = Object.assign({},DEFAULT);
 try{ const r=localStorage.getItem(LS); if(r) S=Object.assign({},DEFAULT,JSON.parse(r)); }catch(e){}
-function migrate(){ if(!S.v||S.v<2){ if(S.base===103) S.base=91; if(S.target===120) S.target=100; S.v=2; } if(S.v<3){ if(S.target===100) S.target=120; S.v=3; } if(S.v<4){ S.items=S.items||{}; S.skills=S.skills||{}; S.thetaN=S.thetaN||{}; delete S.tips; delete S.tipsAt; delete S.recentTopics; S.v=4; } for(const k of ["items","skills","thetaN","daily","cards"]) if(!S[k]) S[k]={}; for(const k of ["custom","attempts","sims"]) if(!Array.isArray(S[k])) S[k]=[]; try{ migrateV5(); }catch(e){} }
+function migrate(){ if(!S.v||S.v<2){ if(S.base===103) S.base=91; if(S.target===120) S.target=100; S.v=2; } if(S.v<3){ if(S.target===100) S.target=120; S.v=3; } if(S.v<4){ S.items=S.items||{}; S.skills=S.skills||{}; S.thetaN=S.thetaN||{}; delete S.tips; delete S.tipsAt; delete S.recentTopics; S.v=4; } for(const k of ["items","skills","thetaN","daily","cards"]) if(!S[k]) S[k]={}; for(const k of ["custom","attempts","sims"]) if(!Array.isArray(S[k])) S[k]=[]; try{ migrateV5(); }catch(e){} try{ migrateV6(); }catch(e){} }
 function migrateV5(){
   if((S.v||0)>=5) return;
   const isAi=id=>String(id||"").startsWith("ai-");
@@ -1460,7 +1239,7 @@ function viewVQ(){
   if(vq.chosen!==null) h+='<div class="row" style="margin-top:14px;justify-content:space-between"><span class="small" dir="ltr">'+esc(q.en)+' = <span dir="rtl">'+esc(q.he)+'</span></span><button class="btn" data-act="vqnext">הבאה</button></div>';
   return h+'</section>';
 }
-function vocabTabs(){ const b=(m,t)=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'">'+t+'</button>'; const playing=(vmode==="sprint"&&spr&&!spr.done)||(vmode==="boss"&&boss&&!boss.ended)||(vmode==="run"&&S.rg&&["play","quiz","score"].includes(S.rg.phase));
+function vocabTabs(){ const b=(m,t)=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'">'+t+'</button>'; const playing=(vmode==="sprint"&&spr&&!spr.done)||(vmode==="boss"&&boss&&!boss.ended);
   if(playing) return gameMiniHTML()+'<div class="row" style="justify-content:flex-end;margin-top:8px"><button class="btn ghost mini" data-act="vmode" data-arg="cards">✕ יציאה</button></div>';
   return gameMiniHTML()+modesHTML(); }
 function viewVocab(){
@@ -1470,10 +1249,9 @@ function viewVocab(){
   if(vmode==="dict") return vocabTabs()+viewDict();
   if(vmode==="sprint") return vocabTabs()+viewSprint();
   if(vmode==="boss") return vocabTabs()+viewBoss();
-  if(vmode==="run") return vocabTabs()+viewRun();
-  return vocabTabs()+viewCardsV3();
+  return vocabTabs()+(plc?viewPlacement():vocabEngineHTML()+viewCardsV3());
 }
-const APP_VERSION="3.7";
+const APP_VERSION="3.8";
 /* ---------- speech & guessing ---------- */
 const TTS = ("speechSynthesis" in window) && typeof SpeechSynthesisUtterance!=="undefined";
 let enVoice=null, lastSpoken="";
@@ -1552,14 +1330,14 @@ function grade(ok){
   if(ok) hit(true); else { if(combo>=5) fxQ.push({t:"break",v:combo}); combo=0; fxQ.push({t:"collect"}); }
   vs.missRun=ok?0:(vs.missRun||0)+1; vs.okRun=ok?(vs.okRun||0)+1:0; vs.collectNote=ok?null:c.en;
   if(ok && firstTime && c.isNew){
-    card.box=vs.guessOk?3:2; card.due=addDays(t,INT[card.box]); vs.known++; d.kn=(d.kn||0)+1;
+    card.box=vs.guessOk?3:2; card.iv=INT[card.box]; card.ef=vs.guessOk?2.5:2.3; card.k0=1; card.due=addDays(t,card.iv); vs.known++; d.kn=(d.kn||0)+1;
     gainXP(vs.guessOk?12:6,{lv,half:vs.hint});
     if((vs.extra||0)<40){ const nx=freshRandom(1,new Set(vs.queue.map(x=>x.en))); if(nx.length){ vs.queue.push({en:nx[0].en,he:nx[0].he,isNew:true}); vs.extra=(vs.extra||0)+1; vs.skipNote=c.en; } }
   } else if(ok){
-    card.box=Math.min(card.box+1,5); card.due=addDays(t,INT[card.box]); vs.known++;
+    { const pb=card.box, base=pb>0?(card.iv||INT[pb]):0, ef=Math.min(2.8,Math.max(1.3,(card.ef||2.3)+(vs.guessOk?0.1:0)-(vs.hint?0.15:0))); card.box=Math.min(pb+1,5); card.ef=Math.round(ef*100)/100; card.iv=base?Math.min(90,Math.max(INT[card.box],Math.round(base*ef))):INT[card.box]; if(firstTime&&card.k0==null) card.k0=1; card.due=addDays(t,card.iv); } vs.known++;
     gainXP(vs.guessOk?15:10,{combo:true,lv,half:vs.hint});
   } else {
-    card.box=0; card.due=t; card.m=(card.m||0)+1; vs.miss++; gainXP(3);
+    card.box=0; card.due=t; card.m=(card.m||0)+1; card.iv=0; card.ef=Math.round(Math.max(1.3,(card.ef||2.3)-0.2)*100)/100; if(firstTime) card.k0=0; vs.miss++; gainXP(3);
     if(!vs.requeued.has(c.en)){ vs.requeued.add(c.en); vs.queue.push({en:c.en,he:c.he,isNew:false}); }
   }
   if(ok) card.ok=(card.ok||0)+1; if(!card.f) card.f=t;
@@ -2046,7 +1824,6 @@ function viewTodayV3(){
   h+=tasksHTML();
   if(needBackup()) h+=backupNagHTML();
   h+=aiHomeHTML();
-  h+=rgHomeHTML();
   const wk=weekStats(), pm=progressMoment();
   if(wk.days>0||pm){
     h+='<section class="sheet"><h2>השבוע שלך</h2>';
@@ -2085,7 +1862,7 @@ function cardNudge(){
   if(!vs) return "";
   if((vs.missRun||0)>=3) return "מילים קשות היום, הא? נסה את הרמז 💡 לפני שאתה הופך.";
   if((vs.okRun||0)>=6) return "אתה בוער! "+vs.okRun+" ברצף 🔥";
-  if(vs.collectNote) return "🧺 אספתי את <b lang=\"en\" dir=\"ltr\">"+esc(vs.collectNote)+"</b>. היא תחזור אליך עוד היום.";
+  if(vs.collectNote) return "🧺 אספתי את <b lang=\"en\" dir=\"ltr\">"+esc(vs.collectNote)+"</b>. היא תחזור אליך עוד היום."+(typeof aiOn==="function"&&aiOn()?' <button class="chipbtn" data-act="aiword" data-arg="'+esc(vs.collectNote)+'">🤖 עזור לי לזכור</button>':"");
   if(vs.skipNote) return "👍 ידעת את <b lang=\"en\" dir=\"ltr\">"+esc(vs.skipNote)+"</b>, אז הבאתי במקומה מילה חדשה.";
   return "";
 }
@@ -2116,7 +1893,7 @@ function viewCardsV3(){
   h+='<div class="actbar">'+(vs.revealed?'<button class="btn act no" data-act="vgrade" data-arg="0">🧺 לא ידעתי</button><button class="btn act yes" data-act="vgrade" data-arg="1">✓ ידעתי</button>':(vs.hint?'':'<button class="btn ghost act" data-act="vhint">💡 רמז</button>')+'<button class="btn act" data-act="vreveal">הפוך את הכרטיס</button>')+'</div>';
   return h;
 }
-const MODES=[["cards","כרטיסיות","🃏"],["run","ג'וקרים","🎴"],["quiz","מבחן","✅"],["phr","ביטויים","💬"],["conn","מילות קישור","🔗"],["dict","מילון","📖"],["sprint","ספרינט","⚡"],["boss","קשות","👾"]];
+const MODES=[["cards","כרטיסיות","🃏"],["quiz","מבחן","✅"],["phr","ביטויים","💬"],["conn","מילות קישור","🔗"],["dict","מילון","📖"],["sprint","ספרינט","⚡"],["boss","קשות","👾"]];
 function modesHTML(){
   const hl=hardList().length;
   return '<div class="seg modes" role="tablist">'+MODES.map(([m,t,ic])=>'<button data-act="vmode" data-arg="'+m+'" aria-pressed="'+(vmode===m)+'"><span>'+ic+'</span>'+t+(m==="boss"&&hl?'<i class="cnt">'+hl+'</i>':'')+'</button>').join('')+'</div>';
@@ -2505,468 +2282,6 @@ function viewStats(){
 }
 
 /* ---------- render & events ---------- */
-/* ---------- v3.2: joker card run (roguelike) ---------- */
-const RG_HANDS={
-  high:["קלף בודד",5,1,10,1,"קלף אחד או קלפים בלי שום התאמה"],
-  pair:["זוג",10,2,15,1,"2 מילים שמתחילות באותה אות"],
-  two:["שני זוגות",20,2,20,1,"2 זוגות של אותיות פתיחה"],
-  three:["שלישייה",30,3,20,2,"3 מילים שמתחילות באותה אות"],
-  straight:["רצף",30,4,30,3,"4-5 מילים שאותיות הפתיחה שלהן עוקבות (c d e f)"],
-  flush:["צבע",35,4,15,2,"5 מילים מאותה רמה (אותו צבע)"],
-  full:["פול האוס",40,4,25,2,"שלישייה + זוג"],
-  four:["רביעייה",60,7,30,3,"4 מילים שמתחילות באותה אות"],
-  sflush:["רצף צבע",100,8,40,4,"רצף שכל המילים בו מאותה רמה"]
-};
-const RG_ORDER=["high","pair","two","three","straight","flush","full","four","sflush"];
-const JOKERS=[
-  {id:"owl",ic:"🦉",n:"הינשוף",d:"+4 מכפיל לכל יד",r:1,p:4},
-  {id:"hunter",ic:"🧩",n:"צייד הזרים",d:"+25 צ'יפים על כל מילה לא מוכרת שענית עליה נכון",r:1,p:5},
-  {id:"heavy",ic:"📕",n:"המילון הכבד",d:"+3 מכפיל על כל מילה ברמה גבוהה שענית עליה נכון",r:1,p:5},
-  {id:"abc",ic:"🔤",n:"האלף-בית",d:"+12 צ'יפים על כל אות פתיחה שונה ביד",r:1,p:4},
-  {id:"mini",ic:"🎯",n:"המינימליסט",d:"+15 מכפיל אם שיחקת 3 קלפים או פחות",r:1,p:5},
-  {id:"recycle",ic:"♻️",n:"המחזר",d:"+1 זריקה בכל סיבוב",r:1,p:4},
-  {id:"piggy",ic:"🐷",n:"קופת חיסכון",d:"+3 מטבעות בסוף כל סיבוב שניצחת",r:1,p:4},
-  {id:"chain",ic:"🔥",n:"השרשרת",d:"+1 מכפיל על כל תשובה נכונה ברצף (עד 25)",r:2,p:6},
-  {id:"memory",ic:"🧠",n:"זיכרון ארוך",d:"+3 מכפיל על כל מילה שכבר למדת וזכרת",r:2,p:6},
-  {id:"revenge",ic:"💀",n:"הנקמה",d:"+12 מכפיל אם ביד יש מילה שטעית בה קודם בריצה, וענית עליה נכון",r:2,p:6},
-  {id:"twins",ic:"👯",n:"התאומים",d:"מכפיל ×2 אם ביד יש זוג (זוג, שני זוגות, שלישייה, פול האוס, רביעייה)",r:2,p:7},
-  {id:"palette",ic:"🎨",n:"הפלטה",d:"מכפיל ×2.5 על צבע או רצף צבע",r:2,p:6},
-  {id:"bighand",ic:"✋",n:"יד גדולה",d:"+1 קלף ביד",r:2,p:6},
-  {id:"extra",ic:"🏃",n:"סיבוב נוסף",d:"+1 יד בכל סיבוב",r:2,p:7},
-  {id:"shield",ic:"🛡️",n:"המחברת",d:"פעם אחת בכל סיבוב, טעות נחשבת כתשובה נכונה (המילה עדיין נכנסת לחזרה)",r:2,p:6},
-  {id:"worm",ic:"📈",n:"תולעת ספרים",d:"מתחיל ב-0. מקבל +1 מכפיל לתמיד על כל מילה לא מוכרת שתענה עליה נכון",r:3,p:8},
-  {id:"flash",ic:"⚡",n:"הברק",d:"מכפיל ×2 אם ענית נכון על כל הקלפים ביד, כל אחד בפחות מ-4 שניות",r:3,p:8},
-  {id:"brave",ic:"🦁",n:"הנועז",d:"מכפיל ×2 אם כל המילים שקלעו היו לא מוכרות (לפחות 3)",r:3,p:8},
-  {id:"gamble",ic:"🎲",n:"המהמר",d:"סיכוי של 1 ל-3 למכפיל ×3",r:3,p:7}
-];
-const JK=Object.fromEntries(JOKERS.map(j=>[j.id,j]));
-const RG_BOSSES=[
-  {id:"clock",ic:"⏱️",n:"השעון",d:"רק 6 שניות לכל תשובה"},
-  {id:"mirror",ic:"🪞",n:"המראה",d:"כל השאלות הפוכות: מעברית לאנגלית"},
-  {id:"miser",ic:"🔒",n:"הקמצן",d:"אין זריקות בסיבוב הזה"},
-  {id:"weight",ic:"🪨",n:"המשקולת",d:"מילים ברמה בסיסית לא שוות צ'יפים"},
-  {id:"narrow",ic:"🤏",n:"הצר",d:"רק 6 קלפים ביד"},
-  {id:"thief",ic:"🦝",n:"הגנב",d:"יד אחת פחות"}
-];
-const RG_BASE=[100,250,550,1200,2500,5000,9000,16000], RG_BM=[1,1.5,2], RG_ANTES=8;
-const RG_LV={1:"בסיסית",2:"בינונית",3:"גבוהה"};
-let rgTimer=null, rgNextT=null;
-const hasJ=id=>!!(S.rg&&S.rg.jokers.some(j=>j.id===id));
-const rgTarget=(a,b)=>Math.round(RG_BASE[a-1]*RG_BM[b]);
-function rgStats(){ return S.rgStats||(S.rgStats={runs:0,wins:0,bestAnte:0,bestHand:0,blinds:0,bosses:0}); }
-function rgCardMeta(en){ const c=S.cards[en]; return {u:!c||isHard(c)||c.box<=1, k:!!c&&c.box>=2&&!isHard(c)}; }
-function rgDeck(){
-  const used=new Set(), out=[];
-  const add=en=>{ if(!en||used.has(en)||!heOf(en)||!/^[a-z]/i.test(en)) return; used.add(en); out.push({en,lv:LEVEL[en]||2}); };
-  shuffle(hardList()).slice(0,12).forEach(add);
-  shuffle(Object.keys(S.cards).filter(k=>S.cards[k].box<=2)).slice(0,8).forEach(add);
-  shuffle(Object.keys(S.cards).filter(k=>S.cards[k].box>=3)).slice(0,4).forEach(add);
-  freshRandom(60-out.length,used).forEach(w=>add(w.en));
-  return shuffle(out).slice(0,44).map((c,i)=>Object.assign(c,{id:i}));
-}
-function startRun(){
-  const st=rgStats(); st.runs++;
-  const bosses=[]; for(let a=0;a<RG_ANTES;a++){ let b; do{ b=RG_BOSSES[Math.floor(Math.random()*RG_BOSSES.length)].id; }while(bosses.length&&b===bosses[bosses.length-1]); bosses.push(b); }
-  S.rg={ante:1,bi:0,coins:4,jokers:[],lv:{},deck:rgDeck(),bosses,phase:"blind",streak:0,missed:[],learned:[],xp0:S.xp||0,ans:0,ok:0,best:0,sort:"",jinfo:-1};
-  persist(); render();
-}
-function rgBoss(){ const rg=S.rg; return rg.bi===2?RG_BOSSES.find(b=>b.id===rg.bosses[rg.ante-1]):null; }
-function rgDraw(){ const rg=S.rg; rg.fresh=[]; while(rg.hand.length<rg.hs&&rg.pile.length){ const c=rg.pile.pop(); rg.hand.push(c); rg.fresh.push(c.id); } rgSort(); }
-function rgSort(){ const rg=S.rg; if(rg.sort==="letter") rg.hand.sort((a,b)=>a.en.toLowerCase().localeCompare(b.en.toLowerCase())); else if(rg.sort==="level") rg.hand.sort((a,b)=>b.lv-a.lv||a.en.localeCompare(b.en)); }
-function rgBegin(){
-  const rg=S.rg, boss=rgBoss(), bid=boss&&boss.id;
-  rg.target=rgTarget(rg.ante,rg.bi); rg.score=0;
-  rg.hands=4+(hasJ("extra")?1:0)-(bid==="thief"?1:0);
-  rg.discards=bid==="miser"?0:3+(hasJ("recycle")?1:0);
-  rg.hs=(bid==="narrow"?6:8)+(hasJ("bighand")?1:0);
-  rg.pile=shuffle(rg.deck.map(c=>Object.assign({},c,rgCardMeta(c.en))));
-  rg.hand=[]; rg.sel=[]; rg.shieldUsed=false; rg.phase="play"; rg.played=null; rg.res=null;
-  rgDraw(); persist(); render(); window.scrollTo({top:0});
-}
-function rgDetect(cs){
-  const n=cs.length; if(!n) return null;
-  const L=cs.map(c=>c.en[0].toLowerCase()), cnt={};
-  L.forEach(x=>cnt[x]=(cnt[x]||0)+1);
-  const g=Object.values(cnt).sort((a,b)=>b-a);
-  const sameLv=cs.every(c=>c.lv===cs[0].lv);
-  let straight=false;
-  if(n>=4&&g[0]===1){ const cd=L.map(x=>x.charCodeAt(0)).sort((a,b)=>a-b); straight=cd.every((c,i)=>i===0||c===cd[i-1]+1); }
-  if(straight&&sameLv) return "sflush";
-  if(g[0]>=4) return "four";
-  if(g[0]===3&&g[1]>=2) return "full";
-  if(n===5&&sameLv) return "flush";
-  if(straight) return "straight";
-  if(g[0]===3) return "three";
-  if(g[0]===2&&g[1]===2) return "two";
-  if(g[0]===2) return "pair";
-  return "high";
-}
-function rgHandBase(type){ const H=RG_HANDS[type], lv=(S.rg.lv[type]||1); return {chips:H[1]+(lv-1)*H[3], mult:H[2]+(lv-1)*H[4], lv}; }
-function rgCardChips(c){ const boss=rgBoss(); if(boss&&boss.id==="weight"&&c.lv===1) return 0; return ({1:5,2:10,3:15}[c.lv]||10)+(c.u?10:0); }
-function rgPill(v){ let m; if((m=v.match(/^\+(\d+) מכפיל/))) return '<span class="mx sm">+'+m[1]+'</span>'; if((m=v.match(/^\+(\d+) צ'יפים/))) return '<span class="cx sm">+'+m[1]+'</span>'; if((m=v.match(/×([\d.]+)/))) return '<span class="mx sm">×'+m[1]+'</span>'; return esc(v); }
-function rgCompute(){
-  const rg=S.rg, played=rg.played, ok=played.filter(c=>c.ok), lines=[];
-  if(!ok.length) return {type:null,chips:0,mult:0,total:0,lines:[{ic:"💨",t:"אף תשובה לא הייתה נכונה, אז היד לא קלעה"}]};
-  const type=rgDetect(ok), hb=rgHandBase(type); let chips=hb.chips, mult=hb.mult; const steps=[];
-  lines.push({ic:"🃏",t:RG_HANDS[type][0]+(hb.lv>1?" · רמה "+hb.lv:""),vh:'<span class="cx sm">'+chips+'</span> × <span class="mx sm">'+mult+'</span>',k:"hand"});
-  played.forEach((c,i)=>{ if(!c.ok) return; const v=rgCardChips(c); chips+=v; lines.push({ic:c.u?"✨":"•",t:c.en,ltr:1,v:"+"+v,k:"chips"}); steps.push({k:"card",i,txt:"+"+v,c:chips,m:mult}); });
-  const missedSet=new Set(rg.missedBefore||[]);
-  rg.jokers.forEach((j,ji)=>{
-    const J=JK[j.id]; let v=null;
-    if(j.id==="owl"){ mult+=4; v="+4 מכפיל"; }
-    else if(j.id==="hunter"){ const n=ok.filter(c=>c.u).length; if(n){ chips+=25*n; v="+"+(25*n)+" צ'יפים"; } }
-    else if(j.id==="heavy"){ const n=ok.filter(c=>c.lv===3).length; if(n){ mult+=3*n; v="+"+(3*n)+" מכפיל"; } }
-    else if(j.id==="abc"){ const n=new Set(ok.map(c=>c.en[0].toLowerCase())).size; chips+=12*n; v="+"+(12*n)+" צ'יפים"; }
-    else if(j.id==="mini"){ if(played.length<=3){ mult+=15; v="+15 מכפיל"; } }
-    else if(j.id==="chain"){ const n=Math.min(25,rg.streak); if(n){ mult+=n; v="+"+n+" מכפיל"; } }
-    else if(j.id==="memory"){ const n=ok.filter(c=>c.k).length; if(n){ mult+=3*n; v="+"+(3*n)+" מכפיל"; } }
-    else if(j.id==="revenge"){ if(ok.some(c=>missedSet.has(c.en))){ mult+=12; v="+12 מכפיל"; } }
-    else if(j.id==="worm"){ if(j.v){ mult+=j.v; v="+"+j.v+" מכפיל"; } }
-    else if(j.id==="twins"){ if(["pair","two","three","full","four"].includes(type)){ mult*=2; v="מכפיל ×2"; } }
-    else if(j.id==="palette"){ if(type==="flush"||type==="sflush"){ mult*=2.5; v="מכפיל ×2.5"; } }
-    else if(j.id==="flash"){ if(ok.length===played.length&&played.every(c=>!c.shielded&&c.t<4000)){ mult*=2; v="מכפיל ×2"; } }
-    else if(j.id==="brave"){ if(ok.length>=3&&ok.every(c=>c.u)){ mult*=2; v="מכפיל ×2"; } }
-    else if(j.id==="gamble"){ if(Math.random()<1/3){ mult*=3; v="מכפיל ×3!"; } }
-    if(v){ lines.push({ic:J.ic,t:J.n,vh:rgPill(v),k:"joker"}); const mm=v.match(/×([\d.]+)/), nn=v.match(/\+(\d+)/); steps.push({k:"joker",j:ji,kind:mm?"x":/צ'יפים/.test(v)?"c":"m",txt:mm?"×"+mm[1]:"+"+(nn?nn[1]:""),c:chips,m:Math.round(mult*10)/10}); }
-  });
-  mult=Math.round(mult*10)/10;
-  return {type,chips,mult,total:Math.round(chips*mult),lines,steps,base:{c:hb.chips,m:hb.mult,lv:hb.lv}};
-}
-function rgPick(){
-  const rg=S.rg, c=rg.played[rg.qi], boss=rgBoss(), all=allWords().filter(w=>w.he);
-  const rev=!!(boss&&boss.id==="mirror");
-  let q=mkVQ(c.en,all), tries=0;
-  if(rev){ while(!q.rev&&tries++<12) q=mkVQ(c.en,all); }
-  else if(q.rev){ q=Object.assign({},q,{rev:false,options:q.options.map(o=>heOf(o)||o)}); }
-  rg.q=q; rg.chosen=null; rg.qStart=Date.now(); rg.deadline=null;
-}
-function rgPlay(){
-  const rg=S.rg; if(rg.phase!=="play"||!rg.sel.length||rg.hands<=0) return;
-  rg.played=rg.hand.filter(c=>rg.sel.includes(c.id)).map(c=>Object.assign({},c,{ok:null}));
-  rg.hand=rg.hand.filter(c=>!rg.sel.includes(c.id)); rg.sel=[]; rg.hands--;
-  rg.missedBefore=rg.missed.slice();
-  rg.qi=0; rg.phase="quiz"; rgPick(); persist(); render(); window.scrollTo({top:0});
-}
-function rgDiscard(){
-  const rg=S.rg; if(rg.phase!=="play"||!rg.sel.length||rg.discards<=0) return;
-  rg.hand=rg.hand.filter(c=>!rg.sel.includes(c.id)); rg.sel=[]; rg.discards--; rgDraw(); persist(); render();
-}
-function rgStopClock(){ if(rgTimer){ clearInterval(rgTimer); rgTimer=null; } }
-function rgClock(){
-  const rg=S.rg, boss=rg&&rgBoss();
-  if(!rg||rg.phase!=="quiz"||rg.chosen!==null||!boss||boss.id!=="clock"){ rgStopClock(); return; }
-  if(rgTimer) return;
-  rg.deadline=Date.now()+6000;
-  rgTimer=setInterval(()=>{
-    const r=S.rg;
-    if(!r||r.phase!=="quiz"||r.chosen!==null||tab!=="vocab"||vmode!=="run"){ rgStopClock(); return; }
-    const left=r.deadline-Date.now(), el=document.getElementById("rgClk"), bar=document.getElementById("rgClkBar");
-    if(el) el.textContent=Math.max(0,Math.ceil(left/1000));
-    if(bar) bar.style.width=Math.max(0,left/60)+"%";
-    if(left<=0){ rgStopClock(); rgAnswer(-1); }
-  },150);
-}
-function rgAnswer(i){
-  const rg=S.rg; if(!rg||rg.phase!=="quiz"||rg.chosen!==null) return;
-  rgStopClock();
-  const q=rg.q, c=rg.played[rg.qi]; let ok=i===q.answer;
-  rg.chosen=i; c.t=Date.now()-rg.qStart; rg.ans++;
-  if(!ok){
-    const sc=S.cards[c.en]; if(sc){ sc.box=0; sc.due=today(); sc.m=(sc.m||0)+1; } else S.cards[c.en]={box:0,due:today(),m:1};
-    if(!rg.missed.includes(c.en)) rg.missed.push(c.en);
-    if(hasJ("shield")&&!rg.shieldUsed){ rg.shieldUsed=true; ok=true; c.shielded=true; }
-    rg.streak=0; fxQ.push({t:"no"});
-  } else {
-    rg.ok++; rg.streak++; fxQ.push({t:"ok"}); gainXP(4,{lv:c.lv});
-    if(c.u){ if(!rg.learned.includes(c.en)) rg.learned.push(c.en); const w=rg.jokers.find(j=>j.id==="worm"); if(w) w.v=(w.v||0)+1; }
-  }
-  c.ok=ok;
-  if(autoSpeak()) speak(c.en);
-  persist(); render();
-  clearTimeout(rgNextT);
-  const tok=rg.qi+":"+c.en;
-  rgNextT=setTimeout(()=>{ const r=S.rg; if(r&&r.phase==="quiz"&&r.chosen!==null&&(r.qi+":"+r.played[r.qi].en)===tok&&tab==="vocab"&&vmode==="run") rgNextQ(); }, i===q.answer?650:1700);
-}
-function rgNextQ(){
-  const rg=S.rg; if(!rg||rg.phase!=="quiz"||rg.chosen===null) return;
-  clearTimeout(rgNextT);
-  rg.qi++;
-  if(rg.qi<rg.played.length){ rgPick(); persist(); render(); return; }
-  const res=rgCompute(); rg.res=res; rg.scoreBefore=rg.score; rg.score+=res.total; rg.phase="score"; rg.animDone=false;
-  const st=rgStats(); if(res.total>st.bestHand) st.bestHand=res.total; if(res.total>rg.best) rg.best=res.total;
-  persist(); render(); window.scrollTo({top:0});
-}
-function rgAfterScore(){
-  const rg=S.rg; if(rg.phase!=="score") return;
-  if(rg.score>=rg.target){
-    const st=rgStats(); st.blinds++; if(rg.bi===2) st.bosses++;
-    const interest=Math.min(5,Math.floor(rg.coins/5)), piggy=rg.jokers.filter(j=>j.id==="piggy").length*3;
-    rg.cash={base:[3,4,5][rg.bi],hands:rg.hands,interest,piggy};
-    rg.cash.total=rg.cash.base+rg.cash.hands+interest+piggy;
-    gainXP(15+rg.bi*10+rg.ante*5,{label:"ניצחון בסיבוב"});
-    if(rg.bi===2) fxQ.push({t:"bosswin"}); else tone(SND.level);
-    rg.phase="cash";
-  } else if(rg.hands<=0||(!rg.hand.length&&!rg.pile.length)){ rgEnd(false); return; }
-  else { rgDraw(); rg.phase="play"; rg.res=null; rg.played=null; }
-  checkAch(); persist(); render(); window.scrollTo({top:0});
-}
-function rgEnd(won){
-  const rg=S.rg, st=rgStats();
-  st.bestAnte=Math.max(st.bestAnte||0, won?RG_ANTES+1:rg.ante);
-  if(won){ st.wins++; gainXP(200,{label:"ניצחת ריצה שלמה"}); fxQ.push({t:"ach",ic:"🃏",ti:"ניצחת את כל 8 השלבים!"}); }
-  rg.phase=won?"won":"over"; rg.xp=(S.xp||0)-rg.xp0;
-  checkAch(); persist(); render(); window.scrollTo({top:0});
-}
-function rgShopGen(){
-  const rg=S.rg, own=new Set(rg.jokers.map(j=>j.id));
-  const pool=JOKERS.filter(j=>!own.has(j.id)), pick=[];
-  for(let n=0;n<2&&pool.length;n++){
-    const rr=Math.random(), want=rr<0.6?1:rr<0.9?2:3;
-    let cand=pool.filter(j=>j.r===want&&!pick.includes(j.id)); if(!cand.length) cand=pool.filter(j=>!pick.includes(j.id)); if(!cand.length) break;
-    pick.push(cand[Math.floor(Math.random()*cand.length)].id);
-  }
-  const ups=shuffle(["pair","pair","two","three","three","straight","flush","flush","full","four","high"]);
-  const u=[]; for(const t of ups){ if(!u.includes(t)) u.push(t); if(u.length===2) break; }
-  rg.shop={j:pick,u,reroll:5};
-}
-function rgToShop(){ const rg=S.rg; if(rg.phase!=="cash") return; rg.coins+=rg.cash.total; rg.shop=null; rgShopGen(); rg.phase="shop"; persist(); render(); window.scrollTo({top:0}); }
-function rgAdvance(){
-  const rg=S.rg; rg.bi++; if(rg.bi>2){ rg.bi=0; rg.ante++; }
-  if(rg.ante>RG_ANTES){ rgEnd(true); return; }
-  rg.phase="blind"; rg.shop=null; persist(); render(); window.scrollTo({top:0});
-}
-function rgAct(a,arg){
-  const rg=S.rg;
-  if(a==="rgstart"){ startRun(); return; }
-  if(!rg) return;
-  if(a==="rgsel"){ if(rg.phase!=="play") return; const id=+arg, k=rg.sel.indexOf(id); if(k>=0){ rg.sel.splice(k,1); tone([[520,.05,0]]); } else if(rg.sel.length<5){ rg.sel.push(id); tone([[740,.05,0]]); try{ navigator.vibrate&&navigator.vibrate(8); }catch(e){} } else toast("עד 5 קלפים ביד אחת"); rg.fresh=[]; persist(); render(); }
-  else if(a==="rgexit"){ vmode="cards"; render(); window.scrollTo({top:0}); }
-  else if(a==="rgskip"){ if(rg.phase==="score"&&!rg.animDone){ rgAnimTok++; rg.animDone=true; render(); } }
-  else if(a==="rgplay") rgPlay();
-  else if(a==="rgsuggest"){ if(rg.phase!=="play") return; const b=rgBest(); if(b){ rg.sel=b.cs.map(c=>c.id); rg.fresh=[]; tone([[660,.05,0],[880,.06,.05]]); persist(); render(); } }
-  else if(a==="rgdisc") rgDiscard();
-  else if(a==="rgsort"){ rg.sort=arg; rgSort(); rg.fresh=[]; persist(); render(); }
-  else if(a==="rgbegin") rgBegin();
-  else if(a==="rgans") rgAnswer(+arg);
-  else if(a==="rgnext") rgNextQ();
-  else if(a==="rgcont") rgAfterScore();
-  else if(a==="rgshop") rgToShop();
-  else if(a==="rgadv") rgAdvance();
-  else if(a==="rgjinfo"){ rg.jinfo=rg.jinfo===+arg?-1:+arg; rg.fresh=[]; render(); }
-  else if(a==="rgbuyj"){ const J=JK[arg]; if(!J||rg.coins<J.p) return; if(rg.jokers.length>=5){ toast("יש לך כבר 5 ג'וקרים","מכור אחד כדי לפנות מקום"); return; } rg.coins-=J.p; rg.jokers.push({id:J.id,v:0}); rg.shop.j=rg.shop.j.filter(x=>x!==J.id); tone(SND.collect); persist(); render(); }
-  else if(a==="rgbuyu"){ if(rg.coins<3||!rg.shop.u.includes(arg)) return; rg.coins-=3; rg.lv[arg]=(rg.lv[arg]||1)+1; rg.shop.u=rg.shop.u.filter(x=>x!==arg); tone(SND.collect); toast("📘 "+RG_HANDS[arg][0]+" עלה לרמה "+rg.lv[arg]); persist(); render(); }
-  else if(a==="rgsell"){ const i=+arg, j=rg.jokers[i]; if(!j) return; rg.coins+=Math.floor(JK[j.id].p/2); rg.jokers.splice(i,1); rg.jinfo=-1; persist(); render(); }
-  else if(a==="rgreroll"){ if(rg.coins<rg.shop.reroll) return; rg.coins-=rg.shop.reroll; const r=rg.shop.reroll+1; rgShopGen(); rg.shop.reroll=r; persist(); render(); }
-  else if(a==="rgquit"){ if(rg.phase==="over"||rg.phase==="won"){ S.rg=null; persist(); render(); } else if(rg.quitAsk&&Date.now()-rg.quitAsk<4000){ rg.quitAsk=0; rgEnd(false); } else { rg.quitAsk=Date.now(); toast("לחץ שוב כדי לוותר על הריצה"); } }
-  else if(a==="rgnew"){ startRun(); }
-}
-/* ---------- views (v3.2 table) ---------- */
-const RG_SUIT={1:"♣",2:"♦",3:"♠"};
-let rgAnimTok=0, rgAutoT=null;
-const rgWsz=en=>en.length>11?' xxs':en.length>9?' xs':en.length>7?' sm':'';
-const rgNum=t=>esc(t).replace(/([+×]\d[\d.,]*)/g,'<bdi dir="ltr">$1</bdi>');
-function rgEV(cs){ const t=rgDetect(cs); if(!t) return {t:null,v:0}; const hb=rgHandBase(t); return {t,v:(hb.chips+cs.reduce((a,c)=>a+rgCardChips(c),0))*hb.mult}; }
-function rgBest(){
-  const H=S.rg.hand, n=H.length; let best=null;
-  for(let m=1;m<(1<<n);m++){ let k=0; for(let i=0;i<n;i++) if(m>>i&1) k++; if(k>5) continue; const cs=H.filter((c,i)=>m>>i&1), e=rgEV(cs); if(!best||e.v>best.v) best={cs,t:e.t,v:e.v}; }
-  return best;
-}
-function rgPC(c,o){
-  o=o||{};
-  const L=esc(c.en[0].toUpperCase()), su=RG_SUIT[c.lv]||"♦", corner='<b>'+L+'</b><i>'+su+'</i>';
-  const cls='pc s'+c.lv+(c.u?' gold':'')+(o.sel?' sel':'')+(o.deal?' deal':'')+(o.cls?' '+o.cls:'');
-  const st=o.style?' style="'+o.style+'"':'';
-  const inner='<span class="pc-c tl">'+corner+'</span><span class="pc-w'+rgWsz(c.en)+'" style="--l:'+Math.max(6,c.en.length)+'" lang="en" dir="ltr">'+esc(c.en)+'</span><span class="pc-c br">'+corner+'</span>'+(o.noval?'':'<span class="pc-v" dir="ltr">+'+rgCardChips(c)+'</span>')+(c.u?'<span class="pc-foil" aria-hidden="true">✦</span>':'')+(o.mark||'');
-  if(o.act) return '<button class="'+cls+'"'+st+' data-act="'+o.act+'" data-arg="'+o.arg+'" aria-pressed="'+!!o.sel+'">'+inner+'</button>';
-  return '<div class="'+cls+'"'+st+(o.attr||'')+'>'+inner+'</div>';
-}
-function rgJokerRow(sell,quiet){
-  const rg=S.rg;
-  if(!rg.jokers.length&&quiet) return '';
-  if(!rg.jokers.length) return '<div class="rgjrow empty"><span>🃏 אין לך עדיין ג\'וקרים. קונים אותם בחנות אחרי כל ניצחון.</span></div>';
-  let h='<div class="rgjrow">';
-  rg.jokers.forEach((j,i)=>{ const J=JK[j.id]; h+='<button class="jc r'+J.r+(rg.jinfo===i?' on':'')+'" data-ji="'+i+'" data-act="rgjinfo" data-arg="'+i+'"><span class="jc-ic">'+J.ic+'</span><span class="jc-n">'+esc(J.n)+'</span>'+(j.id==="worm"?'<span class="jc-badge">+'+(j.v||0)+'</span>':'')+'</button>'; });
-  h+='</div>';
-  const j=rg.jokers[rg.jinfo];
-  if(j){ const J=JK[j.id]; h+='<div class="jtip"><b>'+J.ic+' '+esc(J.n)+'</b><span>'+rgNum(J.d)+(j.id==="worm"?' (כרגע +'+(j.v||0)+')':'')+'</span>'+(sell?'<button class="gbtn red sm" data-act="rgsell" data-arg="'+rg.jinfo+'">מכור · '+Math.floor(J.p/2)+' 🪙</button>':'')+'</div>'; }
-  return h;
-}
-function rgTop(title){
-  const rg=S.rg;
-  return '<header class="rgtop"><div class="rgtitle">'+title+'</div><div class="rgcoins">🪙 <b>'+rg.coins+'</b></div><button class="rgclose" data-act="rgexit" aria-label="יציאה מהמשחק">✕</button></header>';
-}
-function rgHud(o){
-  const rg=S.rg, boss=rgBoss(), nm=boss?boss.n:['סיבוב קטן','סיבוב גדול'][rg.bi];
-  const sc=o.score!=null?o.score:rg.score, p=Math.min(100,Math.round(sc/rg.target*100));
-  let h='<section class="rghud'+(boss?' boss':'')+'">';
-  h+='<div class="hud1"><div class="blindtok'+(boss?' boss':'')+'">'+(boss?boss.ic:rg.bi===0?'♦':'♦♦')+'</div><div class="hudblind"><b>'+nm+'</b><small>יעד <bdi>'+rg.target.toLocaleString()+'</bdi></small></div><div class="hudscore"><small>ניקוד</small><b id="rgScore"><bdi>'+sc.toLocaleString()+'</bdi></b></div></div>';
-  h+='<div class="rgprog"><i id="rgProg" style="width:'+p+'%"></i></div>';
-  if(boss) h+='<div class="bossrule">'+boss.ic+' '+esc(boss.d)+'</div>';
-  h+='<div class="hud2"><div class="rgcalc rgprev"><div class="hn" id="rgHN">'+(o.hn||'<span class="dim">בחר קלפים</span>')+'</div><div class="cm" dir="ltr"><span class="cbox" id="rgC">'+(o.c!=null?o.c:0)+'</span><span class="x">×</span><span class="mbox" id="rgM">'+(o.m!=null?o.m:0)+'</span></div></div>';
-  h+='<div class="hudres"><div><b>'+rg.hands+'</b><small>ידיים</small></div><div><b>'+rg.discards+'</b><small>זריקות</small></div></div></div>';
-  return h+'</section>';
-}
-function rgShell(ph,inner,foot){
-  return '<div class="rgx" data-ph="'+ph+'"><div class="rgwrap">'+inner+(foot?'<footer class="rgfoot">'+foot+'</footer>':'')+'</div></div>';
-}
-function rgHandsTable(){
-  const rg=S.rg;
-  let h='<details class="rghands"><summary>📖 טבלת ידיים</summary><p class="suits"><span class="s1">♣ בסיסית</span><span class="s2">♦ בינונית</span><span class="s3">♠ גבוהה</span></p><table>';
-  for(const t of RG_ORDER){ const H=RG_HANDS[t], b=rg?rgHandBase(t):{chips:H[1],mult:H[2],lv:1}; h+='<tr><td><b>'+H[0]+'</b>'+(b.lv>1?' <em>רמה '+b.lv+'</em>':'')+'<small>'+H[5]+'</small></td><td class="num" dir="ltr"><span class="cbox sm">'+b.chips+'</span> × <span class="mbox sm">'+b.mult+'</span></td></tr>'; }
-  return h+'</table></details>';
-}
-function rgIntro(){
-  const st=rgStats(), demo=[{en:"abundant",lv:2,u:true},{en:"abate",lv:3,u:false},{en:"account",lv:1,u:false}];
-  return '<section class="sheet rgintro"><div class="fan">'+demo.map((c,i)=>rgPC(c,{noval:1,style:'--r:'+[-12,0,12][i]+'deg;--y:'+[10,0,10][i]+'px'})).join('')+'</div>'
-   +'<h2>משחק הג\'וקרים</h2><p class="lead">בונים ידיים מקלפי מילים, מזהים מה כל מילה אומרת, וצוברים צ\'יפים × מכפיל. מילה שאתה <b>לא מכיר</b> (✦) שווה הכי הרבה.</p>'
-   +'<button class="gbtn gold big" data-act="rgstart">▶ התחל ריצה</button>'
-   +(st.runs?'<div class="istats"><div><b>'+st.runs+'</b><small>ריצות</small></div><div><b>'+(st.bestAnte>RG_ANTES?'🏆':st.bestAnte||0)+'</b><small>שלב שיא</small></div><div><b><bdi>'+(st.bestHand||0).toLocaleString()+'</bdi></b><small>יד שיא</small></div></div>':'')
-   +'<details class="rghow"><summary>איך משחקים?</summary><ol><li>בוחרים עד 5 קלפים. ההתאמה ביניהם קובעת את היד: <b>זוג</b> = שתי מילים שמתחילות באותה אות, <b>צבע</b> = 5 קלפים מאותה צורה (♣ ♦ ♠ = רמת המילה), <b>רצף</b> = אותיות פתיחה עוקבות.</li><li>אחרי ששיחקת, עונים מה הפירוש של כל קלף. רק תשובה נכונה קולעת.</li><li>הניקוד הוא צ\'יפים × מכפיל. מגיעים ליעד לפני שנגמרות הידיים.</li><li>על כל ניצחון מקבלים מטבעות, וקונים ג\'וקרים ששוברים את החוקים.</li><li>8 שלבים, 3 סיבובים בכל שלב, והשלישי הוא בוס.</li></ol><p class="small">כל מילה שטעית בה נכנסת לחזרה ולקרב המילים הקשות.</p></details></section>';
-}
-function viewRun(){
-  const rg=S.rg;
-  if(!rg) return rgIntro();
-  const boss=rgBoss();
-  if(rg.phase==="blind"){
-    let h=rgTop('שלב <b>'+rg.ante+'</b><span>/'+RG_ANTES+'</span>')+'<div class="rgbody"><h2 class="phh">בחר את הסיבוב הבא</h2><div class="blinds">';
-    for(let b=0;b<3;b++){ const bs=b===2?RG_BOSSES.find(x=>x.id===rg.bosses[rg.ante-1]):null; h+='<div class="bl'+(b===rg.bi?' cur':b<rg.bi?' done':'')+(bs?' boss':'')+'"><div class="blindtok'+(bs?' boss':'')+'">'+(bs?bs.ic:b===0?'♦':'♦♦')+'</div><b>'+(bs?bs.n:['קטן','גדול'][b])+'</b><span class="tg"><small>יעד</small><bdi>'+rgTarget(rg.ante,b).toLocaleString()+'</bdi></span><span class="rw">פרס '+'🪙'.repeat([3,4,5][b])+'</span>'+(bs?'<em>'+esc(bs.d)+'</em>':'')+(b<rg.bi?'<i class="ok">✓</i>':'')+'</div>'; }
-    h+='</div><h3 class="sub">הג\'וקרים שלך</h3>'+rgJokerRow(false)+rgHandsTable()+'<p class="center"><button class="linkbtn rgquit" data-act="rgquit">לוותר על הריצה</button></p></div>';
-    return rgShell("blind",h,'<button class="gbtn gold big" data-act="rgbegin">▶ שחק '+(rg.bi===2?'נגד הבוס':['סיבוב קטן','סיבוב גדול'][rg.bi])+'</button>');
-  }
-  if(rg.phase==="play"){
-    const sel=rg.hand.filter(c=>rg.sel.includes(c.id)), t=rgDetect(sel), hb=t?rgHandBase(t):null;
-    let h=rgTop('שלב <b>'+rg.ante+'</b><span>/'+RG_ANTES+'</span>')+rgHud({hn:t?RG_HANDS[t][0]+(hb.lv>1?' <em>רמה '+hb.lv+'</em>':''):null,c:hb?hb.chips:0,m:hb?hb.mult:0})+rgJokerRow(false,true);
-    const ev=sel.length?rgEV(sel):null, bst=!sel.length&&rg.hand.length?rgBest():null;
-    h+='<div class="rgbody table"><div class="tablehint">'+(ev?'<b>'+RG_HANDS[ev.t][0]+'</b><span>עד <bdi>'+Math.round(ev.v).toLocaleString()+'</bdi> נקודות אם תזהה את כל הקלפים</span>':bst?'<span>💡 היד הכי חזקה שלך כרגע</span><b>'+RG_HANDS[bst.t][0]+'</b><button class="chipbtn" data-act="rgsuggest">סמן לי אותה</button>':'')+'</div><div class="handbar"><span class="dim">'+(rg.sel.length?'נבחרו '+rg.sel.length+'/5':'בחר עד 5 קלפים')+' · נשארו '+rg.pile.length+' בחפיסה</span><button class="chipbtn" data-act="rgsort" data-arg="'+(rg.sort==="letter"?"level":"letter")+'">⇅ '+(rg.sort==="letter"?'לפי צורה':'לפי אות')+'</button></div><div class="hand">';
-    const n=rg.hand.length, fr=rg.fresh||[];
-    rg.hand.forEach((c,i)=>{ const col=i%4, rot=[-4,-1.5,1.5,4][col]||0, y=[6,1,1,6][col]||0, di=fr.indexOf(c.id); h+=rgPC(c,{act:"rgsel",arg:c.id,sel:rg.sel.includes(c.id),deal:di>=0,style:'--r:'+rot+'deg;--y:'+y+'px'+(di>=0?';--d:'+(di*0.06).toFixed(2)+'s':'')}); });
-    h+='</div>'+(n===0?'<p class="center dim">אין עוד קלפים.</p>':'')+'</div>';
-    const f='<button class="gbtn red" data-act="rgdisc"'+(!rg.sel.length||rg.discards<=0?' disabled':'')+'>🗑️ זרוק<small>'+rg.discards+' נשארו</small></button><button class="gbtn gold" data-act="rgplay"'+(!rg.sel.length?' disabled':'')+'>▶ שחק יד<small>'+(t?RG_HANDS[t][0]:'בחר קלפים')+'</small></button>';
-    return rgShell("play",h,f);
-  }
-  if(rg.phase==="quiz"){
-    const q=rg.q, c=rg.played[rg.qi], L="ABCD", ans=rg.chosen!==null;
-    const sel=rg.played, t=rgDetect(sel), hb=rgHandBase(t);
-    let h=rgTop('שלב <b>'+rg.ante+'</b><span>/'+RG_ANTES+'</span>')+rgHud({hn:RG_HANDS[t][0]+(hb.lv>1?' <em>רמה '+hb.lv+'</em>':''),c:hb.chips,m:hb.mult});
-    h+='<div class="rgbody table"><div class="minis">';
-    rg.played.forEach((p,i)=>{ const done=i<rg.qi||(i===rg.qi&&ans); const st=done?(p.ok?(p.shielded?'sh':'ok'):'no'):i===rg.qi?'cur':''; h+='<div class="mini s'+p.lv+' '+st+'"><b>'+esc(p.en[0].toUpperCase())+'</b><i>'+RG_SUIT[p.lv]+'</i>'+(done?'<span class="mkk">'+(p.ok?(p.shielded?'🛡️':'✓'):'✗')+'</span>':'')+'</div>'; });
-    h+='</div>';
-    if(boss&&boss.id==="clock") h+='<div class="clock"><b id="rgClk">6</b><div class="rgprog red"><i id="rgClkBar" style="width:100%"></i></div></div>';
-    h+='<div class="qcard s'+c.lv+(c.u?' gold':'')+(ans?(c.ok&&!c.shielded?' right':c.shielded?' saved':' wrong'):'')+'"><span class="pc-c tl"><b>'+esc(c.en[0].toUpperCase())+'</b><i>'+RG_SUIT[c.lv]+'</i></span><span class="pc-c br"><b>'+esc(c.en[0].toUpperCase())+'</b><i>'+RG_SUIT[c.lv]+'</i></span>'
-      +(q.rev?'<div class="qw he">'+esc(q.he)+'</div>':'<div class="qw" lang="en" dir="ltr">'+esc(q.en)+'</div>'+(TTS?'<div class="qspk">'+spkBtn(q.en)+'</div>':''))
-      +'<div class="qmeta">'+(c.u?'✦ לא מוכרת · ':'')+'+'+rgCardChips(c)+' צ\'יפים</div>'+(ans?'<div class="stamp">'+(c.ok?(c.shielded?'🛡️':'✓'):'✗')+'</div>':'')+'</div>';
-    h+='<div class="qopts'+(q.rev?' en':'')+'"'+(q.rev?' dir="ltr"':'')+'>';
-    q.options.forEach((o,i)=>{ let cls='qo'; if(ans){ if(i===q.answer) cls+=' right'; else if(i===rg.chosen) cls+=' wrong'; else cls+=' fade'; } h+='<button class="'+cls+'" data-act="rgans" data-arg="'+i+'"'+(ans?' disabled':'')+(q.rev?' lang="en"':'')+'>'+esc(o)+'</button>'; });
-    h+='</div>';
-    if(ans){ const ex=exOf(q.en); h+='<div class="rgfb '+(c.ok?(c.shielded?'sh':'ok'):'no')+'">'+(c.shielded?'🛡️ המחברת הצילה את הקלף. ':(rg.chosen===q.answer?'':(rg.chosen<0?'⏱️ נגמר הזמן. ':'')))+'<b dir="ltr">'+esc(q.en)+'</b> = '+esc(q.he)+(ex&&rg.chosen!==q.answer?'<small dir="ltr" lang="en">'+hlWord(ex,q.en)+'</small>':'')+(aiOn()&&rg.chosen!==q.answer?'<button class="chipbtn" data-act="aiword" data-arg="'+esc(q.en)+'">🤖 עזור לי לזכור</button>':'')+'</div>'; }
-    h+='</div>';
-    return rgShell("quiz",h,ans?'<button class="gbtn gold" data-act="rgnext">'+(rg.qi+1<rg.played.length?'הקלף הבא ←':'לניקוד ←')+'</button>':'<div class="qhint">קלף '+(rg.qi+1)+' מתוך '+rg.played.length+' · מה הפירוש?</div>');
-  }
-  if(rg.phase==="score"){
-    const r=rg.res, done=rg.animDone, won=rg.score>=rg.target;
-    const hn=r.type?RG_HANDS[r.type][0]+(r.base.lv>1?' <em>רמה '+r.base.lv+'</em>':''):'<span class="dim">אין יד</span>';
-    let h=rgTop('שלב <b>'+rg.ante+'</b><span>/'+RG_ANTES+'</span>')+rgHud({hn,c:done?r.chips:r.type?r.base.c:0,m:done?r.mult:r.type?r.base.m:0,score:done?rg.score:rg.scoreBefore})+rgJokerRow(false,true);
-    h+='<div class="rgbody table center-v" data-act="rgskip"><div class="played">';
-    rg.played.forEach((p,i)=>{ h+=rgPC(p,{cls:p.ok?'':'dead',attr:' data-pi="'+i+'"',mark:p.ok?'':'<span class="xmark">✗</span>',style:'--r:'+((i-(rg.played.length-1)/2)*3)+'deg'}); });
-    h+='</div><div class="total'+(done?' show':'')+'" id="rgTot">'+(r.type?'<span dir="ltr">= <b><bdi>'+r.total.toLocaleString()+'</bdi></b></span>':'<span>💨 אף קלף לא קלע</span>')+'</div>';
-    h+='<p class="verdict'+(done?' show':'')+'" id="rgVer">'+(won?'🎉 הגעת ליעד!':rg.hands>0?'חסרות עוד <bdi>'+(rg.target-rg.score).toLocaleString()+'</bdi>. נשארו '+rg.hands+' ידיים.':'נגמרו הידיים.')+'</p></div>';
-    return rgShell("score",h,'<button class="gbtn gold" data-act="rgcont">'+(won?'🎉 לאסוף את הפרס':rg.hands>0?'ליד הבאה ←':'לסיכום')+'</button>');
-  }
-  if(rg.phase==="cash"){
-    const c=rg.cash;
-    let h=rgTop('שלב <b>'+rg.ante+'</b><span>/'+RG_ANTES+'</span>')+'<div class="rgbody"><div class="winpanel"><div class="burst">'+(rg.bi===2?'👑':'🏆')+'</div><h2>'+(rg.bi===2?'הבוס הובס!':'ניצחת בסיבוב!')+'</h2><p class="dim">'+rg.score.toLocaleString()+' מתוך '+rg.target.toLocaleString()+'</p><div class="cashrows">';
-    h+='<div><span>פרס על הסיבוב</span><b dir="ltr">+'+c.base+' 🪙</b></div>';
-    if(c.hands) h+='<div><span>'+c.hands+' ידיים שלא שיחקת</span><b dir="ltr">+'+c.hands+' 🪙</b></div>';
-    if(c.interest) h+='<div><span>ריבית: 1 על כל 5 מטבעות</span><b dir="ltr">+'+c.interest+' 🪙</b></div>';
-    if(c.piggy) h+='<div><span>🐷 קופת חיסכון</span><b dir="ltr">+'+c.piggy+' 🪙</b></div>';
-    h+='<div class="sum"><span>סה"כ</span><b dir="ltr">+'+c.total+' 🪙</b></div></div></div></div>';
-    return rgShell("cash",h,'<button class="gbtn gold big" data-act="rgshop">🛒 לחנות</button>');
-  }
-  if(rg.phase==="shop"){
-    const sh=rg.shop, full=rg.jokers.length>=5;
-    let h=rgTop('🛒 <b>חנות</b>')+'<div class="rgbody"><h3 class="sub">הג\'וקרים שלך <small>'+rg.jokers.length+'/5 · הקש כדי למכור</small></h3>'+rgJokerRow(true);
-    h+='<h3 class="sub">ג\'וקרים למכירה</h3><div class="shopgrid">';
-    if(!sh.j.length) h+='<p class="dim">המדף ריק. אפשר לגלגל מחדש.</p>';
-    for(const id of sh.j){ const J=JK[id], can=rg.coins>=J.p&&!full; h+='<div class="sc r'+J.r+'"><span class="rar">'+['','רגיל','לא נפוץ','נדיר'][J.r]+'</span><span class="sc-ic">'+J.ic+'</span><b>'+esc(J.n)+'</b><small>'+rgNum(J.d)+'</small><button class="gbtn gold sm" data-act="rgbuyj" data-arg="'+id+'"'+(can?'':' disabled')+'>'+(full?'אין מקום':'קנה · '+J.p+' 🪙')+'</button></div>'; }
-    h+='</div><h3 class="sub">ספרי שדרוג <small>משפרים יד לתמיד</small></h3><div class="shopgrid">';
-    for(const t of sh.u){ const H=RG_HANDS[t], lv=rg.lv[t]||1; h+='<div class="sc book"><span class="rar">רמה '+lv+' ← '+(lv+1)+'</span><span class="sc-ic">📘</span><b>'+H[0]+'</b><small><bdi dir="ltr">+'+H[3]+'</bdi> צ\'יפים, <bdi dir="ltr">+'+H[4]+'</bdi> מכפיל</small><button class="gbtn gold sm" data-act="rgbuyu" data-arg="'+t+'"'+(rg.coins<3?' disabled':'')+'>קנה · 3 🪙</button></div>'; }
-    h+='</div></div>';
-    return rgShell("shop",h,'<button class="gbtn blue" data-act="rgreroll"'+(rg.coins<sh.reroll?' disabled':'')+'>🎲 גלגול<small>'+sh.reroll+' 🪙</small></button><button class="gbtn gold" data-act="rgadv">הסיבוב הבא ←<small>'+(rg.bi===2?'שלב '+(rg.ante+1):['סיבוב גדול','בוס'][rg.bi])+'</small></button>');
-  }
-  if(rg.phase==="over"||rg.phase==="won"){
-    const won=rg.phase==="won";
-    let h=rgTop(won?'🏆 <b>ניצחון</b>':'סוף הריצה')+'<div class="rgbody"><div class="winpanel'+(won?'':' lost')+'"><div class="burst">'+(won?'🏆':'💨')+'</div><h2>'+(won?'ניצחת את כל 8 השלבים!':'הריצה נגמרה')+'</h2><p class="dim">'+(won?'ריצה מושלמת.':'הגעת לשלב '+rg.ante+', '+(rgBoss()?'הבוס '+rgBoss().n:['הסיבוב הקטן','הסיבוב הגדול'][rg.bi])+'.')+'</p>';
-    h+='<div class="istats"><div><b>'+rg.ok+'/'+rg.ans+'</b><small>תשובות נכונות</small></div><div><b><bdi>'+(rg.best||0).toLocaleString()+'</bdi></b><small>יד הכי טובה</small></div><div><b>'+rg.learned.length+'</b><small>מילים לא מוכרות שזיהית</small></div></div></div>';
-    if(rg.missed.length){ h+='<div class="misses"><h3>המילים שהפילו אותך ('+rg.missed.length+')</h3>'; for(const en of rg.missed.slice(0,30)) h+='<div class="mrow"><b lang="en" dir="ltr">'+esc(en)+'</b><span>'+esc(heOf(en))+'</span></div>'; h+='<p class="dim small">הן נכנסו לחזרה של היום ולקרב המילים הקשות, ובריצה הבאה הן יחזרו לחפיסה.</p></div>'; }
-    h+='</div>';
-    return rgShell("over",h,(rg.missed.length?'<button class="gbtn blue" data-act="vmode" data-arg="boss">👾 מילים קשות</button>':'')+'<button class="gbtn gold" data-act="rgnew">▶ ריצה חדשה</button>');
-  }
-  return '';
-}
-/* after render: lock body scroll, keep scroll, clock, animation */
-let rgKeep=null;
-function rgBeforeRender(){ const x=document.querySelector(".rgx"); rgKeep=x?{ph:x.dataset.ph,top:x.scrollTop}:null; }
-function rgAfterRender(){
-  const x=document.querySelector(".rgx");
-  document.body.classList.toggle("rgopen",!!x);
-  if(!x) return;
-  if(rgKeep&&rgKeep.ph===x.dataset.ph) x.scrollTop=rgKeep.top;
-  const rg=S.rg; if(!rg) return;
-  if(rg.phase==="quiz") rgClock();
-  if(rg.phase==="score"&&!rg.animDone) rgAnimate();
-  if(rg.fresh&&rg.fresh.length){ const n=rg.fresh.length; if(n) tone([[392,.05,0],[523,.05,.05]]); rg.fresh=[]; }
-}
-function rgFloat(el,txt,cls){
-  if(!el) return; const x=document.querySelector(".rgx"); if(!x) return;
-  const r=el.getBoundingClientRect(), f=document.createElement("div");
-  f.className="rgfloat "+cls; f.dir="ltr"; f.textContent=txt; f.style.left=(r.left+r.width/2)+"px"; f.style.top=(r.top-6)+"px";
-  document.body.appendChild(f); setTimeout(()=>f.remove(),950);
-}
-function rgBump(el,cls){ if(!el) return; el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
-function rgCount(el,from,to,ms){
-  if(!el) return; const t0=performance.now();
-  const step=now=>{ const k=Math.min(1,(now-t0)/ms), e=1-Math.pow(1-k,3); el.textContent=Math.round(from+(to-from)*e).toLocaleString(); if(k<1&&document.body.contains(el)) requestAnimationFrame(step); };
-  requestAnimationFrame(step);
-}
-function rgAnimate(){
-  const rg=S.rg, r=rg.res, tok=++rgAnimTok;
-  clearTimeout(rgAutoT);
-  const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finish=()=>{ if(tok!==rgAnimTok||!S.rg||S.rg.phase!=="score") return; rg.animDone=true;
-    const tot=document.getElementById("rgTot"), ver=document.getElementById("rgVer"), sc=document.getElementById("rgScore"), pr=document.getElementById("rgProg");
-    if(tot){ tot.classList.add("show"); const b=tot.querySelector("b bdi"); if(b) rgCount(b,0,r.total,500); }
-    if(r.total>0) tone(SND.combo);
-    setTimeout(()=>{ if(tok!==rgAnimTok) return; if(sc){ const b=sc.querySelector("bdi"); rgCount(b,rg.scoreBefore,rg.score,650); rgBump(sc,"bump"); } if(pr) pr.style.width=Math.min(100,Math.round(rg.score/rg.target*100))+"%"; if(ver) ver.classList.add("show");
-      if(rg.score>=rg.target){ tone(SND.level); if(!reduce) confetti(); }
-      else if(rg.hands>0){ rgAutoT=setTimeout(()=>{ if(tok===rgAnimTok&&S.rg&&S.rg.phase==="score"&&tab==="vocab"&&vmode==="run") rgAfterScore(); },1600); }
-    }, reduce?0:450);
-  };
-  if(reduce||!r.type){ setTimeout(finish,reduce?0:300); return; }
-  const C=document.getElementById("rgC"), M=document.getElementById("rgM");
-  let t=350;
-  r.steps.forEach((s,i)=>{
-    setTimeout(()=>{
-      if(tok!==rgAnimTok) return;
-      if(C) C.textContent=s.c; if(M) M.textContent=s.m;
-      if(s.k==="card"){ const el=document.querySelector('[data-pi="'+s.i+'"]'); rgBump(el,"pop"); rgFloat(el,s.txt,"chips"); rgBump(C,"bump"); tone([[330+i*45,.07,0]]); }
-      else { const el=document.querySelector('[data-ji="'+s.j+'"]'); rgBump(el,"wig"); rgFloat(el,s.txt,s.kind==="c"?"chips":"mult"); rgBump(s.kind==="c"?C:M,"bump"); tone([[s.kind==="x"?660:520,.09,0],[s.kind==="x"?880:620,.08,.06]]); }
-    },t);
-    t+=s.k==="card"?330:430;
-  });
-  setTimeout(finish,t+120);
-}
-function rgHomeHTML(){
-  const rg=S.rg, live=rg&&!["over","won"].includes(rg.phase);
-  return '<section class="sheet rghome"><div class="minifan">'+rgPC({en:"apt",lv:2,u:true},{noval:1,style:'--r:-10deg'})+rgPC({en:"bold",lv:3,u:false},{noval:1,style:'--r:8deg'})+'</div><div><h3>משחק הג\'וקרים</h3><p class="small">'+(live?'יש לך ריצה פתוחה: שלב '+rg.ante+', '+rg.jokers.length+' ג\'וקרים, '+rg.coins+' מטבעות.':'ידיים, ג\'וקרים ובוסים. בכל קלף מילה שצריך לזהות.')+'</p></div><button class="gbtn gold sm" data-act="rghome">'+(live?'להמשיך':'לשחק')+'</button></section>';
-}
-
-ACH.push(
-  ["rgfirst","🎴","הקלף הראשון","ניצחת סיבוב במשחק הג'וקרים",()=>!!(S.rgStats&&S.rgStats.blinds>0)],
-  ["rgboss","👑","מפיל בוסים","ניצחת בוס במשחק הג'וקרים",()=>!!(S.rgStats&&S.rgStats.bosses>0)],
-  ["rghand","💥","יד של 1,000","קלעת 1,000 נקודות ביד אחת",()=>!!(S.rgStats&&S.rgStats.bestHand>=1000)],
-  ["rgwin","🃏","ריצה מושלמת","עברת את כל 8 השלבים",()=>!!(S.rgStats&&S.rgStats.wins>0)]
-);
-
 /* ---------- v3.4: optional AI helper ---------- */
 const AI_PROV={
   openai:{n:"ChatGPT",full:"OpenAI (ChatGPT)",web:"https://chatgpt.com/",q:"https://chatgpt.com/?q=",keyUrl:"https://platform.openai.com/api-keys",def:"gpt-4.1-mini"},
@@ -3189,11 +2504,9 @@ function aiPrep(it){
 function aiPractice(items,why){ tab="practice"; startSet({qs:items.map(aiPrep),why:why||"תרגול שה-AI בנה בשבילך. התוכן לא נבדק על ידי מומחה, אז אם משהו נראה לך שגוי, דלג עליו."},"ai"); }
 function aiSetRun(id){
   const s=aiCfg().sets.find(x=>x.id===id); if(!s) return;
-  startRun(); const rg=S.rg;
-  const set=s.words.filter(en=>heOf(en)).map(en=>({en,lv:LEVEL[en]||2}));
-  const fill=rg.deck.filter(c=>!s.words.includes(c.en));
-  rg.deck=shuffle(set.concat(fill).slice(0,44)).map((c,i)=>Object.assign({en:c.en,lv:c.lv},{id:i}));
-  rg.setTitle=s.title; tab="vocab"; vmode="run"; persist(); render();
+  const words=s.words.filter(en=>heOf(en));
+  vs={queue:shuffle(words).slice(0,40).map(en=>({en,he:heOf(en),isNew:!S.cards[en]})),i:0,revealed:false,known:0,miss:0,requeued:new Set(),extra:40,xp0:S.xp||0,setTitle:s.title};
+  tab="vocab"; vmode="cards"; render(); window.scrollTo({top:0});
 }
 /* ---- views ---- */
 function aiBadge(){
@@ -3235,7 +2548,7 @@ function aiPlanHTML(p,full){
 }
 function aiResultHTML(job){
   const r=job.res;
-  if(job.task==="set") return '<h3>'+esc(r.title)+' · '+r.words.length+' מילים</h3>'+aiWordsList(r.words,true)+'<div class="row aiacts"><button class="btn" data-act="aisaveset">➕ הוסף ללמידה</button><button class="btn ghost" data-act="aisetplay">🃏 הוסף ושחק עם הסט</button></div>';
+  if(job.task==="set") return '<h3>'+esc(r.title)+' · '+r.words.length+' מילים</h3>'+aiWordsList(r.words,true)+'<div class="row aiacts"><button class="btn" data-act="aisaveset">➕ הוסף ללמידה</button><button class="btn ghost" data-act="aisetplay">📚 הוסף ולמד עכשיו</button></div>';
   if(job.task==="coach") return aiPlanHTML(r,true)+'<div class="row aiacts"><button class="btn" data-act="aiclose">מעולה, שמרתי</button></div>';
   if(job.task==="why") return aiWhyHTML(r)+'<div class="row aiacts"><button class="btn" data-act="aiclose">הבנתי</button></div>';
   if(job.task==="word") return aiWordHTML(r,job.ctx.en)+'<div class="row aiacts"><button class="btn" data-act="aiclose">הבנתי</button></div>';
@@ -3282,7 +2595,7 @@ function viewAI(){
   h+='<section class="sheet aitool"><h3>💡 מסביר טעויות</h3><p class="small muted">בכל שאלה שתטעה בה יופיע כפתור "🤖 למה טעיתי?", וגם במשחק הג\'וקרים על מילה שפספסת.</p>'+(last?'<button class="btn ghost" data-act="aiwhylast">הסבר את הטעות האחרונה שלי</button>':'')+'</section>';
   if(c.sets.length){
     h+='<section class="sheet"><h3>הסטים שלי</h3>';
-    for(const s of c.sets) h+='<div class="aisetrow"><div><b>'+esc(s.title)+'</b><small class="muted">'+s.words.length+' מילים · '+dm(s.date)+'</small></div><button class="btn mini" data-act="aisetrun" data-arg="'+s.id+'">🃏 שחק</button><button class="btn ghost mini" data-act="aisetdel" data-arg="'+s.id+'" aria-label="מחק">🗑️</button></div>';
+    for(const s of c.sets) h+='<div class="aisetrow"><div><b>'+esc(s.title)+'</b><small class="muted">'+s.words.length+' מילים · '+dm(s.date)+'</small></div><button class="btn mini" data-act="aisetrun" data-arg="'+s.id+'">📚 ללמוד</button><button class="btn ghost mini" data-act="aisetdel" data-arg="'+s.id+'" aria-label="מחק">🗑️</button></div>';
     h+='</section>';
   }
   return h;
@@ -3413,6 +2726,128 @@ function goalAfterRender(){
 }
 document.addEventListener("change",e=>{ if(e.target&&e.target.id==="vocabGoalSel"){ S.vocabGoal=+e.target.value||null; persist(); render(); } });
 
+/* ---------- v3.8: smart vocabulary engine ---------- */
+const LV_NAMES={1:"בסיסית",2:"בינונית",3:"גבוהה"};
+/* Suggested share of NEW words per word level for each target. A pedagogical heuristic of this app,
+   not an official NITE requirement (NITE publishes no vocabulary lists). */
+const TARGET_MIX={100:{1:.55,2:.40,3:.05},120:{1:.25,2:.55,3:.20},134:{1:.10,2:.50,3:.40}};
+const LV_PRIOR={1:.7,2:.4,3:.15}, PRIOR_N=6;
+/* words that appear in the app's own exam-style questions and passages */
+const EXAMW=(()=>{ const set=new Set(), add=t=>String(t||"").toLowerCase().replace(/[^a-z'\- ]/g," ").split(/\s+/).forEach(w=>{ if(w.length>2) set.add(w); });
+  ITEMS.forEach(it=>{ add(it.stem); (it.options||[]).forEach(add); if(it.word) set.add(String(it.word).toLowerCase()); }); PASSAGES.forEach(p=>add(p.text)); return set; })();
+const wordValue=en=>(CORE.has(en)?1.6:1)*(EXAMW.has(en)?1.4:1);
+function k0Of(c){ return c.k0!=null?c.k0:(((c.m||0)===0&&(c.ok||0)>=1)?1:0); }
+function levelKnow(){
+  const st={1:[0,0],2:[0,0],3:[0,0]};
+  for(const en in S.cards){ const L=LEVEL[en]||2; st[L][0]++; st[L][1]+=k0Of(S.cards[en]); }
+  const out={}; for(const L of [1,2,3]){ const [n,k]=st[L]; out[L]={n,k,p:(k+LV_PRIOR[L]*PRIOR_N)/(n+PRIOR_N)}; }
+  return out;
+}
+function unseenByLevel(){ const o={1:0,2:0,3:0}; for(const w of allWords()) if(!S.cards[w.en]&&w.he) o[LEVEL[w.en]||2]++; return o; }
+function levelMix(){
+  const T=TARGET_MIX[S.target]||TARGET_MIX[120], K=levelKnow(), left=unseenByLevel(), w={}; let s=0;
+  for(const L of [1,2,3]){ w[L]=left[L]?T[L]*(1-K[L].p)+0.01:0; s+=w[L]; }
+  for(const L of [1,2,3]) w[L]=s?w[L]/s:0;
+  const focus=[1,2,3].sort((a,b)=>w[b]-w[a])[0];
+  return {w,K,T,left,focus};
+}
+/* new words: custom/mistake words first, then a level chosen by (target mix × probability you don't know that level),
+   inside the level preferring core-list and exam-content words, with randomness for variety */
+function freshRandom(n,skip){
+  skip=skip||new Set();
+  const pool=allWords().filter(w=>!S.cards[w.en]&&!skip.has(w.en)&&w.he);
+  const cust=new Set(S.custom.map(c=>c.en));
+  const out=pool.filter(w=>cust.has(w.en)).slice(0,n);
+  if(out.length>=n) return out;
+  const {w}=levelMix(), byL={1:[],2:[],3:[]};
+  for(const x of pool){ if(cust.has(x.en)) continue; byL[LEVEL[x.en]||2].push({x,k:Math.pow(Math.random(),1/wordValue(x.en))}); }
+  for(const L of [1,2,3]) byL[L].sort((a,b)=>b.k-a.k);
+  const idx={1:0,2:0,3:0};
+  while(out.length<n){
+    const live=[1,2,3].filter(L=>idx[L]<byL[L].length); if(!live.length) break;
+    const tot=live.reduce((s,L)=>s+(w[L]||0.001),0); let r=Math.random()*tot, L=live[live.length-1];
+    for(const l of live){ r-=(w[l]||0.001); if(r<=0){ L=l; break; } }
+    out.push(byL[L][idx[L]++].x);
+  }
+  return out;
+}
+/* daily queue: most-overdue reviews first, fewer new words when the review pile is big, reviews and new words interleaved */
+function buildVocab(){
+  const t=today(), p=planFor(t)||{nw:10}, d=dayRead(t);
+  const dueAll=dueList().filter(en=>heOf(en));
+  const pr=en=>{ const c=S.cards[en], iv=Math.max(1,c.iv||INT[c.box]||1); return diff(c.due,t)/iv+(isHard(c)?0.5:0)+Math.random()*0.05; };
+  const due=dueAll.map(en=>({en,s:pr(en)})).sort((a,b)=>b.s-a.s).slice(0,40).map(x=>({en:x.en,he:heOf(x.en),isNew:false}));
+  const planned=Math.max(0,p.nw-d.nw);
+  let nw=planned; if(dueAll.length>80) nw=Math.min(nw,5); else if(dueAll.length>40) nw=Math.round(nw*0.5);
+  const fresh=freshRandom(nw).map(w=>({en:w.en,he:w.he,isNew:true}));
+  const q=[]; let i=0,j=0;
+  while(i<due.length||j<fresh.length){ for(let k=0;k<3&&i<due.length;k++) q.push(due[i++]); if(j<fresh.length) q.push(fresh[j++]); }
+  return {queue:q,i:0,revealed:false,known:0,miss:0,requeued:new Set(),extra:0,xp0:S.xp||0,cut:nw<planned?{due:dueAll.length,planned,nw}:null};
+}
+/* ---------- level check (placement) ---------- */
+let plc=null, plcT=null;
+function startPlacement(){
+  const pick=L=>{ const pool=allWords().filter(w=>!S.cards[w.en]&&w.he&&(LEVEL[w.en]||2)===L&&/^[a-z]+$/.test(w.en)).map(w=>({w,k:Math.pow(Math.random(),1/wordValue(w.en))})).sort((a,b)=>b.k-a.k).slice(0,8).map(x=>x.w.en); return pool; };
+  const ens=[...pick(1),...pick(2),...pick(3)];
+  if(ens.length<6){ toast("אין מספיק מילים חדשות לבדיקה"); return; }
+  const all=allWords().filter(w=>w.he);
+  const qs=shuffle(ens).map(en=>{ let q=mkVQ(en,all); if(q.rev) q=Object.assign({},q,{rev:false,options:q.options.map(o=>heOf(o)||o)}); return q; });
+  plc={qs,i:0,chosen:null,res:{1:[0,0],2:[0,0],3:[0,0]}};
+  tab="vocab"; vmode="cards"; render(); window.scrollTo({top:0});
+}
+function plcAnswer(i){
+  if(!plc||plc.chosen!==null) return;
+  const q=plc.qs[plc.i], ok=i===q.answer, L=LEVEL[q.en]||2, t=today();
+  plc.chosen=i; plc.res[L][0]++; if(ok) plc.res[L][1]++;
+  if(!S.cards[q.en]) S.cards[q.en]=ok?{box:2,due:addDays(t,3),iv:3,ef:2.3,ok:1,m:0,k0:1,f:t,plc:1}:{box:0,due:t,iv:0,ef:2.1,ok:0,m:1,k0:0,f:t,plc:1};
+  fxQ.push({t:ok?"ok":"no"}); persist(); render();
+  clearTimeout(plcT); plcT=setTimeout(()=>{ if(plc&&plc.chosen!==null&&plc.qs[plc.i]===q) plcNext(); }, ok?600:1400);
+}
+function plcNext(){
+  if(!plc) return; clearTimeout(plcT); plc.i++; plc.chosen=null;
+  if(plc.i>=plc.qs.length){ S.plc={date:today(),res:plc.res}; plc.done=true; vs=null; persist(); }
+  render();
+}
+function viewPlacement(){
+  const L="ABCD";
+  if(plc.done){
+    const mx=levelMix();
+    let h='<section class="sheet"><h2>תוצאות בדיקת הרמה</h2>';
+    for(const l of [1,2,3]){ const [n,k]=plc.res[l]; if(!n) continue; h+='<div class="veng-row"><span>רמה '+LV_NAMES[l]+'</span><div class="bar"><i style="width:'+Math.round(k/n*100)+'%"></i></div><span dir="ltr">'+k+'/'+n+'</span></div>'; }
+    h+='<p>מעכשיו המילים החדשות יתמקדו ברמה <b>'+LV_NAMES[mx.focus]+'</b>. המילים שזיהית סומנו כמוכרות, ואלה שלא זיהית נכנסו לחזרה של היום.</p><button class="btn" data-act="plcend">להמשך</button></section>';
+    return h;
+  }
+  const q=plc.qs[plc.i];
+  let h='<section class="sheet"><div class="row" style="justify-content:space-between"><b>🧭 בדיקת רמה</b><span class="small muted"><bdi>'+(plc.i+1)+' / '+plc.qs.length+'</bdi></span></div><div class="bar" style="margin:8px 0 14px"><i style="width:'+(plc.i/plc.qs.length*100)+'%"></i></div>';
+  h+='<p class="small muted" style="margin-top:0">בחר את הפירוש. אם אין לך מושג, עדיף לבחור "לא יודע" מאשר לנחש.</p><div class="card"><div class="en" lang="en">'+esc(q.en)+'</div></div>';
+  h+='<div class="opts" dir="rtl" style="direction:rtl">';
+  q.options.forEach((o,i)=>{ let cls='opt heopt'; if(plc.chosen!==null){ if(i===q.answer) cls+=' right'; else if(i===plc.chosen) cls+=' wrong'; } h+='<button class="'+cls+'" data-act="plca" data-arg="'+i+'"'+(plc.chosen!==null?' disabled':'')+'><span class="l"></span><span>'+esc(o)+'</span></button>'; });
+  h+='<button class="opt heopt idk" data-act="plca" data-arg="-1"'+(plc.chosen!==null?' disabled':'')+'><span class="l"></span><span>🤷 לא יודע</span></button></div>';
+  h+='<div class="row" style="justify-content:space-between;margin-top:12px"><button class="btn ghost mini" data-act="plcquit">הפסק</button>'+(plc.chosen!==null?'<button class="btn" data-act="plcnext">הבאה</button>':'')+'</div></section>';
+  return h;
+}
+/* ---------- engine panel ---------- */
+function vocabEngineHTML(){
+  const mx=levelMix(), seen=mx.K[1].n+mx.K[2].n+mx.K[3].n, goal=GOAL_NAMES[S.target]||("ציון "+S.target);
+  const needCheck=!S.plc&&seen<40;
+  let h='<details class="veng"'+(needCheck?' open':'')+'><summary>🧠 מנוע המילים · מיקוד: רמה '+LV_NAMES[mx.focus]+'</summary>';
+  h+='<p class="small" style="margin:8px 0">היעד שלך: <b>'+goal+'</b>. המילים החדשות נבחרות לפי הרמות שמתאימות ליעד, ולפי כמה מכל רמה אתה כבר מכיר: פחות מילים מרמה שאתה כבר שולט בה, יותר מהרמה שבה יש לך הכי הרבה מה ללמוד.</p>';
+  for(const L of [1,2,3]){
+    const k=mx.K[L], pct=Math.round(k.p*100), share=Math.round(mx.w[L]*100);
+    h+='<div class="veng-row"><span>רמה '+LV_NAMES[L]+'</span><div class="bar" title="אחוז מוערך של מילים שאתה כבר מכיר ברמה הזו"><i style="width:'+pct+'%"></i></div><span class="small"><bdi>~'+pct+'%</bdi> מוכרות · <b><bdi>'+share+'%</bdi></b> מהחדשות</span></div>';
+  }
+  h+='<p class="small muted" style="margin:6px 0 0">'+(seen?'ההערכה מבוססת על '+seen+' מילים שראית'+(S.plc?' ועל בדיקת הרמה מ-'+dm(S.plc.date):'')+'.':'עוד אין נתונים, אז ההערכה מתחילה מהנחה כללית.')+' בחזרות, מילים שאתה זוכר בקלות חוזרות במרווחים הולכים וגדלים, ומילים שקשה לך חוזרות מהר יותר. ההתאמה בין רמות ליעד היא המלצה של האפליקציה, לא דרישה רשמית של המבחן.</p>';
+  h+='<div class="row" style="margin-top:10px"><button class="btn '+(needCheck?'':'ghost ')+'mini" data-act="plcstart">🧭 '+(S.plc?'בדיקת רמה חוזרת':'בדיקת רמה (2 דקות)')+'</button></div>';
+  if(vs&&vs.cut) h+='<p class="small" style="margin:10px 0 0">📥 יש לך '+vs.cut.due+' מילים לחזרה, אז היום יהיו רק '+vs.cut.nw+' מילים חדשות במקום '+vs.cut.planned+'. ככה החזרות לא נערמות.</p>';
+  return h+'</details>';
+}
+function migrateV6(){
+  if((S.v||0)>=6) return;
+  delete S.rg;
+  S.v=6;
+  try{ localStorage.setItem(LS,JSON.stringify(S)); }catch(e){}
+}
+
 function render(){
   const left=diff(today(),S.examDate);
   document.getElementById("sub").textContent = left>0 ? "מ-"+S.base+" ("+band(S.base)+") ל-"+S.target+" ("+band(S.target)+"). נשארו "+left+" ימים עד המבחן ב-"+dm(S.examDate)+"." : left===0 ? "היום המבחן." : "עדכן את תאריך המבחן בהגדרות.";
@@ -3420,7 +2855,6 @@ function render(){
   const m=document.getElementById("main");
   document.body.classList.toggle("insim", !!(sim&&sim.phase==="run"&&tab==="practice"));
   const th=S.theme||"auto"; if(th==="auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.setAttribute("data-theme",th);
-  rgBeforeRender();
   m.innerHTML = tab==="today"?viewTodayV3():tab==="vocab"?viewVocab():tab==="practice"?(sim?viewSim():viewPractice()):tab==="settings"?viewSettings():tab==="ai"?viewAI():viewStats();
   if(tab==="vocab" && autoSpeak()){
     let key="", word="";
@@ -3430,7 +2864,6 @@ function render(){
     if(key && key!==lastSpoken){ lastSpoken=key; speak(word); }
   }
   const gi=document.getElementById("gIn"); if(gi && window.matchMedia("(pointer:fine)").matches) gi.focus();
-  rgAfterRender();
   aiAfterRender();
   goalAfterRender();
   runFx();
@@ -3445,8 +2878,11 @@ document.addEventListener("click",e=>{
   else if(a==="vhint"){ if(vs){ vs.hint=true; render(); } }
   else if(a==="sprgo"){ vmode="sprint"; startSprint(); }
   else if(a==="spra") sprAnswer(+arg);
-  else if(a==="rghome"){ tab="vocab"; vmode="run"; render(); window.scrollTo({top:0}); }
-  else if(a.startsWith("rg")) rgAct(a,arg);
+  else if(a==="plcstart") startPlacement();
+  else if(a==="plca") plcAnswer(+arg);
+  else if(a==="plcnext") plcNext();
+  else if(a==="plcquit"){ clearTimeout(plcT); plc=null; vs=null; render(); }
+  else if(a==="plcend"){ plc=null; vs=null; render(); window.scrollTo({top:0}); }
   else if(a.startsWith("ai")) aiAct(a,arg);
   else if(a==="goaltoggle"){ goalOpen=!goalOpen; render(); }
   else if(a==="goalset"){ S.target=+arg; S.goalHit=null; persist(); render(); }
